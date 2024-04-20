@@ -33,7 +33,7 @@ enum Role {
 }
 
 model Task {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   description String
   location    String
@@ -41,17 +41,22 @@ model Task {
   maxPrice    String
   dueDate     String
   urgency     Urgency
-  expertiseId String
-  createdAt   String
-  updatedAt   String
-  client      User?   @relation(fields: [clientId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  client      User?    @relation(fields: [clientId], references: [id])
   clientId    Int?
 }
 
 enum Urgency {
-  Critical
-  Urgent
-  Priority
-  Soon
-  Anytime
+  high
+  low
+  medium
 }
+
+// enum Urgency {
+//   Critical
+//   Urgent
+//   Priority
+//   Soon
+//   Anytime
+// }
