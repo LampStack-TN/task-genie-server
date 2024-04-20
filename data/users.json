@@ -4,10 +4,10 @@
     "email": "client1@example.com",
     "password": "password1",
     "role": "client",
-    "fullname": "Alice Johnson",
+    "fullName": "Alice Johnson",
     "city": "New York",
     "address": "123 Main St",
-    "zipcode": 10001,
+    "zipcode": "10001",
     "avatar": "avatar1.jpg"
   },
   {
@@ -15,10 +15,10 @@
     "email": "client2@example.com",
     "password": "password2",
     "role": "client",
-    "fullname": "John Smith",
+    "fullName": "John Smith",
     "city": "Los Angeles",
     "address": "456 Elm St",
-    "zipcode": 90001,
+    "zipcode": "90001",
     "avatar": "avatar2.jpg"
   },
   {
@@ -26,10 +26,10 @@
     "email": "client3@example.com",
     "password": "password3",
     "role": "client",
-    "fullname": "Emma Davis",
+    "fullName": "Emma Davis",
     "city": "Chicago",
     "address": "789 Oak St",
-    "zipcode": 60601,
+    "zipcode": "60601",
     "avatar": "avatar3.jpg"
   },
   {
@@ -37,10 +37,10 @@
     "email": "client4@example.com",
     "password": "password4",
     "role": "client",
-    "fullname": "Michael Brown",
+    "fullName": "Michael Brown",
     "city": "Houston",
     "address": "101 Pine St",
-    "zipcode": 77002,
+    "zipcode": "77002",
     "avatar": "avatar4.jpg"
   },
   {
@@ -48,10 +48,10 @@
     "email": "client5@example.com",
     "password": "password5",
     "role": "client",
-    "fullname": "Sophia Martinez",
+    "fullName": "Sophia Martinez",
     "city": "Phoenix",
     "address": "222 Maple St",
-    "zipcode": 85001,
+    "zipcode": "85001",
     "avatar": "avatar5.jpg"
   },
   {
@@ -59,10 +59,10 @@
     "email": "pro1@example.com",
     "password": "password6",
     "role": "professional",
-    "fullname": "David Wilson",
+    "fullName": "David Wilson",
     "city": "San Francisco",
     "address": "333 Walnut St",
-    "zipcode": 94102,
+    "zipcode": "94102",
     "avatar": "avatar6.jpg"
   },
   {
@@ -70,10 +70,10 @@
     "email": "pro2@example.com",
     "password": "password7",
     "role": "professional",
-    "fullname": "Jennifer Taylor",
+    "fullName": "Jennifer Taylor",
     "city": "Seattle",
     "address": "444 Cedar St",
-    "zipcode": 98101,
+    "zipcode": "98101",
     "avatar": "avatar7.jpg"
   },
   {
@@ -81,10 +81,10 @@
     "email": "pro3@example.com",
     "password": "password8",
     "role": "professional",
-    "fullname": "Robert Anderson",
+    "fullName": "Robert Anderson",
     "city": "Miami",
     "address": "555 Oak St",
-    "zipcode": 33101,
+    "zipcode": "33101",
     "avatar": "avatar8.jpg"
   },
   {
@@ -92,10 +92,10 @@
     "email": "pro4@example.com",
     "password": "password9",
     "role": "professional",
-    "fullname": "Linda Thomas",
+    "fullName": "Linda Thomas",
     "city": "Dallas",
     "address": "666 Elm St",
-    "zipcode": 75201,
+    "zipcode": "75201",
     "avatar": "avatar9.jpg"
   },
   {
@@ -103,10 +103,10 @@
     "email": "pro5@example.com",
     "password": "password10",
     "role": "professional",
-    "fullname": "William Jackson",
+    "fullName": "William Jackson",
     "city": "Boston",
     "address": "777 Pine St",
-    "zipcode": 21010,
+    "zipcode": "21010",
     "avatar": "avatar10.jpg"
   },
   {
@@ -114,10 +114,10 @@
     "email": "client6@example.com",
     "password": "password11",
     "role": "client",
-    "fullname": "Olivia Wilson",
+    "fullName": "Olivia Wilson",
     "city": "San Diego",
     "address": "888 Elm St",
-    "zipcode": 92101,
+    "zipcode": "92101",
     "avatar": "avatar11.jpg"
   },
   {
@@ -125,10 +125,10 @@
     "email": "client7@example.com",
     "password": "password12",
     "role": "client",
-    "fullname": "James Lee",
+    "fullName": "James Lee",
     "city": "Atlanta",
     "address": "999 Oak St",
-    "zipcode": 30301,
+    "zipcode": "30301",
     "avatar": "avatar12.jpg"
   },
   {
@@ -136,10 +136,10 @@
     "email": "client8@example.com",
     "password": "password13",
     "role": "client",
-    "fullname": "Emily Garcia",
+    "fullName": "Emily Garcia",
     "city": "Philadelphia",
     "address": "111 Maple St",
-    "zipcode": 19101,
+    "zipcode": "19101",
     "avatar": "avatar13.jpg"
   },
   {
@@ -147,10 +147,10 @@
     "email": "client9@example.com",
     "password": "password14",
     "role": "client",
-    "fullname": "Daniel Rodriguez",
+    "fullName": "Daniel Rodriguez",
     "city": "Denver",
     "address": "222 Walnut St",
-    "zipcode": 80201,
+    "zipcode": "80201",
     "avatar": "avatar14.jpg"
   },
   {
@@ -158,10 +158,10 @@
     "email": "client10@example.com",
     "password": "password15",
     "role": "client",
-    "fullname": "Ava Martinez",
+    "fullName": "Ava Martinez",
     "city": "Las Vegas",
     "address": "333 Pine St",
-    "zipcode": 89101,
+    "zipcode": "89101",
     "avatar": "avatar15.jpg"
   },
   {
@@ -169,10 +169,10 @@
     "email": "pro6@example.com",
     "password": "password16",
     "role": "professional",
-    "fullname": "Michael Thompson",
+    "fullName": "Michael Thompson",
     "city": "Portland",
     "address": "444 Cedar St",
-    "zipcode": 97201,
+    "zipcode": "97201",
     "avatar": "avatar16.jpg"
   },
   {
@@ -180,10 +180,10 @@
     "email": "pro7@example.com",
     "password": "password17",
     "role": "professional",
-    "fullname": "Jessica Hernandez",
+    "fullName": "Jessica Hernandez",
     "city": "Austin",
     "address": "555 Oak St",
-    "zipcode": 78701,
+    "zipcode": "78701",
     "avatar": "avatar17.jpg"
   },
   {
@@ -191,10 +191,10 @@
     "email": "pro8@example.com",
     "password": "password18",
     "role": "professional",
-    "fullname": "Christopher Martinez",
+    "fullName": "Christopher Martinez",
     "city": "Nashville",
     "address": "666 Elm St",
-    "zipcode": 37201,
+    "zipcode": "37201",
     "avatar": "avatar18.jpg"
   },
   {
@@ -202,10 +202,10 @@
     "email": "pro9@example.com",
     "password": "password19",
     "role": "professional",
-    "fullname": "Ashley Adams",
+    "fullName": "Ashley Adams",
     "city": "Orlando",
     "address": "777 Maple St",
-    "zipcode": 32801,
+    "zipcode": "32801",
     "avatar": "avatar19.jpg"
   },
   {
@@ -213,10 +213,10 @@
     "email": "pro10@example.com",
     "password": "password20",
     "role": "professional",
-    "fullname": "Matthew Nelson",
+    "fullName": "Matthew Nelson",
     "city": "San Antonio",
     "address": "888 Pine St",
-    "zipcode": 78201,
+    "zipcode": "78201",
     "avatar": "avatar20.jpg"
   }
 ]
