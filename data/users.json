@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "email": "client1@example.com",
+    "password": "password1",
+    "role": "client",
+    "fullname": "Alice Johnson",
+    "city": "New York",
+    "address": "123 Main St",
+    "zipcode": 10001,
+    "avatar": "avatar1.jpg"
+  },
+  {
+    "id": 2,
+    "email": "client2@example.com",
+    "password": "password2",
+    "role": "client",
+    "fullname": "John Smith",
+    "city": "Los Angeles",
+    "address": "456 Elm St",
+    "zipcode": 90001,
+    "avatar": "avatar2.jpg"
+  },
+  {
+    "id": 3,
+    "email": "client3@example.com",
+    "password": "password3",
+    "role": "client",
+    "fullname": "Emma Davis",
+    "city": "Chicago",
+    "address": "789 Oak St",
+    "zipcode": 60601,
+    "avatar": "avatar3.jpg"
+  },
+  {
+    "id": 4,
+    "email": "client4@example.com",
+    "password": "password4",
+    "role": "client",
+    "fullname": "Michael Brown",
+    "city": "Houston",
+    "address": "101 Pine St",
+    "zipcode": 77002,
+    "avatar": "avatar4.jpg"
+  },
+  {
+    "id": 5,
+    "email": "client5@example.com",
+    "password": "password5",
+    "role": "client",
+    "fullname": "Sophia Martinez",
+    "city": "Phoenix",
+    "address": "222 Maple St",
+    "zipcode": 85001,
+    "avatar": "avatar5.jpg"
+  },
+  {
+    "id": 6,
+    "email": "pro1@example.com",
+    "password": "password6",
+    "role": "professional",
+    "fullname": "David Wilson",
+    "city": "San Francisco",
+    "address": "333 Walnut St",
+    "zipcode": 94102,
+    "avatar": "avatar6.jpg"
+  },
+  {
+    "id": 7,
+    "email": "pro2@example.com",
+    "password": "password7",
+    "role": "professional",
+    "fullname": "Jennifer Taylor",
+    "city": "Seattle",
+    "address": "444 Cedar St",
+    "zipcode": 98101,
+    "avatar": "avatar7.jpg"
+  },
+  {
+    "id": 8,
+    "email": "pro3@example.com",
+    "password": "password8",
+    "role": "professional",
+    "fullname": "Robert Anderson",
+    "city": "Miami",
+    "address": "555 Oak St",
+    "zipcode": 33101,
+    "avatar": "avatar8.jpg"
+  },
+  {
+    "id": 9,
+    "email": "pro4@example.com",
+    "password": "password9",
+    "role": "professional",
+    "fullname": "Linda Thomas",
+    "city": "Dallas",
+    "address": "666 Elm St",
+    "zipcode": 75201,
+    "avatar": "avatar9.jpg"
+  },
+  {
+    "id": 10,
+    "email": "pro5@example.com",
+    "password": "password10",
+    "role": "professional",
+    "fullname": "William Jackson",
+    "city": "Boston",
+    "address": "777 Pine St",
+    "zipcode": 21010,
+    "avatar": "avatar10.jpg"
+  },
+  {
+    "id": 11,
+    "email": "client6@example.com",
+    "password": "password11",
+    "role": "client",
+    "fullname": "Olivia Wilson",
+    "city": "San Diego",
+    "address": "888 Elm St",
+    "zipcode": 92101,
+    "avatar": "avatar11.jpg"
+  },
+  {
+    "id": 12,
+    "email": "client7@example.com",
+    "password": "password12",
+    "role": "client",
+    "fullname": "James Lee",
+    "city": "Atlanta",
+    "address": "999 Oak St",
+    "zipcode": 30301,
+    "avatar": "avatar12.jpg"
+  },
+  {
+    "id": 13,
+    "email": "client8@example.com",
+    "password": "password13",
+    "role": "client",
+    "fullname": "Emily Garcia",
+    "city": "Philadelphia",
+    "address": "111 Maple St",
+    "zipcode": 19101,
+    "avatar": "avatar13.jpg"
+  },
+  {
+    "id": 14,
+    "email": "client9@example.com",
+    "password": "password14",
+    "role": "client",
+    "fullname": "Daniel Rodriguez",
+    "city": "Denver",
+    "address": "222 Walnut St",
+    "zipcode": 80201,
+    "avatar": "avatar14.jpg"
+  },
+  {
+    "id": 15,
+    "email": "client10@example.com",
+    "password": "password15",
+    "role": "client",
+    "fullname": "Ava Martinez",
+    "city": "Las Vegas",
+    "address": "333 Pine St",
+    "zipcode": 89101,
+    "avatar": "avatar15.jpg"
+  },
+  {
+    "id": 16,
+    "email": "pro6@example.com",
+    "password": "password16",
+    "role": "professional",
+    "fullname": "Michael Thompson",
+    "city": "Portland",
+    "address": "444 Cedar St",
+    "zipcode": 97201,
+    "avatar": "avatar16.jpg"
+  },
+  {
+    "id": 17,
+    "email": "pro7@example.com",
+    "password": "password17",
+    "role": "professional",
+    "fullname": "Jessica Hernandez",
+    "city": "Austin",
+    "address": "555 Oak St",
+    "zipcode": 78701,
+    "avatar": "avatar17.jpg"
+  },
+  {
+    "id": 18,
+    "email": "pro8@example.com",
+    "password": "password18",
+    "role": "professional",
+    "fullname": "Christopher Martinez",
+    "city": "Nashville",
+    "address": "666 Elm St",
+    "zipcode": 37201,
+    "avatar": "avatar18.jpg"
+  },
+  {
+    "id": 19,
+    "email": "pro9@example.com",
+    "password": "password19",
+    "role": "professional",
+    "fullname": "Ashley Adams",
+    "city": "Orlando",
+    "address": "777 Maple St",
+    "zipcode": 32801,
+    "avatar": "avatar19.jpg"
+  },
+  {
+    "id": 20,
+    "email": "pro10@example.com",
+    "password": "password20",
+    "role": "professional",
+    "fullname": "Matthew Nelson",
+    "city": "San Antonio",
+    "address": "888 Pine St",
+    "zipcode": 78201,
+    "avatar": "avatar20.jpg"
+  }
+]
