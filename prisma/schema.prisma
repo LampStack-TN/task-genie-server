@@ -15,7 +15,43 @@ datasource db {
 
 model User {
   id       Int    @id @default(autoincrement())
-  name     String
+  fullName String
   email    String
   password String
+  role     Role
+  city     String
+  address  String
+  zipcode  String
+  avatar   String
+  tasks    Task[]
+}
+
+enum Role {
+  client
+  professional
+  admin
+}
+
+model Task {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String
+  location    String
+  minPrice    String
+  maxPrice    String
+  dueDate     String
+  urgency     Urgency
+  expertiseId String
+  createdAt   String
+  updatedAt   String
+  client      User?   @relation(fields: [clientId], references: [id])
+  clientId    Int?
+}
+
+enum Urgency {
+  Critical
+  Urgent
+  Priority
+  Soon
+  Anytime
 }
