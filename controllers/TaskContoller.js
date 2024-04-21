@@ -41,6 +41,7 @@ const deleteTask = async (req, res) => {
     const response = await Task.delete({
       where: { id: parseInt(id) },
     });
+    console.log(response)
     res.send(response);
   } catch (err) {
     console.log(err);
