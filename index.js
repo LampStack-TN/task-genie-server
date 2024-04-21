@@ -3,6 +3,7 @@ const express = require("express");
 
 // importing local dependencies
 const authRouter = require("./routes/auth");
+const taskRouter = require("./routes/Task");
 
 // app & middlewares
 const app = express();
@@ -10,6 +11,7 @@ app.use(express.json());
 
 // defining routes
 app.use("/api/auth", authRouter);
+app.use("/api/add", taskRouter);
 
 // app listening/serving
 app.listen(3000, () => {
