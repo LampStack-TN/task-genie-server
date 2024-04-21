@@ -18,9 +18,10 @@ const register = async (req, res) => {
     // execute query
     const response = await User.create({ data });
 
-    // sernd query response
-    res.send(response);
+    // send success message
+    res.send("User Registred Successfully");
   } catch (error) {
+    // Handle errors
     console.log(error);
     res.send(error);
   }
