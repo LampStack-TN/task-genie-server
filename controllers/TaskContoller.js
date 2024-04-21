@@ -14,7 +14,8 @@ const CreateTask = async (req, res) => {
 };
 const getAll = async (req, res) => {
   try {
-    //Todo : getAll Tasks
+    const tasks=await Task.findMany()
+    res.json(tasks)
   } catch (err) {
     console.log(err);
   }
