@@ -1,5 +1,3 @@
-const { task } = require("../database/prisma");
-
 const Task = require("../database/prisma").task;
 const CreateTask = async (req, res) => {
   try {
@@ -13,4 +11,17 @@ const CreateTask = async (req, res) => {
     res.send(error);
   }
 };
-module.exports = { CreateTask };
+const getAll = async (req, res) => {
+  //Todo : getAll Tasks
+};
+const getOne = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Task.findUnique({ where: {id: parseInt(id)}} );
+    res.send(result);
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+};
+module.exports = { CreateTask, getAll, getOne };
