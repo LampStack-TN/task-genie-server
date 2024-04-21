@@ -1,4 +1,5 @@
 const Task = require("../database/prisma").task;
+
 const CreateTask = async (req, res) => {
   try {
     const data = req.body;
@@ -12,16 +13,54 @@ const CreateTask = async (req, res) => {
   }
 };
 const getAll = async (req, res) => {
-  //Todo : getAll Tasks
+  try {
+    //Todo : getAll Tasks
+  } catch (err) {
+    console.log(err);
+  }
 };
 const getOne = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await Task.findUnique({ where: {id: parseInt(id)}} );
-    res.send(result);
+    const task = await Task.findUnique({
+      where: { id: parseInt(id) },
+      include: {
+        client: true,
+      },
+    })
+    res.send(task);
   } catch (err) {
     console.log(err);
     res.send(err);
   }
 };
-module.exports = { CreateTask, getAll, getOne };
+
+const deleteTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const response = await Task.delete({
+      where: { id: parseInt(id) },
+    });
+    res.send(response);
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+};
+
+const updateTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+    const response = await Task.update({
+      where: { id: parseInt(id) },
+      data,
+    });
+    res.send(response);
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+};
+
+module.exports = { CreateTask, getAll, getOne, deleteTask, updateTask };
