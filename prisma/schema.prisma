@@ -14,18 +14,17 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  fullName String
-  email    String
-  password String
-  role     Role
-  city     String
-  address  String
-  zipcode  String
-  avatar   String
-  tasks    Task[]
-      applications Application[]
-
+  id           Int           @id @default(autoincrement())
+  fullName     String
+  email        String
+  password     String
+  role         Role
+  city         String
+  address      String
+  zipcode      String
+  avatar       String
+  tasks        Task[]
+  applications Application[]
 }
 
 enum Role {
@@ -35,19 +34,19 @@ enum Role {
 }
 
 model Task {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String
-  location    String
-  minPrice    String
-  maxPrice    String
-  dueDate     String
-  urgency     Urgency
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  client      User?    @relation(fields: [clientId], references: [id])
-  clientId    Int?
-    applications Application[]
+  id           Int           @id @default(autoincrement())
+  title        String
+  description  String
+  location     String
+  minPrice     String
+  maxPrice     String
+  dueDate      String
+  urgency      Urgency
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  client       User?         @relation(fields: [clientId], references: [id])
+  clientId     Int?
+  applications Application[]
 }
 
 enum Urgency {
@@ -57,24 +56,22 @@ enum Urgency {
 }
 
 model Application {
-  id            Int     @id @default(autoincrement())
-  task          Task    @relation(fields: [taskId], references: [id])
-  taskId        Int    
-  applicant     User    @relation(fields: [applicantId], references: [id])
-  applicantId   Int    
-  price         Float   
-  status        Status 
-createdAt   DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  task        Task?     @relation(fields: [taskId], references: [id])
+  taskId      Int
+  applicant   User?     @relation(fields: [applicantId], references: [id])
+  applicantId Int
+  price       Float
+  status      Status
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 enum Status {
-Pending
+  Pending
   Accepted
   Rejected
 }
-
-
 
 // enum Urgency {
 //   Critical
