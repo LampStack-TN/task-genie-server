@@ -24,6 +24,8 @@ model User {
   zipcode  String
   avatar   String
   tasks    Task[]
+      applications Application[]
+
 }
 
 enum Role {
@@ -45,6 +47,7 @@ model Task {
   updatedAt   DateTime @updatedAt
   client      User?    @relation(fields: [clientId], references: [id])
   clientId    Int?
+    applications Application[]
 }
 
 enum Urgency {
@@ -52,6 +55,26 @@ enum Urgency {
   low
   medium
 }
+
+model Application {
+  id            Int     @id @default(autoincrement())
+  task          Task    @relation(fields: [taskId], references: [id])
+  taskId        Int    
+  applicant     User    @relation(fields: [applicantId], references: [id])
+  applicantId   Int    
+  price         Float   
+  status        Status 
+createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Status {
+Pending
+  Accepted
+  Rejected
+}
+
+
 
 // enum Urgency {
 //   Critical
