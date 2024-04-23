@@ -50,8 +50,15 @@ const applyToTask = async (req, res) => {
   }
 };
 
-
+const getAllApp = async (req, res) => {
+    try {
+      const tasks=await prisma.application.findMany()
+      res.json(tasks)
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 module.exports = {
-  applyToTask
+  applyToTask,getAllApp
 };
