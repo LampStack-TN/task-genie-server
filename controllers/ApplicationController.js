@@ -51,14 +51,46 @@ const applyToTask = async (req, res) => {
 };
 
 const getAllApp = async (req, res) => {
-    try {
-      const tasks=await prisma.application.findMany()
-      res.json(tasks)
-    } catch (err) {
-      console.log(err);
+  try {
+    const tasks = await prisma.application.findMany();
+    res.json(tasks);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getUserApplications = async (req, res) => {
+  const userId = req.params.id;
+
+  if (!userId) {
+    return res.status(400).json({ message: "User ID is required." });
+  }
+
+  try {
+    const applications = await prisma.application.findMany({
+      where: {
+        applicantId: parseInt(userId),
+      },
+      include: {
+        task: true,
+        applicant: true,
+      },
+    });
+
+    if (applications.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No applications found for this user." });
     }
-  };
+
+    return res.status(200).json(applications);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = {
-  applyToTask,getAllApp
+  applyToTask,
+  getAllApp,
+  getUserApplications,
 };
