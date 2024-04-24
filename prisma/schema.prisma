@@ -23,6 +23,7 @@ model User {
   address      String
   zipcode      String
   avatar       String
+  birthdate    String?
   tasks        Task[]
   applications Application[]
 }
@@ -57,9 +58,9 @@ enum Urgency {
 
 model Application {
   id          Int      @id @default(autoincrement())
-  task        Task?     @relation(fields: [taskId], references: [id])
+  task        Task?    @relation(fields: [taskId], references: [id])
   taskId      Int
-  applicant   User?     @relation(fields: [applicantId], references: [id])
+  applicant   User?    @relation(fields: [applicantId], references: [id])
   applicantId Int
   price       Float
   status      Status
