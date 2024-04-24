@@ -9,13 +9,13 @@ const CreateTask = async (req, res) => {
     res.status(201).send(response);
   } catch (error) {
     console.log(error);
-    res.send(error);
+    res.status(404).send(error);
   }
 };
 const getAll = async (req, res) => {
   try {
-    const tasks=await Task.findMany()
-    res.json(tasks)
+    const tasks = await Task.findMany();
+    res.json(tasks);
   } catch (err) {
     console.log(err);
   }
@@ -28,11 +28,11 @@ const getOne = async (req, res) => {
       include: {
         client: true,
       },
-    })
+    });
     res.send(task);
   } catch (err) {
     console.log(err);
-    res.send(err);
+    res.status(404).send(err);
   }
 };
 
@@ -42,11 +42,11 @@ const deleteTask = async (req, res) => {
     const response = await Task.delete({
       where: { id: parseInt(id) },
     });
-    console.log(response)
+    console.log(response);
     res.send(response);
   } catch (err) {
     console.log(err);
-    res.send(err);
+    res.status(404).send(err);
   }
 };
 
@@ -61,7 +61,7 @@ const updateTask = async (req, res) => {
     res.send(response);
   } catch (err) {
     console.log(err);
-    res.send(err);
+    res.status(404).send(err);
   }
 };
 
