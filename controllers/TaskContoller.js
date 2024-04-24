@@ -3,9 +3,16 @@ const Task = require("../database/prisma").task;
 const CreateTask = async (req, res) => {
   try {
     const data = req.body;
-    console.log(data);
-    const response = await Task.create({ data });
-    console.log(response);
+    // console.log(data);
+    const response = await Task.create(
+      {
+        data,
+        include: {
+          skills: true,
+        },
+      } // should include all the fields in the Skills
+    );
+    // console.log(response);
     res.status(201).send(response);
   } catch (error) {
     console.log(error);
