@@ -44,6 +44,7 @@ model Task {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   client      User?    @relation(fields: [clientId], references: [id])
+  skills    TaskSkills[]   
   clientId    Int?
 }
 
@@ -51,6 +52,21 @@ enum Urgency {
   high
   low
   medium
+}
+
+model Skills {
+  id     Int    @id @default(autoincrement())
+  name   String
+  task TaskSkills[]
+ 
+}
+
+model TaskSkills {
+task Task @relation(fields: [taskId],references: [id])
+taskId Int
+skills Skills @relation(fields: [skillId],references: [id])
+skillId Int
+@@id([taskId,skillId])
 }
 
 // enum Urgency {
