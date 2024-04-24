@@ -61,7 +61,7 @@ model Application {
   taskId      Int
   applicant   User?     @relation(fields: [applicantId], references: [id])
   applicantId Int
-  price       Float
+  price       Float?
   status      Status
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
