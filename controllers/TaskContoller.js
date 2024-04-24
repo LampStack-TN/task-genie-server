@@ -3,9 +3,16 @@ const Task = require("../database/prisma").task;
 const CreateTask = async (req, res) => {
   try {
     const data = req.body;
-    console.log(data);
-    const response = await Task.create({ data });
-    console.log(response);
+    // console.log(data);
+    const response = await Task.create(
+      {
+        data,
+        include: {
+          skills: true,
+        },
+      } // should include all the fields in the Skills
+    );
+    // console.log(response);
     res.status(201).send(response);
   } catch (error) {
     console.log(error);
@@ -14,8 +21,8 @@ const CreateTask = async (req, res) => {
 };
 const getAll = async (req, res) => {
   try {
-    const tasks=await Task.findMany()
-    res.json(tasks)
+    const tasks = await Task.findMany();
+    res.json(tasks);
   } catch (err) {
     console.log(err);
   }
@@ -28,7 +35,7 @@ const getOne = async (req, res) => {
       include: {
         client: true,
       },
-    })
+    });
     res.send(task);
   } catch (err) {
     console.log(err);
@@ -42,7 +49,7 @@ const deleteTask = async (req, res) => {
     const response = await Task.delete({
       where: { id: parseInt(id) },
     });
-    console.log(response)
+    console.log(response);
     res.send(response);
   } catch (err) {
     console.log(err);
