@@ -1,5 +1,6 @@
 const { user } = require("../database/prisma");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // import User prisma Model
 const User = require("../database/prisma").user;
