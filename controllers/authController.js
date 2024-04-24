@@ -23,7 +23,7 @@ const register = async (req, res) => {
   } catch (error) {
     // Handle errors
     console.log(error);
-    res.send(error);
+    res.status(400).send(error);
   }
 };
 
