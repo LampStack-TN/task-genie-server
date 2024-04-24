@@ -27,6 +27,48 @@ const register = async (req, res) => {
   }
 };
 
-// Todo: Login Handler
+//? Login Handler
+const login = async (req, res) => {
+  try {
+    // cheking if the email and password are not a falsy value
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(404).json({ error: "Email or Password not found." });
+    }
+    //cheking if the email exist in the database
+    const user = await User.findUnique({ where: { email } });
 
-module.exports = { register };
+    if (!user) {
+      return res.status(400).json({ error: "User not found." });
+    }
+    //cheking if the password is valid
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Password is incorrect." });
+    }
+    if (user.isactive == false) {
+      return res.status(401).json({ error: "avtivate your account" });
+    }
+    // Generate a JSON Web Token (JWT) for authentication
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        role: user.role,
+      },
+      process.env.jwt_Secret,
+      {
+        expiresIn: "1d",
+      }
+    );
+    //sending a succeeded response
+    res.status(200).json({ token, message: "Athentication Successful" });
+
+    //sending a error response
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+};
+
+module.exports = { register, login };
