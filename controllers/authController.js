@@ -52,7 +52,7 @@ const login = async (req, res) => {
       return res.status(401).json({ error: "avtivate your account" });
     }
     // Generate a JSON Web Token (JWT) for authentication
-    const token = jwt.sign(
+    const acessToken = jwt.sign(
       {
         userId: user.id,
         role: user.role,
@@ -63,7 +63,7 @@ const login = async (req, res) => {
       }
     );
     //sending a succeeded response
-    res.status(200).json({ token, message: "Athentication Successful" });
+    res.status(200).json({ acessToken, message: "Athentication Successful" });
 
     //sending a error response
   } catch (error) {
