@@ -19,6 +19,8 @@ model User {
   email        String        @unique
   password     String
   role         Role
+  phone        String?
+  birthdate    String?
   city         String
   address      String
   zipcode      String
