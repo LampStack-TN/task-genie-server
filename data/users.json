@@ -2,7 +2,7 @@
   {
     "id": 10001,
     "email": "client1@example.com",
-    "password": "password1",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "Alice Johnson",
     "city": "New York",
@@ -13,7 +13,7 @@
   {
     "id": 10002,
     "email": "client2@example.com",
-    "password": "password2",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "John Smith",
     "city": "Los Angeles",
@@ -24,7 +24,7 @@
   {
     "id": 10003,
     "email": "client3@example.com",
-    "password": "password3",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "Emma Davis",
     "city": "Chicago",
@@ -35,7 +35,7 @@
   {
     "id": 10004,
     "email": "client4@example.com",
-    "password": "password4",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "Michael Brown",
     "city": "Houston",
@@ -46,7 +46,7 @@
   {
     "id": 10005,
     "email": "client5@example.com",
-    "password": "password5",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "Sophia Martinez",
     "city": "Phoenix",
@@ -57,7 +57,7 @@
   {
     "id": 10006,
     "email": "pro1@example.com",
-    "password": "password6",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "David Wilson",
     "city": "San Francisco",
@@ -68,7 +68,7 @@
   {
     "id": 10007,
     "email": "pro2@example.com",
-    "password": "password7",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "Jennifer Taylor",
     "city": "Seattle",
@@ -79,7 +79,7 @@
   {
     "id": 10008,
     "email": "pro3@example.com",
-    "password": "password8",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "Robert Anderson",
     "city": "Miami",
@@ -90,7 +90,7 @@
   {
     "id": 10009,
     "email": "pro4@example.com",
-    "password": "password9",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "Linda Thomas",
     "city": "Dallas",
@@ -101,7 +101,7 @@
   {
     "id": 10010,
     "email": "pro5@example.com",
-    "password": "password10",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "William Jackson",
     "city": "Boston",
@@ -112,7 +112,7 @@
   {
     "id": 10011,
     "email": "client6@example.com",
-    "password": "password11",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "Olivia Wilson",
     "city": "San Diego",
@@ -123,7 +123,7 @@
   {
     "id": 10012,
     "email": "client7@example.com",
-    "password": "password12",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "James Lee",
     "city": "Atlanta",
@@ -134,7 +134,7 @@
   {
     "id": 10013,
     "email": "client8@example.com",
-    "password": "password13",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "Emily Garcia",
     "city": "Philadelphia",
@@ -145,7 +145,7 @@
   {
     "id": 10014,
     "email": "client9@example.com",
-    "password": "password14",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "Daniel Rodriguez",
     "city": "Denver",
@@ -156,7 +156,7 @@
   {
     "id": 10015,
     "email": "client10@example.com",
-    "password": "password15",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "client",
     "fullName": "Ava Martinez",
     "city": "Las Vegas",
@@ -167,7 +167,7 @@
   {
     "id": 10016,
     "email": "pro6@example.com",
-    "password": "password16",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "Michael Thompson",
     "city": "Portland",
@@ -178,7 +178,7 @@
   {
     "id": 10017,
     "email": "pro7@example.com",
-    "password": "password17",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "Jessica Hernandez",
     "city": "Austin",
@@ -189,7 +189,7 @@
   {
     "id": 10018,
     "email": "pro8@example.com",
-    "password": "password18",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "Christopher Martinez",
     "city": "Nashville",
@@ -200,7 +200,7 @@
   {
     "id": 10019,
     "email": "pro9@example.com",
-    "password": "password19",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "Ashley Adams",
     "city": "Orlando",
@@ -211,7 +211,7 @@
   {
     "id": 10020,
     "email": "pro10@example.com",
-    "password": "password20",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "professional",
     "fullName": "Matthew Nelson",
     "city": "San Antonio",
