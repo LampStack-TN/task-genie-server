@@ -18,12 +18,13 @@ model User {
   fullName     String
   email        String
   password     String
+  avatar       String
   role         Role
+  birthdate    String?
   city         String
+  phone        String?
   address      String
   zipcode      String
-  avatar       String
-  birthdate    String?
   tasks        Task[]
   applications Application[]
 }
