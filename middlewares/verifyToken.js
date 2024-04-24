@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const verifyToken = async (req, res, next) => {
   try {
-    const authHeader = req.headers["g-token"];
+    const authHeader = req.headers.authorization ;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({ error: "invalid Authorization header." });
