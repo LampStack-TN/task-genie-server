@@ -1,7 +1,7 @@
 const prisma = require("../database/prisma.js");
 
 const applyToTask = async (req, res) => {
-  const { userId, taskId, price } = req.body;
+  const { userId, taskId } = req.body;
   console.log(req.body);
 
   if (!userId) {
@@ -40,7 +40,6 @@ const applyToTask = async (req, res) => {
           },
         },
         status: "Pending",
-        price: price,
       },
     });
 
@@ -60,7 +59,7 @@ const getAllApp = async (req, res) => {
 };
 
 const getUserApplications = async (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params.userId;
 
   if (!userId) {
     return res.status(400).json({ message: "User ID is required." });

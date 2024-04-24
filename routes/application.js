@@ -4,5 +4,5 @@ const { applyToTask,getAllApp,getUserApplications} = require('../controllers/App
 
 router.post('/apply', applyToTask);
 router.get("/getAllApp",getAllApp)
-router.get("/app/:id",getUserApplications)
+router.get("/app/:userId",getUserApplications)
 module.exports = router;
