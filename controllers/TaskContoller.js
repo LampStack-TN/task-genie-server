@@ -21,7 +21,13 @@ const CreateTask = async (req, res) => {
 };
 const getAll = async (req, res) => {
   try {
-    const tasks = await Task.findMany();
+    const tasks = await Task.findMany({
+      include: {
+        _count: {
+          select: { applications: true },
+        },
+      },
+    });
     res.json(tasks);
   } catch (err) {
     console.log(err);
