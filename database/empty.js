@@ -1,12 +1,19 @@
 // importing db/prisma connection
 const prisma = require("../database/prisma.js");
 
-prisma.user.deleteMany({}).then((response) => {
-  console.log("Users truncated successfull ✅: ", response);
-  console.log("******************************");
-});
+(async () => {
+  await prisma.application.deleteMany({}).then((response) => {
+    console.log("Apps truncated successfull ✅: ", response);
+    console.log("******************************");
+  });
+  
+  await prisma.user.deleteMany({}).then((response) => {
+    console.log("Users truncated successfull ✅: ", response);
+    console.log("******************************");
+  });
 
-prisma.task.deleteMany({}).then((response) => {
-  console.log("Tasks truncated successfull ✅: ", response);
-  console.log("******************************");
-});
+  await prisma.task.deleteMany({}).then((response) => {
+    console.log("Tasks truncated successfull ✅: ", response);
+    console.log("******************************");
+  });
+})();
