@@ -8,7 +8,7 @@
     "city": "New York",
     "address": "123 Main St",
     "zipcode": "10001",
-    "avatar": "avatar1.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10002,
@@ -19,7 +19,7 @@
     "city": "Los Angeles",
     "address": "456 Elm St",
     "zipcode": "90001",
-    "avatar": "avatar2.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10003,
@@ -30,7 +30,7 @@
     "city": "Chicago",
     "address": "789 Oak St",
     "zipcode": "60601",
-    "avatar": "avatar3.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10004,
@@ -41,7 +41,7 @@
     "city": "Houston",
     "address": "101 Pine St",
     "zipcode": "77002",
-    "avatar": "avatar4.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10005,
@@ -52,7 +52,7 @@
     "city": "Phoenix",
     "address": "222 Maple St",
     "zipcode": "85001",
-    "avatar": "avatar5.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10006,
@@ -63,7 +63,7 @@
     "city": "San Francisco",
     "address": "333 Walnut St",
     "zipcode": "94102",
-    "avatar": "avatar6.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10007,
@@ -74,7 +74,7 @@
     "city": "Seattle",
     "address": "444 Cedar St",
     "zipcode": "98101",
-    "avatar": "avatar7.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10008,
@@ -85,7 +85,7 @@
     "city": "Miami",
     "address": "555 Oak St",
     "zipcode": "33101",
-    "avatar": "avatar8.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10009,
@@ -96,7 +96,7 @@
     "city": "Dallas",
     "address": "666 Elm St",
     "zipcode": "75201",
-    "avatar": "avatar9.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10010,
@@ -107,7 +107,7 @@
     "city": "Boston",
     "address": "777 Pine St",
     "zipcode": "21010",
-    "avatar": "avatar10.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10011,
@@ -118,7 +118,7 @@
     "city": "San Diego",
     "address": "888 Elm St",
     "zipcode": "92101",
-    "avatar": "avatar11.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10012,
@@ -129,7 +129,7 @@
     "city": "Atlanta",
     "address": "999 Oak St",
     "zipcode": "30301",
-    "avatar": "avatar12.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10013,
@@ -140,7 +140,7 @@
     "city": "Philadelphia",
     "address": "111 Maple St",
     "zipcode": "19101",
-    "avatar": "avatar13.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10014,
@@ -151,7 +151,7 @@
     "city": "Denver",
     "address": "222 Walnut St",
     "zipcode": "80201",
-    "avatar": "avatar14.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10015,
@@ -162,7 +162,7 @@
     "city": "Las Vegas",
     "address": "333 Pine St",
     "zipcode": "89101",
-    "avatar": "avatar15.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10016,
@@ -173,7 +173,7 @@
     "city": "Portland",
     "address": "444 Cedar St",
     "zipcode": "97201",
-    "avatar": "avatar16.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10017,
@@ -184,7 +184,7 @@
     "city": "Austin",
     "address": "555 Oak St",
     "zipcode": "78701",
-    "avatar": "avatar17.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10018,
@@ -195,7 +195,7 @@
     "city": "Nashville",
     "address": "666 Elm St",
     "zipcode": "37201",
-    "avatar": "avatar18.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10019,
@@ -206,7 +206,7 @@
     "city": "Orlando",
     "address": "777 Maple St",
     "zipcode": "32801",
-    "avatar": "avatar19.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   },
   {
     "id": 10020,
@@ -217,6 +217,6 @@
     "city": "San Antonio",
     "address": "888 Pine St",
     "zipcode": "78201",
-    "avatar": "avatar20.jpg"
+    "avatar": "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=1380&t=st=1714040600~exp=1714041200~hmac=b1555ee1e8cb0ed27135511a9f0e3f84db240eb016e76753c3d315a00b8a2300"
   }
 ]
