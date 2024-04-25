@@ -8,8 +8,7 @@ router.post("/register", authController.register);
 //? Login Route
 router.post("/login", authController.login);
 
-router.get("/login", verifyToken, (req, res) => {
-  res.send({ id: req.userId });
-});
+//? Endpoint to verify token
+router.get("/verify-token", verifyToken, authController.getAuthUser);
 
 module.exports = router;

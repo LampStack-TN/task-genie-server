@@ -68,8 +68,41 @@ const login = async (req, res) => {
     //sending a error response
   } catch (error) {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).send("Athentication Failed");
   }
 };
 
-module.exports = { register, login };
+//? Get Authenticated User
+const getAuthUser = async (req, res) => {
+  try {
+    // deconstruct userId for Query
+    const { userId } = req;
+    // execute query
+    const user = await User.findUnique({
+      where: {
+        id: userId,
+      },
+      select: {
+        id: false,
+        fullName: true,
+        email: true,
+        password: false,
+        role: true,
+        phone: true,
+        birthdate: true,
+        city: true,
+        address: true,
+        zipcode: true,
+        avatar: true,
+      },
+    });
+
+    // send success message
+    res.send(user);
+  } catch (error) {
+    // Handle errors
+    console.log(error);
+    res.status(400).send("Unvalid Token");
+  }
+};
+module.exports = { register, login, getAuthUser };
