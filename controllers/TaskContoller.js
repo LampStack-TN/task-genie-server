@@ -46,6 +46,7 @@ const getAll = async (req, res) => {
     const tasks = await Task.findMany({
       include: {
         skills: true,
+        client: true,
         _count: {
           select: { applications: true },
         },
@@ -62,6 +63,7 @@ const getOne = async (req, res) => {
     const task = await Task.findUnique({
       where: { id: parseInt(id) },
       include: {
+        skills: true,
         client: true,
       },
     });
