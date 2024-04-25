@@ -49,7 +49,7 @@ model Task {
   client       User?         @relation(fields: [clientId], references: [id])
   clientId     Int?
   applications Application[]
-  skills       TaskSkills[]
+  skills       Skill[]  @relation("TaskSkill")
 }
 
 enum Urgency {
@@ -76,19 +76,10 @@ enum Status {
   Rejected
 }
 
-model Skills {
-  id   Int          @id @default(autoincrement())
+model Skill {
+  id   Int         @id @default(autoincrement())
   name String
-  task TaskSkills[]
-}
-
-model TaskSkills {
-  task    Task   @relation(fields: [taskId], references: [id])
-  taskId  Int
-  skills  Skills @relation(fields: [skillId], references: [id])
-  skillId Int
-
-  @@id([taskId, skillId])
+  tasks Task[] @relation("TaskSkill")
 }
 
 // enum Urgency {

@@ -20,7 +20,7 @@ const skills = require("../data/skills.json");
       console.log("******************************");
     });
 
-  await prisma.skills
+  await prisma.skill
     .createMany({ data: skills, skipDuplicates: true })
     .then((response) => {
       console.log("skills seeded successfull ✅: ", response);

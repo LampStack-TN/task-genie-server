@@ -2,11 +2,33 @@ const Task = require("../database/prisma").task;
 
 const CreateTask = async (req, res) => {
   try {
-    const data = req.body;
-    // console.log(data);
+    const {
+      description,
+      title,
+      location,
+      minPrice,
+      maxPrice,
+      dueDate,
+      urgency,
+      clientId,
+      skills,
+    } = req.body;
+    console.log(req.body);
     const response = await Task.create(
       {
-        data,
+        data: {
+          description,
+          title,
+          location,
+          minPrice,
+          maxPrice,
+          dueDate,
+          urgency,
+          clientId,
+          skills: {
+            connect: skills.map((id) => ({ id })),
+          },
+        },
         include: {
           skills: true,
         },
@@ -21,7 +43,11 @@ const CreateTask = async (req, res) => {
 };
 const getAll = async (req, res) => {
   try {
-    const tasks = await Task.findMany();
+    const tasks = await Task.findMany({
+      include: {
+        skills: true,
+      },
+    });
     res.json(tasks);
   } catch (err) {
     console.log(err);
