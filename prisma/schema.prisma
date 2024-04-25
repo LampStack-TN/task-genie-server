@@ -91,6 +91,12 @@ model TaskSkills {
   @@id([taskId, skillId])
 }
 
+model Profile {
+  id       Int   @id @default(autoincrement())
+  jobTitle String
+  bio String
+}
+
 // enum Urgency {
 //   Critical
 //   Urgent
