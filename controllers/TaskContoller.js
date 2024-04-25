@@ -46,6 +46,9 @@ const getAll = async (req, res) => {
     const tasks = await Task.findMany({
       include: {
         skills: true,
+        _count: {
+          select: { applications: true },
+        },
       },
     });
     res.json(tasks);
