@@ -1,23 +1,14 @@
 const prisma = require("../database/prisma.js");
 
 const applyToTask = async (req, res) => {
-  const { userId, taskId } = req.body;
-  console.log(req.body);
-
-  if (!userId) {
-    return res.status(400).json({ message: "User ID is required." });
-  }
+  const { taskId } = req.body;
+  const userId = req.userId;
 
   //   find the first Application hat matches the "taskId" and "userId".
   try {
     const existApp = await prisma.application.findFirst({
       where: {
-        task: {
-          id: taskId,
-        },
-        applicant: {
-          id: userId,
-        },
+        AND: [{ taskId: taskId }, { applicantId: userId }],
       },
     });
 
@@ -59,16 +50,13 @@ const getAllApp = async (req, res) => {
 };
 
 const getUserApplications = async (req, res) => {
-  const userId = req.params.userId;
-
-  if (!userId) {
-    return res.status(400).json({ message: "User ID is required." });
-  }
+  const userId = req.userId;
+ 
 
   try {
     const applications = await prisma.application.findMany({
       where: {
-        applicantId: parseInt(userId),
+        applicantId: userId,
       },
       include: {
         task: true,
