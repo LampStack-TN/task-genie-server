@@ -2,6 +2,11 @@
 const prisma = require("../database/prisma.js");
 
 (async () => {
+  await prisma.skill.deleteMany({}).then((response) => {
+    console.log("Skills truncated successfull ✅: ", response);
+    console.log("******************************");
+  });
+  
   await prisma.application.deleteMany({}).then((response) => {
     console.log("Apps truncated successfull ✅: ", response);
     console.log("******************************");
