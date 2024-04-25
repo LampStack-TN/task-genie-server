@@ -27,7 +27,7 @@ model User {
   avatar       String
   tasks        Task[]
   applications Application[]
-  profile Profile?
+  profile      Profile?
 }
 
 enum Role {
@@ -50,7 +50,7 @@ model Task {
   client       User?         @relation(fields: [clientId], references: [id])
   clientId     Int?
   applications Application[]
-  skills       Skill[]  @relation("TaskSkill")
+  skills       Skill[]       @relation("TaskSkill")
 }
 
 enum Urgency {
@@ -78,17 +78,17 @@ enum Status {
 }
 
 model Skill {
-  id   Int         @id @default(autoincrement())
-  name String
+  id    Int    @id @default(autoincrement())
+  name  String
   tasks Task[] @relation("TaskSkill")
 }
 
 model Profile {
-  id       Int   @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   jobTitle String
-  bio String
-  user User @relation(fields: [userId],references: [id])
-  userId Int @unique
+  bio      String
+  user     User   @relation(fields: [userId], references: [id])
+  userId   Int    @unique
 }
 
 // enum Urgency {
