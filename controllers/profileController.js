@@ -1,6 +1,3 @@
-const { profile } = require("../database/prisma");
-const { connect } = require("../routes/profile");
-
 const User = require("../database/prisma").user;
 const Profile = require("../database/prisma").profile;
 
@@ -26,13 +23,13 @@ const createProfile = async (req, res) => {
   try {
     var { userId } = req;
     console.log(userId);
-  // console.log(userId);
+    // console.log(userId);
     const userInfo = await User.findUnique({
       where: {
         id: userId,
       },
-    })
-  
+    });
+
     const { jobTitle, bio } = req.body;
     const profile = await Profile.create({
       data: {
@@ -45,7 +42,7 @@ const createProfile = async (req, res) => {
         },
       },
     });
-  
+
     res.status(201).send(profile);
   } catch (error) {
     console.log(error);
@@ -53,4 +50,4 @@ const createProfile = async (req, res) => {
   }
 };
 
-module.exports = { getUserProfile ,createProfile};
+module.exports = { getUserProfile, createProfile };
