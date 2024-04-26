@@ -48,9 +48,6 @@ const login = async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ error: "Password is incorrect." });
     }
-    if (user.isactive == false) {
-      return res.status(401).json({ error: "avtivate your account" });
-    }
     // Generate a JSON Web Token (JWT) for authentication
     const acessToken = jwt.sign(
       {
@@ -67,7 +64,7 @@ const login = async (req, res) => {
 
     //sending a error response
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).send("Athentication Failed");
   }
 };
