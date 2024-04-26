@@ -1,9 +1,13 @@
 const prisma = require("../database/prisma.js");
 
+let TASKS = [];
+const RemoveFromTasks = (taskId) => {
+  TASKS = TASKS.filter((task) => task.id !== taskId);
+};
+
 const applyToTask = async (req, res) => {
   const { taskId } = req.body;
   const userId = req.userId;
-
   //   find the first Application hat matches the "taskId" and "userId".
   try {
     const existApp = await prisma.application.findFirst({
@@ -33,6 +37,8 @@ const applyToTask = async (req, res) => {
         status: "Pending",
       },
     });
+    //removed
+    RemoveFromTasks(taskId);
 
     return res.status(201).json({ application });
   } catch (error) {
@@ -51,7 +57,6 @@ const getAllApp = async (req, res) => {
 
 const getUserApplications = async (req, res) => {
   const userId = req.userId;
- 
 
   try {
     const applications = await prisma.application.findMany({
