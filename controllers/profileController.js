@@ -23,7 +23,6 @@ const createProfile = async (req, res) => {
   try {
     var { userId } = req;
     console.log(userId);
-    // console.log(userId);
     const userInfo = await User.findUnique({
       where: {
         id: userId,

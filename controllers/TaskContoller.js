@@ -32,9 +32,8 @@ const CreateTask = async (req, res) => {
         include: {
           skills: true,
         },
-      } // should include all the fields in the Skills
+      }
     );
-    // console.log(response);
     res.status(201).send(response);
   } catch (error) {
     console.log(error);
@@ -110,11 +109,12 @@ const getMyTasks = async (req, res) => {
     const tasks = await Task.findMany({
       where: {
         clientId: userId,
-      },include:{
+      },
+      include: {
         _count: {
           select: { applications: true },
         },
-      }
+      },
     });
 
     res.status(200).json(tasks);
