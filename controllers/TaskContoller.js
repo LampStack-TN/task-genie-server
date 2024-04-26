@@ -106,10 +106,15 @@ const updateTask = async (req, res) => {
 const getMyTasks = async (req, res) => {
   try {
     const { userId } = req;
+    console.log(req.userId);
     const tasks = await Task.findMany({
       where: {
         clientId: userId,
-      },
+      },include:{
+        _count: {
+          select: { applications: true },
+        },
+      }
     });
 
     res.status(200).json(tasks);
