@@ -11,8 +11,6 @@ const register = async (req, res) => {
     const { password } = req.body;
     // copy req.body
     const data = { ...req.body };
-    console.log(data);
-    return;
 
     // hash password
     data.password = bcrypt.hashSync(password, 8);
