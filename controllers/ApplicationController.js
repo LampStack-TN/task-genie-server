@@ -81,8 +81,24 @@ const getUserApplications = async (req, res) => {
   }
 };
 
+const getTaskApplications = async (req, res) => {
+  const { taskId } = req.params;
+
+  try {
+    const applications = await prisma.application.findMany({
+      where: { taskId: parseInt(taskId) },
+      include: { applicant: true },
+    });
+
+    return res.json(applications);
+  } catch (err) {
+    console.error("Error fetching applications:", err);
+  }
+};
+
 module.exports = {
   applyToTask,
   getAllApp,
   getUserApplications,
+  getTaskApplications,
 };
