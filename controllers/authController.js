@@ -101,4 +101,42 @@ const getAuthUser = async (req, res) => {
     res.status(400).send("Unvalid Token");
   }
 };
-module.exports = { register, login, getAuthUser };
+
+//? Get Authenticated User
+const setUserRole = async (req, res) => {
+  try {
+    // deconstruct userId for Query
+    const { userId } = req;
+    const { role } = req.body;
+    // execute query
+    const user = await User.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        role,
+      },
+      select: {
+        id: false,
+        fullName: true,
+        email: true,
+        password: false,
+        role: true,
+        phone: true,
+        birthdate: true,
+        city: true,
+        address: true,
+        zipcode: true,
+        avatar: true,
+      },
+    });
+
+    res.status(201).send(user);
+  } catch (error) {
+    // Handle errors
+    console.log(error);
+    res.status(400).send("Error Updating Role!");
+  }
+};
+
+module.exports = { register, login, getAuthUser, setUserRole };
