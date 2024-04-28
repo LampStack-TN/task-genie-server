@@ -96,9 +96,35 @@ const getTaskApplications = async (req, res) => {
   }
 };
 
+const acceptOrRejectApplication = async (req, res) => {
+  const { applicationId, action } = req.body;
+  const newStatus = action === "accept" ? "Accepted" : "Rejected";
+  try {
+    // check if the application exists and that the user has permission
+    const application = await prisma.application.findUnique({
+      where: { id: parseInt(applicationId) },
+    });
+
+    if (!application) {
+      return res.status(404).json({ message: "Application not found." });
+    }
+
+    const updatedApplication = await prisma.application.update({
+      where: { id: parseInt(applicationId) },
+      data: { status: newStatus },
+    });
+
+    console.log(updatedApplication);
+    res.status(200).json(updatedApplication);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   applyToTask,
   getAllApp,
   getUserApplications,
   getTaskApplications,
+  acceptOrRejectApplication,
 };
