@@ -1,4 +1,3 @@
-const { user } = require("../database/prisma");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
