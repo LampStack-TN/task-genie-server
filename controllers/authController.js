@@ -138,5 +138,28 @@ const setUserRole = async (req, res) => {
     res.status(400).send("Error Updating Role!");
   }
 };
+// Update User Info
+const updateUser = async (req, res) => {
+  try {
+    const { userId } = req;
+    const { fullName, birthdate, phone, address, email } = req.body;
+    let response = await User.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        fullName: fullName,
+        birthdate: birthdate,
+        phone: phone,
+        address: address,
+        email: email,
+      },
+    });
+    res.status(201).send(response);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("error");
+  }
+};
 
-module.exports = { register, login, getAuthUser, setUserRole };
+module.exports = { register, login, getAuthUser, setUserRole, updateUser };
