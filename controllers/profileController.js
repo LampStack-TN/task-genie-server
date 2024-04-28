@@ -49,4 +49,30 @@ const createProfile = async (req, res) => {
   }
 };
 
-module.exports = { getUserProfile, createProfile };
+const updateProfile = async (req, res) => {
+  try {
+    const { userId } = req;
+    const { jobTitle, bio } = req.body;
+
+    const profile = await Profile.findUnique({
+      where: {
+        userId: userId,
+      },
+    });
+    const updatedProfile = await Profile.update({
+      where: {
+        id: profile.id,
+      },
+      data: {
+        jobTitle,
+        bio,
+      },
+    });
+    res.status(200).send(updatedProfile);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+};
+
+module.exports = { getUserProfile, createProfile, updateProfile };
