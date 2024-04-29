@@ -2,6 +2,7 @@ const Task = require("../database/prisma").task;
 
 const CreateTask = async (req, res) => {
   try {
+    const { userId } = req;
     const {
       description,
       title,
@@ -10,37 +11,37 @@ const CreateTask = async (req, res) => {
       maxPrice,
       dueDate,
       urgency,
-      clientId,
       skills,
     } = req.body;
-    console.log(req.body);
-    const response = await Task.create(
-      {
-        data: {
-          description,
-          title,
-          location,
-          minPrice,
-          maxPrice,
-          dueDate,
-          urgency,
-          clientId,
-          skills: {
-            connect: skills.map((id) => ({ id })),
-          },
+    const response = await Task.create({
+      data: {
+        description,
+        title,
+        location,
+        minPrice,
+        maxPrice,
+        dueDate,
+        urgency,
+        clientId: userId,
+        skills: {
+          connect: skills.map((id) => ({ id })),
         },
-        include: {
-          skills: true,
-        },
-      } // should include all the fields in the Skills
-    );
-    // console.log(response);
+      },
+      include: {
+        skills: true,
+      },
+    });
     res.status(201).send(response);
   } catch (error) {
-    console.log(error);
-    res.status(404).send(error);
+    res
+      .status(500)
+      .send({
+        message:
+          "Unable to create the task. Please verify your data and try again.",
+      });
   }
 };
+
 const getAll = async (req, res) => {
   try {
     const tasks = await Task.findMany({
@@ -54,7 +55,12 @@ const getAll = async (req, res) => {
     });
     res.json(tasks);
   } catch (err) {
-    console.log(err);
+    res
+      .status(500)
+      .send({
+        message:
+          "Unable to retrieve tasks at this time. Please try again later.",
+      });
   }
 };
 const getOne = async (req, res) => {
@@ -65,16 +71,26 @@ const getOne = async (req, res) => {
       include: {
         skills: true,
         client: true,
-      },include:{
+      },
+      include: {
         _count: {
           select: { applications: true },
         },
-      }
+      },
     });
-    res.send(task);
+    if (!task) {
+      res
+        .status(404)
+        .send({ message: "Task not found. Verify and try again." });
+    } else {
+      res.send(task);
+    }
   } catch (err) {
-    console.log(err);
-    res.status(404).send(err);
+    res
+      .status(500)
+      .send({
+        message: "Error retrieving task details. Please try again later.",
+      });
   }
 };
 
@@ -84,11 +100,9 @@ const deleteTask = async (req, res) => {
     const response = await Task.delete({
       where: { id: parseInt(id) },
     });
-    console.log(response);
-    res.send(response);
+    res.status(204).send();
   } catch (err) {
-    console.log(err);
-    res.status(404).send(err);
+    res.status(404).send({ message: "Unable to delete task. Task not found." });
   }
 };
 
@@ -102,8 +116,7 @@ const updateTask = async (req, res) => {
     });
     res.send(response);
   } catch (err) {
-    console.log(err);
-    res.status(404).send(err);
+    res.status(404).send({ message: "Unable to update task. Task not found." });
   }
 };
 
@@ -114,16 +127,22 @@ const getMyTasks = async (req, res) => {
     const tasks = await Task.findMany({
       where: {
         clientId: userId,
-      },include:{
+      },
+      include: {
         _count: {
           select: { applications: true },
         },
-      }
+      },
     });
 
     res.status(200).json(tasks);
   } catch (error) {
-    console.error(error);
+    res
+      .status(500)
+      .send({
+        message:
+          "Unable to retrieve your tasks at this time. Please try again later.",
+      });
   }
 };
 
