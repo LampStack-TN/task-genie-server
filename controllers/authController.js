@@ -1,4 +1,3 @@
-const { user } = require("../database/prisma");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -102,4 +101,113 @@ const getAuthUser = async (req, res) => {
     res.status(400).send("Unvalid Token");
   }
 };
-module.exports = { register, login, getAuthUser };
+
+//? Get Authenticated User
+const setUserRole = async (req, res) => {
+  try {
+    // deconstruct userId for Query
+    const { userId } = req;
+    const { role } = req.body;
+    // execute query
+    const user = await User.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        role,
+      },
+      select: {
+        id: false,
+        fullName: true,
+        email: true,
+        password: false,
+        role: true,
+        phone: true,
+        birthdate: true,
+        city: true,
+        address: true,
+        zipcode: true,
+        avatar: true,
+      },
+    });
+
+    res.status(201).send(user);
+  } catch (error) {
+    // Handle errors
+    console.log(error);
+    res.status(400).send("Error Updating Role!");
+  }
+};
+// Update User Info
+const updateUser = async (req, res) => {
+  try {
+    const { userId } = req;
+    const { fullName, birthdate, phone, address, email } = req.body;
+    let response = await User.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        fullName: fullName,
+        birthdate: birthdate,
+        phone: phone,
+        address: address,
+        email: email,
+      },
+    });
+    res.status(201).send(response);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("error");
+  }
+};
+//set user Password
+const updateUserPassword = async (req, res) => {
+  try {
+    const { userId } = req;
+    const { currentPassword, newPassword } = req.body;
+
+    const user = await User.findUnique({
+      where: {
+        id: userId,
+      },
+      select: {
+        password: true,
+      },
+    });
+
+    if (currentPassword && newPassword) {
+      const passwordMatch = await bcrypt.compare(
+        currentPassword,
+        user.password
+      );
+      if (!passwordMatch) {
+        return res.status(401).send("Incorrect password");
+      }
+
+      const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedNewPassword;
+    }
+    await User.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        password: user.password,
+      },
+    });
+    res.status(201).send("Password updated successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+};
+
+module.exports = {
+  register,
+  login,
+  getAuthUser,
+  setUserRole,
+  updateUser,
+  updateUserPassword,
+};

@@ -9,4 +9,7 @@ router.get(
   verifyToken,
   profileController.getOneProfile
 );
+
+router.put("/updateProfile", verifyToken, profileController.updateProfile);
+
 module.exports = router;
