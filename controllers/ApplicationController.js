@@ -86,7 +86,12 @@ const getTaskApplications = async (req, res) => {
 
   try {
     const applications = await prisma.application.findMany({
-      where: { taskId: parseInt(taskId) },
+      where: {
+        taskId: parseInt(taskId),
+        NOT: {
+          status: "Rejected",
+        },
+      },
       include: { applicant: true },
     });
 
@@ -98,7 +103,7 @@ const getTaskApplications = async (req, res) => {
 
 const acceptOrRejectApplication = async (req, res) => {
   const { applicationId, action } = req.body;
-  const newStatus = action === "accept" ? "Accepted" : "Rejected";
+
   try {
     // check if the application exists and that the user has permission
     const application = await prisma.application.findUnique({
@@ -109,15 +114,23 @@ const acceptOrRejectApplication = async (req, res) => {
       return res.status(404).json({ message: "Application not found." });
     }
 
-    const updatedApplication = await prisma.application.update({
-      where: { id: parseInt(applicationId) },
-      data: { status: newStatus },
-    });
-
-    console.log(updatedApplication);
-    res.status(200).json(updatedApplication);
+    if (action === "accept") {
+      const updatedApplication = await prisma.application.update({
+        where: { id: parseInt(applicationId) },
+        data: { status: "Accepted" },
+      });
+      res.status(200).json(updatedApplication);
+    } else if (action === "reject") {
+      await prisma.application.delete({
+        where: { id: parseInt(applicationId) },
+      });
+      res.status(200).json({ message: "Application rejected and deleted." });
+    }
   } catch (error) {
     console.error(error);
+    res
+      .status(500)
+      .json({ message: "An error occurred during the operation." });
   }
 };
 
