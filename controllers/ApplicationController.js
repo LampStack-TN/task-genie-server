@@ -42,7 +42,12 @@ const applyToTask = async (req, res) => {
 
     return res.status(201).json({ application });
   } catch (error) {
-    console.log(error);
+    res
+      .status(500)
+      .json({
+        message:
+          "An error occurred while applying to the task. Please try again.",
+      });
   }
 };
 
@@ -77,7 +82,12 @@ const getUserApplications = async (req, res) => {
 
     return res.status(200).json(applications);
   } catch (error) {
-    console.log(error);
+    res
+      .status(500)
+      .json({
+        message:
+          "Failed to retrieve user applications. Please try again later.",
+      });
   }
 };
 
@@ -97,7 +107,12 @@ const getTaskApplications = async (req, res) => {
 
     return res.json(applications);
   } catch (err) {
-    console.error("Error fetching applications:", err);
+    res
+      .status(500)
+      .json({
+        message:
+          "Failed to retrieve task applications. Please try again later.",
+      });
   }
 };
 
@@ -124,13 +139,17 @@ const acceptOrRejectApplication = async (req, res) => {
       await prisma.application.delete({
         where: { id: parseInt(applicationId) },
       });
-      res.status(200).json({ message: "Application rejected and deleted." });
+      res
+        .status(200)
+        .json({ message: "Application successfully rejected and removed." });
     }
   } catch (error) {
-    console.error(error);
     res
       .status(500)
-      .json({ message: "An error occurred during the operation." });
+      .json({
+        message:
+          "An error occurred while processing the application. Please try again.",
+      });
   }
 };
 
