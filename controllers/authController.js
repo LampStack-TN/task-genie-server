@@ -161,5 +161,53 @@ const updateUser = async (req, res) => {
     res.status(400).send("error");
   }
 };
+//set user Password
+const updateUserPassword = async (req, res) => {
+  try {
+    const { userId } = req;
+    const { currentPassword, newPassword } = req.body;
 
-module.exports = { register, login, getAuthUser, setUserRole, updateUser };
+    const user = await User.findUnique({
+      where: {
+        id: userId,
+      },
+      select: {
+        password: true,
+      },
+    });
+
+    if (currentPassword && newPassword) {
+      const passwordMatch = await bcrypt.compare(
+        currentPassword,
+        user.password
+      );
+      if (!passwordMatch) {
+        return res.status(401).send("Incorrect password");
+      }
+
+      const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedNewPassword;
+    }
+    await User.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        password: user.password,
+      },
+    });
+    res.status(201).send("Password updated successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+};
+
+module.exports = {
+  register,
+  login,
+  getAuthUser,
+  setUserRole,
+  updateUser,
+  updateUserPassword,
+};
