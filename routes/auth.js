@@ -16,5 +16,7 @@ router.put("/set-role", verifyToken, authController.setUserRole);
 
 //?Endpoint to update user Info
 router.put("/updateUser", verifyToken, authController.updateUser);
+//Endpoint to update user password 
+router.put("/updatePassword", verifyToken, authController.updateUserPassword);
 
 module.exports = router;
