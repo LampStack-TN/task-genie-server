@@ -12,10 +12,22 @@ const getUserProfile = async (req, res) => {
         profile: true,
       },
     });
-    res.send(user);
+    if (user) {
+      res.send(user);
+    } else {
+      res
+        .status(404)
+        .send({
+          message: "User profile not found. Please check  and try again.",
+        });
+    }
   } catch (error) {
-    console.log(error);
-    res.status(400).send("Unvalid Profile");
+    res
+      .status(500)
+      .send({
+        message:
+          "Failed to retrieve user profile due to a server error. Please try again later.",
+      });
   }
 };
 
@@ -29,7 +41,12 @@ const createProfile = async (req, res) => {
         id: userId,
       },
     });
-
+    if (!userInfo) {
+      res
+        .status(404)
+        .send({ message: "User not found. Unable to create profile." });
+      return;
+    }
     const { jobTitle, bio } = req.body;
     const profile = await Profile.create({
       data: {
@@ -45,8 +62,12 @@ const createProfile = async (req, res) => {
 
     res.status(201).send(profile);
   } catch (error) {
-    console.log(error);
-    res.status(400).send("error");
+    res
+      .status(500)
+      .send({
+        message:
+          "Failed to create profile due to a server error. Please check your data and try again.",
+      });
   }
 };
 
