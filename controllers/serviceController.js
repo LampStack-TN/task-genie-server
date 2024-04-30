@@ -1,32 +1,77 @@
 const Service = require("../database/prisma").service;
+
 const CreateService = async (req, res) => {
   try {
     const { userId } = req;
-    const { title, description, price, avaiblity, location, skills } = req.body;
-    const resposne = await Service.create({
+    const { title, description, price, availability, location } = req.body;
+    console.log(userId);
+    const response = await Service.create({
       data: {
         professionalId: userId,
         title,
         description,
         price,
-        avaiblity,
+        availability,
         location,
-
-        skills: {
-          connect: skills.map((id) => ({ id })),
-        },
       },
-      include:{
-        skills:true
-      }
+      // skills: {
+      //   connect: skills.map((id) => ({ id })),
+      // },
+
+      include: {
+        skills: true,
+      },
     });
     res.status(201).send(response);
   } catch (error) {
     console.log(error);
-    res.status(400).send(error)
+    res.status(400).send(error);
   }
 };
 
-module.exports ={
-    CreateService
-}
+const getAll = async (req, res) => {
+  try {
+    const services = await Service.findMany({
+      include: {
+        skills: true,
+        professional: true,
+      },
+    });
+    res.json(services);
+  } catch (err) {
+    res.status(500).send({
+      message:
+        "Unable to retrieve services at this time. Please try again later.",
+    });
+  }
+};
+
+const getOneService = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const service = await Service.findUnique({
+      where: { id: parseInt(id) },
+      include: {
+        skills: true,
+        professional: true,
+      },
+    });
+    if (!service) {
+      res
+        .status(404)
+        .send({ message: "Service not found. Verify and try again." });
+    } else {
+      res.send(service);
+    }
+  } catch (err) {
+    res.status(500).send({
+      message: "Error retrieving service  details. Please try again later.",
+    });
+  }
+};
+
+module.exports = {
+  CreateService,
+  getAll,
+  getOneService,
+};
