@@ -89,9 +89,22 @@ const getMyServices = async (req, res) => {
     });
   }
 };
+
+const deleteService = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const response = await Service.delete({
+      where: { id: parseInt(id) },
+    });
+    res.status(204).send();
+  } catch (err) {
+    res.status(404).send({ message: "Unable to delete service. Service not found." });
+  }
+};
 module.exports = {
   CreateService,
   getAll,
   getOneService,
   getMyServices,
+  deleteService
 };
