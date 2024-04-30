@@ -1,222 +1,182 @@
 [
   {
     "id": 10001,
-    "professionalId": 10009,
+    "clientId": 10009,
     "title": "Event Photography",
     "description": "Capture your special moments with professional event photography services. From weddings to corporate events, I specialize in capturing candid and memorable shots.",
     "price": 200.0,
     "availability": "Flexible schedule, available on weekends",
-    "location": "Tunis",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Tunis"
   },
   {
     "id": 10002,
-    "professionalId": 10010,
+    "clientId": 10010,
     "title": "Home Cleaning Services",
     "description": "Professional home cleaning services to make your home sparkle and shine. We use eco-friendly products and thorough cleaning techniques to ensure your satisfaction.",
     "price": 50.0,
     "availability": "Available Monday to Friday, 9 AM to 5 PM",
-    "location": "Sfax",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Sfax"
   },
   {
     "id": 10003,
-    "professionalId": 10016,
+    "clientId": 10016,
     "title": "Graphic Design",
     "description": "Get eye-catching graphic design services for your business. From logo design to branding materials, I'll help your brand stand out from the crowd.",
     "price": 100.0,
     "availability": "Available weekdays, 10 AM to 6 PM",
-    "location": "Sousse",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Sousse"
   },
   {
     "id": 10004,
-    "professionalId": 10017,
+    "clientId": 10017,
     "title": "Tutoring - Mathematics",
     "description": "Expert math tutoring services for students of all levels. Whether you need help with basic arithmetic or advanced calculus, I'll tailor my teaching to your needs.",
     "price": 30.0,
     "availability": "Evenings and weekends",
-    "location": "Ariana",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Ariana"
   },
   {
     "id": 10005,
-    "professionalId": 10018,
+    "clientId": 10018,
     "title": "Fitness Training",
     "description": "Personalized fitness training sessions to help you achieve your health and wellness goals. From weight loss to muscle gain, I'll create a customized workout plan for you.",
     "price": 40.0,
     "availability": "Morning and afternoon sessions available",
-    "location": "Bizerte",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Bizerte"
   },
   {
     "id": 10006,
-    "professionalId": 10019,
+    "clientId": 10019,
     "title": "Catering Services",
     "description": "Delicious catering services for your special events. From weddings to corporate lunches, we offer a variety of menu options to suit your taste and budget.",
     "price": 300.0,
     "availability": "Bookings available for weekends",
-    "location": "Béja",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Béja"
   },
   {
     "id": 10007,
-    "professionalId": 10020,
+    "clientId": 10020,
     "title": "Web Development",
     "description": "Professional web development services to create stunning and functional websites for your business. From e-commerce sites to portfolios, I'll bring your vision to life.",
     "price": 500.0,
     "availability": "Available Monday to Friday, 9 AM to 6 PM",
-    "location": "Gabès",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Gabès"
   },
   {
     "id": 10008,
-    "professionalId": 10009,
+    "clientId": 10009,
     "title": "Pet Sitting",
     "description": "Reliable pet sitting services for when you're away. I'll take care of your furry friends like they're my own, providing food, walks, and companionship.",
     "price": 20.0,
     "availability": "Flexible schedule, available on short notice",
-    "location": "Gafsa",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Gafsa"
   },
   {
     "id": 10009,
-    "professionalId": 10010,
+    "clientId": 10010,
     "title": "Gardening Services",
     "description": "Transform your outdoor space with professional gardening services. From lawn care to landscaping, I'll help you create the garden of your dreams.",
     "price": 50.0,
     "availability": "Weekdays and weekends",
-    "location": "Jendouba",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Jendouba"
   },
   {
     "id": 10010,
-    "professionalId": 10016,
+    "clientId": 10016,
     "title": "Personal Chef",
     "description": "Indulge in gourmet meals prepared by a personal chef. Whether it's a dinner party or weekly meal prep, I'll create delicious dishes tailored to your preferences.",
     "price": 100.0,
     "availability": "Bookings available for evenings",
-    "location": "Kairouan",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Kairouan"
   },
   {
     "id": 10011,
-    "professionalId": 10017,
+    "clientId": 10017,
     "title": "Language Tutoring - French",
     "description": "Improve your French language skills with personalized tutoring sessions. From grammar to conversation practice, I'll help you become fluent in French.",
     "price": 25.0,
     "availability": "Weekday evenings and weekends",
-    "location": "Kasserine",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Kasserine"
   },
   {
     "id": 10012,
-    "professionalId": 10018,
+    "clientId": 10018,
     "title": "Interior Design Consultation",
     "description": "Transform your space with expert interior design consultation. From color schemes to furniture selection, I'll help you create a stylish and functional home.",
     "price": 80.0,
     "availability": "Weekdays by appointment",
-    "location": "Kébili",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Kébili"
   },
   {
     "id": 10013,
-    "professionalId": 10019,
+    "clientId": 10019,
     "title": "Music Lessons - Piano",
     "description": "Learn to play the piano with professional music lessons. Whether you're a beginner or looking to improve your skills, I'll tailor the lessons to your level.",
     "price": 35.0,
     "availability": "Evenings and weekends",
-    "location": "Le Kef",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Le Kef"
   },
   {
     "id": 10014,
-    "professionalId": 10020,
+    "clientId": 10020,
     "title": "Fitness Bootcamp",
     "description": "Join our fitness bootcamp for a high-energy workout experience. Burn calories, build strength, and achieve your fitness goals in a supportive group setting.",
     "price": 20.0,
     "availability": "Morning and evening sessions available",
-    "location": "Mahdia",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Mahdia"
   },
   {
     "id": 10015,
-    "professionalId": 10009,
+    "clientId": 10009,
     "title": "Event Planning",
     "description": "Full-service event planning to bring your vision to life. From weddings to corporate events, I'll handle every detail to ensure a memorable and stress-free occasion.",
     "price": 500.0,
     "availability": "Available for consultations",
-    "location": "Manouba",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Manouba"
   },
   {
     "id": 10016,
-    "professionalId": 10010,
+    "clientId": 10010,
     "title": "Computer Repair",
     "description": "Expert computer repair services to fix any hardware or software issues. From viruses to hardware upgrades, I'll get your computer running smoothly again.",
     "price": 60.0,
     "availability": "Available weekdays, 10 AM to 7 PM",
-    "location": "Médenine",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Médenine"
   },
   {
     "id": 10017,
-    "professionalId": 10016,
+    "clientId": 10016,
     "title": "Personal Styling",
     "description": "Elevate your style with personalized personal styling services. From wardrobe edits to shopping trips, I'll help you discover your signature look.",
     "price": 70.0,
     "availability": "Flexible appointments available",
-    "location": "Monastir",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Monastir"
   },
   {
     "id": 10018,
-    "professionalId": 10017,
+    "clientId": 10017,
     "title": "Mobile App Development",
     "description": "Custom mobile app development services for iOS and Android platforms. From concept to launch, I'll create an app that meets your business needs and delights your users.",
     "price": 1000.0,
     "availability": "Available Monday to Friday, 9 AM to 6 PM",
-    "location": "Nabeul",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Nabeul"
   },
   {
     "id": 10019,
-    "professionalId": 10018,
+    "clientId": 10018,
     "title": "Personal Training - Boxing",
     "description": "Get fit and build strength with personalized boxing training sessions. Learn proper techniques and improve your boxing skills in a supportive environment.",
     "price": 50.0,
     "availability": "Morning and evening sessions available",
-    "location": "Sidi Bouzid",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Sidi Bouzid"
   },
   {
     "id": 10020,
-    "professionalId": 10019,
+    "clientId": 10019,
     "title": "Social Media Management",
     "description": "Grow your online presence with professional social media management services. From content creation to community engagement, I'll help you reach your target audience.",
     "price": 200.0,
     "availability": "Flexible scheduling, available on weekends",
-    "location": "Siliana",
-    "createdAt": 1649952000,
-    "updatedAt": 1649952000
+    "location": "Siliana"
   }
 ]
