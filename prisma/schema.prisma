@@ -29,6 +29,7 @@ model User {
   services     Service[]
   applications Application[]
   profile      Profile?
+  favouriteTasks FavouriteTasks[]
 }
 
 enum Role {
@@ -38,20 +39,21 @@ enum Role {
 }
 
 model Task {
-  id           Int           @id @default(autoincrement())
-  title        String
-  description  String
-  location     String
-  minPrice     String
-  maxPrice     String
-  dueDate      String
-  urgency      Urgency
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  client       User?         @relation(fields: [clientId], references: [id])
-  clientId     Int?
-  applications Application[]
-  skills       Skill[]       @relation("TaskSkill")
+  id             Int              @id @default(autoincrement())
+  title          String
+  description    String
+  location       String
+  minPrice       String
+  maxPrice       String
+  dueDate        String
+  urgency        Urgency
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  client         User?            @relation(fields: [clientId], references: [id])
+  clientId       Int?
+  applications   Application[]
+  skills         Skill[]          @relation("TaskSkill")
+  favouriteTasks FavouriteTasks[]
 }
 
 enum Urgency {
@@ -107,6 +109,15 @@ model Service {
   client       User?    @relation(fields: [clientId], references: [id])
   clientId     Int?
   skills       Skill[]  @relation("ServiceSkill")
+}
+
+model FavouriteTasks {
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+  task   Task @relation(fields: [taskId], references: [id])
+  taskId Int
+
+  @@id([userId, taskId])
 }
 
 // enum Urgency {
