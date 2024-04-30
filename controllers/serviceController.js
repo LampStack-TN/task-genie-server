@@ -3,7 +3,8 @@ const Service = require("../database/prisma").service;
 const CreateService = async (req, res) => {
   try {
     const { userId } = req;
-    const { title, description, price, availability, location } = req.body;
+    const { title, description, price, availability, location, skills } =
+      req.body;
     console.log(userId);
     const response = await Service.create({
       data: {
@@ -13,10 +14,10 @@ const CreateService = async (req, res) => {
         price,
         availability,
         location,
+        skills: {
+          connect: skills.map((id) => ({ id })),
+        },
       },
-      // skills: {
-      //   connect: skills.map((id) => ({ id })),
-      // },
 
       include: {
         skills: true,
@@ -71,28 +72,26 @@ const getOneService = async (req, res) => {
 };
 
 const getMyServices = async (req, res) => {
-    try {
-      const { userId } = req;
-      console.log(userId);
-      const services = await Service.findMany({
-        where: {
+  try {
+    const { userId } = req;
+    console.log(userId);
+    const services = await Service.findMany({
+      where: {
         professionalId: userId,
-        },
-      });
-  
-      res.status(200).json(services);
-    } catch (error) {
-      res
-        .status(500)
-        .send({
-          message:
-            "Unable to retrieve your services at this time. Please try again later.",
-        });
-    }
-  };
+      },
+    });
+
+    res.status(200).json(services);
+  } catch (error) {
+    res.status(500).send({
+      message:
+        "Unable to retrieve your services at this time. Please try again later.",
+    });
+  }
+};
 module.exports = {
   CreateService,
   getAll,
   getOneService,
-  getMyServices
+  getMyServices,
 };
