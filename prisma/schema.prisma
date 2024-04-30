@@ -26,6 +26,7 @@ model User {
   zipcode      String
   avatar       String
   tasks        Task[]
+  services     Service[]
   applications Application[]
   profile      Profile?
 }
@@ -78,19 +79,34 @@ enum Status {
 }
 
 model Skill {
-  id    Int    @id @default(autoincrement())
-  name  String
-  tasks Task[] @relation("TaskSkill")
+  id       Int       @id @default(autoincrement())
+  name     String
+  tasks    Task[]    @relation("TaskSkill")
   profiles Profile[] @relation("ProfileSkill")
+  services Service[] @relation("ServiceSkill")
 }
 
 model Profile {
-  id       Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   jobTitle String
   bio      String
-  user     User   @relation(fields: [userId], references: [id])
-  userId   Int    @unique
-  skills Skill[] @relation("ProfileSkill")
+  user     User    @relation(fields: [userId], references: [id])
+  userId   Int     @unique
+  skills   Skill[] @relation("ProfileSkill")
+}
+
+model Service {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  location     String
+  price        String
+  availability String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  client       User?    @relation(fields: [clientId], references: [id])
+  clientId     Int?
+  skills       Skill[]  @relation("ServiceSkill")
 }
 
 // enum Urgency {
