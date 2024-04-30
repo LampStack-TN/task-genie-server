@@ -100,7 +100,7 @@ model Service {
   title        String
   description  String
   location     String
-  price        String
+  price        Int
   availability String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
