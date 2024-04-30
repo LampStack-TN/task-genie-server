@@ -30,6 +30,7 @@ model User {
   applications Application[]
   profile      Profile?
   favouriteTasks FavouriteTasks[]
+    hirings         Hiring[]
 }
 
 enum Role {
@@ -109,6 +110,7 @@ model Service {
   professional   User?    @relation(fields: [professionalId], references: [id])
   professionalId Int?
   skills         Skill[]  @relation("ServiceSkill")
+    hirings         Hiring[]
 }
 
 model FavouriteTasks {
@@ -119,6 +121,18 @@ model FavouriteTasks {
 
   @@id([userId, taskId])
 }
+
+
+model Hiring {
+  id              Int      @id @default(autoincrement())
+  serviceId       Int
+  clientId        Int
+  price           Int
+  status          String
+  service         Service  @relation(fields: [serviceId], references: [id])
+  client          User     @relation(fields: [clientId], references: [id])
+}
+
 
 // enum Urgency {
 //   Critical
