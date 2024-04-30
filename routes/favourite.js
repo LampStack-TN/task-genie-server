@@ -1,13 +1,10 @@
 const router = require("express").Router();
 
 const {
-  likeTask,
+  toggleLikeTask,
   getFavoriteTasks,
-  unlikeTask,
 } = require("../controllers/FavouriteTaskController");
 const verifyToken = require("../middlewares/verifyToken");
-
-router.post("/likeTask", verifyToken, likeTask);
+router.post("/likeTask", verifyToken, toggleLikeTask);
 router.get("/favoriteTasks", verifyToken, getFavoriteTasks);
-router.post("/unlikeTask", verifyToken, unlikeTask);
 module.exports = router;
