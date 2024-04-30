@@ -33,34 +33,31 @@ const CreateTask = async (req, res) => {
     });
     res.status(201).send(response);
   } catch (error) {
-    res
-      .status(500)
-      .send({
-        message:
-          "Unable to create the task. Please verify your data and try again.",
-      });
+    res.status(500).send({
+      message:
+        "Unable to create the task. Please verify your data and try again.",
+    });
   }
 };
 
 const getAll = async (req, res) => {
   try {
+    const { userId } = req;
+
     const tasks = await Task.findMany({
       include: {
         skills: true,
         client: true,
         _count: {
-          select: { applications: true },
+          select: { favouriteTasks: { where: { userId } }, applications: true },
         },
       },
     });
     res.json(tasks);
   } catch (err) {
-    res
-      .status(500)
-      .send({
-        message:
-          "Unable to retrieve tasks at this time. Please try again later.",
-      });
+    res.status(500).send({
+      message: "Unable to retrieve tasks at this time. Please try again later.",
+    });
   }
 };
 const getOne = async (req, res) => {
@@ -86,11 +83,9 @@ const getOne = async (req, res) => {
       res.send(task);
     }
   } catch (err) {
-    res
-      .status(500)
-      .send({
-        message: "Error retrieving task details. Please try again later.",
-      });
+    res.status(500).send({
+      message: "Error retrieving task details. Please try again later.",
+    });
   }
 };
 
@@ -137,12 +132,10 @@ const getMyTasks = async (req, res) => {
 
     res.status(200).json(tasks);
   } catch (error) {
-    res
-      .status(500)
-      .send({
-        message:
-          "Unable to retrieve your tasks at this time. Please try again later.",
-      });
+    res.status(500).send({
+      message:
+        "Unable to retrieve your tasks at this time. Please try again later.",
+    });
   }
 };
 
