@@ -46,9 +46,32 @@ const getAll = async (req, res) => {
   }
 };
 
-
+const getOneService = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const service = await Service.findUnique({
+      where: { id: parseInt(id) },
+      include: {
+        skills: true,
+        professional: true,
+      },
+    });
+    if (!service) {
+      res
+        .status(404)
+        .send({ message: "Service not found. Verify and try again." });
+    } else {
+      res.send(service);
+    }
+  } catch (err) {
+    res.status(500).send({
+      message: "Error retrieving service  details. Please try again later.",
+    });
+  }
+};
 
 module.exports = {
   CreateService,
   getAll,
+  getOneService,
 };
