@@ -63,6 +63,28 @@ const createProfile = async (req, res) => {
   }
 };
 
+const createProfileSkills = async (req, res) => {
+  try {
+    const { userId } = req;
+    const { skills } = req.body;
+    const response = await Profile.create({
+      data: {
+        clientId: userId,
+        skills: {
+          connect: skills.map((id) => ({ id })),
+        },
+      },
+      include: {
+        skills: true,
+      },
+    });
+    // console.log(response);
+    res.status(201).send(response);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 const getOneProfile = async (req, res) => {
   try {
     const {userId} = req.params
@@ -88,7 +110,6 @@ const getOneProfile = async (req, res) => {
     });
   }
 };
-
 
 const updateProfile = async (req, res) => {
   try {
@@ -116,4 +137,10 @@ const updateProfile = async (req, res) => {
   }
 };
 
-module.exports = { getUserProfile, createProfile, updateProfile, getOneProfile };
+module.exports = {
+  getUserProfile,
+  createProfile,
+  updateProfile,
+  getOneProfile,
+  createProfileSkills,
+};
