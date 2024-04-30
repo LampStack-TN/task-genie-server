@@ -1,10 +1,7 @@
 const { task } = require("../database/prisma");
 
 const searchTasks = async (req, res) => {
- 
-  const searchTitle = req.query.params.searchTitle;
-  const searchLocation = req.query.params.searchLocation;
-
+  const {searchTitle ,searchLocation} = req.query.params
   const whereClause = {};
 
   if (searchTitle) {
