@@ -65,23 +65,26 @@ const createProfile = async (req, res) => {
 
 const getOneProfile = async (req, res) => {
   try {
-    const { profileId } = req.params;
-    const profile = await Profile.findUnique({
+    const {userId} = req.params
+    const user = await User.findUnique({
       where: {
-        id: parseInt(profileId),
+        id: parseInt(userId),
+      },
+      include: {
+        profile: true,
       },
     });
-    if (profile) {
-      res.send(profile);
+    if (user) {
+      res.send(user);
     } else {
-      res
-        .status(404)
-        .send({ message: "Profile not found.Please verify and try again" });
+      res.status(404).send({
+        message: "User profile not found. Please check  and try again.",
+      });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).send({
-      message:
-        "An unexpected error occurred while retrieving the profile. We are working to resolve the issue promptly.",
+      message: "An unexpected error occurred while retrieving the profile. Please try again later.",
     });
   }
 };
