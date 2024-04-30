@@ -96,17 +96,17 @@ model Profile {
 }
 
 model Service {
-  id           Int      @id @default(autoincrement())
-  title        String
-  description  String
-  location     String
-  price        Int
-  availability String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  client       User?    @relation(fields: [clientId], references: [id])
-  clientId     Int?
-  skills       Skill[]  @relation("ServiceSkill")
+  id             Int      @id @default(autoincrement())
+  title          String
+  description    String
+  location       String
+  price          Int
+  availability   String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  professional   User?    @relation(fields: [professionalId], references: [id])
+  professionalId Int?
+  skills         Skill[]  @relation("ServiceSkill")
 }
 
 // enum Urgency {
