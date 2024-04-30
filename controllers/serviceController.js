@@ -70,8 +70,29 @@ const getOneService = async (req, res) => {
   }
 };
 
+const getMyServices = async (req, res) => {
+    try {
+      const { userId } = req;
+      console.log(userId);
+      const services = await Service.findMany({
+        where: {
+        professionalId: userId,
+        },
+      });
+  
+      res.status(200).json(services);
+    } catch (error) {
+      res
+        .status(500)
+        .send({
+          message:
+            "Unable to retrieve your services at this time. Please try again later.",
+        });
+    }
+  };
 module.exports = {
   CreateService,
   getAll,
   getOneService,
+  getMyServices
 };
