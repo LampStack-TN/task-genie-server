@@ -6,7 +6,7 @@ const users = require("../data/users.json");
 const tasks = require("../data/tasks.json");
 const skills = require("../data/skills.json");
 const profiles = require("../data/profiles.json");
-const services = require("../data/services.json");
+const services=require("../data/services.json");
 
 (async () => {
   await prisma.user
@@ -35,7 +35,7 @@ const services = require("../data/services.json");
       console.log("profiles seeded successfull ✅: ", response);
       console.log("******************************");
     });
-    await prisma.services
+  await prisma.service
     .createMany({ data: services, skipDuplicates: true })
     .then((response) => {
       console.log("services seeded successfull ✅: ", response);
