@@ -78,6 +78,7 @@ const createProfileSkills = async (req, res) => {
         skills: true,
       },
     });
+    // console.log(response);
     res.status(201).send(response);
   } catch (error) {
     res.status(500).send(error);
