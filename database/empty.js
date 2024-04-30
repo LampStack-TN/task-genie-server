@@ -26,4 +26,8 @@ const prisma = require("../database/prisma.js");
     console.log("Tasks truncated successfull ✅: ", response);
     console.log("******************************");
   });
+  await prisma.service.deleteMany({}).then((response) => {
+    console.log("Services truncated successfull ✅: ", response);
+    console.log("******************************");
+  });
 })();
