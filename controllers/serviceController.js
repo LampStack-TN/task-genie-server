@@ -5,7 +5,7 @@ const CreateService = async (req, res) => {
     const { title, description, price, avaiblity, location, skills } = req.body;
     const resposne = await Service.create({
       data: {
-        clientId: userId,
+        professionalId: userId,
         title,
         description,
         price,
