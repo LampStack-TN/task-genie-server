@@ -29,4 +29,23 @@ const likeTask = async (req, res) => {
   }
 };
 
-module.exports = { likeTask };
+const getFavoriteTasks = async (req, res) => {
+  const { userId } = req;
+  try {
+    const result = await prisma.favouriteTasks.findMany({
+      where: {
+        userId: userId,
+      },
+      include: {
+        task: true,
+      },
+    });
+    res.status(200).json(result.map((ele) => ele.task));
+  } catch (error) {
+    res
+      .status(500)
+      .send({ message: "Error retrieving favorite tasks.Try again" });
+  }
+};
+
+module.exports = { likeTask, getFavoriteTasks };
