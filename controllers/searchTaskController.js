@@ -18,7 +18,6 @@ const searchTasks = async (req, res) => {
     const tasks = await task.findMany({
       where: whereClause,
     });
-    console.log("tasks :", tasks);
     res.json(tasks);
   } catch (error) {
     console.error("Error searching for tasks:", error);
