@@ -1,0 +1,22 @@
+[
+  {
+    "id": 10001,
+    "userId": 10001,
+    "conversationId": 10001
+  },
+  {
+    "id": 10002,
+    "userId": 10002,
+    "conversationId": 10001
+  },
+  {
+    "id": 10003,
+    "userId": 10001,
+    "conversationId": 10002
+  },
+  {
+    "id": 10004,
+    "userId": 10002,
+    "conversationId": 10002
+  }
+]
