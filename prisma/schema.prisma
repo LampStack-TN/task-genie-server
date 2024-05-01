@@ -128,7 +128,7 @@ model Hiring {
   serviceId       Int
   clientId        Int
   price           Int
-  status          String
+  status          Status
   service         Service  @relation(fields: [serviceId], references: [id])
   client          User     @relation(fields: [clientId], references: [id])
 }
