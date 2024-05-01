@@ -110,7 +110,7 @@ const postMessage = async (req, res) => {
     console.log(data);
 
     const message = await Message.create({
-      data: req.body,
+      data,
     });
     res.send(message);
   } catch (error) {
