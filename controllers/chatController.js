@@ -6,12 +6,41 @@ const getUserConversations = async (req, res) => {
     const { userId } = req;
     const conversations = await Conversation.findMany({
       where: {
-        participants: { some: { userId: 10002 } },
+        participants: { some: { userId } },
       },
-      include: { participants: true },
+      include: {
+        participants: {
+          include: {
+            user: {
+              select: {
+                fullName: true,
+                avatar: true,
+              },
+            },
+          },
+          where: {
+            userId: {
+              not: userId,
+            },
+          },
+        },
+        messages: {
+          take: 1,
+          orderBy: {
+            createdAt: "desc",
+          },
+          select: {
+            senderId: true,
+            type: true,
+            content: true,
+            createdAt: true,
+          },
+        },
+      },
     });
     res.send(conversations);
   } catch (error) {
+    console.log(error);
     res.status(404).send("Eroore");
   }
 };
