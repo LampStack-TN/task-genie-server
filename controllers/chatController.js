@@ -1,6 +1,6 @@
 const Conversation = require("../database/prisma").conversation;
 
-// Get All conversations for current user
+//? Get All conversations for current user
 const getUserConversations = async (req, res) => {
   try {
     const { userId } = req;
@@ -45,6 +45,39 @@ const getUserConversations = async (req, res) => {
   }
 };
 
+//? Get All messages for conversation
+const getConversation = async (req, res) => {
+  try {
+    // Todo: Verify that the user is part of the conversation first.
+    const { id } = req.params;
+    console.log(Number(id));
+    const conversation = await Conversation.findUnique({
+      where: {
+        id: Number(id),
+      },
+      include: {
+        messages: {
+          take: 5,
+          orderBy: {
+            createdAt: "desc",
+          },
+          select: {
+            senderId: true,
+            type: true,
+            content: true,
+            createdAt: true,
+          },
+        },
+      },
+    });
+    res.send(conversation);
+  } catch (error) {
+    console.log(error);
+    res.status(404).send("Eroore");
+  }
+};
+
 module.exports = {
   getUserConversations,
+  getConversation,
 };
