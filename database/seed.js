@@ -6,7 +6,10 @@ const users = require("../data/users.json");
 const tasks = require("../data/tasks.json");
 const skills = require("../data/skills.json");
 const profiles = require("../data/profiles.json");
-const services=require("../data/services.json");
+const services = require("../data/services.json");
+const conversations = require("../data/chat/conversations.json");
+const participants = require("../data/chat/participants.json");
+const messages = require("../data/chat/messages.json");
 
 (async () => {
   await prisma.user
@@ -26,19 +29,42 @@ const services=require("../data/services.json");
   await prisma.skill
     .createMany({ data: skills, skipDuplicates: true })
     .then((response) => {
-      console.log("skills seeded successfull ✅: ", response);
+      console.log("Skills seeded successfull ✅: ", response);
       console.log("******************************");
     });
+
   await prisma.profile
     .createMany({ data: profiles, skipDuplicates: true })
     .then((response) => {
-      console.log("profiles seeded successfull ✅: ", response);
+      console.log("Profiles seeded successfull ✅: ", response);
       console.log("******************************");
     });
+
   await prisma.service
     .createMany({ data: services, skipDuplicates: true })
     .then((response) => {
       console.log("services seeded successfull ✅: ", response);
+      console.log("******************************");
+    });
+
+  await prisma.conversation
+    .createMany({ data: conversations, skipDuplicates: true })
+    .then((response) => {
+      console.log("conversations seeded successfull ✅: ", response);
+      console.log("******************************");
+    });
+
+  await prisma.participant
+    .createMany({ data: participants, skipDuplicates: true })
+    .then((response) => {
+      console.log("participants seeded successfull ✅: ", response);
+      console.log("******************************");
+    });
+
+  await prisma.message
+    .createMany({ data: messages, skipDuplicates: true })
+    .then((response) => {
+      console.log("messages seeded successfull ✅: ", response);
       console.log("******************************");
     });
 })();
