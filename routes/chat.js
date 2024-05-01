@@ -6,10 +6,9 @@ const verifyToken = require("../middlewares/verifyToken");
 router.get("/conversation", verifyToken, chatController.getUserConversations);
 
 //? Endpoint to get conversation messages
-router.get(
-  "/conversation/:id",
-  verifyToken,
-  chatController.getConversation
-);
+router.get("/conversation/:id", verifyToken, chatController.getConversation);
+
+//? Endpoint to send a "Text" message
+router.post("/message", verifyToken, chatController.postMessage);
 
 module.exports = router;
