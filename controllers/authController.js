@@ -7,9 +7,11 @@ const User = require("../database/prisma").user;
 //? Register Handler
 const register = async (req, res) => {
   try {
-    //make sure that i'm gonna send a file 
-    // const imageBuffer = req.files[0].buffer;
-    // const imageUrl = await upload(imageBuffer);
+    //make sure that i'm gonna send a file (done ✅)  
+    //req avatar from body 
+    const {avatar} = req.body
+    //
+    const imageUrl = await upload(avatar);
 
     // deconstruct password for hashing
     const { password } = req.body;
@@ -19,6 +21,7 @@ const register = async (req, res) => {
     // data.avatar = imageUrl
     // hash password
     data.password = bcrypt.hashSync(password, 8);
+     data.avatar = imageUrl
     // execute query
     const response = await User.create({ data });
 
