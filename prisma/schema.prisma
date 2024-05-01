@@ -158,7 +158,7 @@ model Message {
   senderId       Int
   type           MessageType  @default(text)
   content        String
-  timestamp      DateTime     @default(now())
+  createdAt      DateTime     @default(now())
 }
 
 enum MessageType {
