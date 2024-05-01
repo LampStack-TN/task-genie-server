@@ -27,6 +27,11 @@ const prisma = require("../database/prisma.js");
     console.log("******************************");
   });
 
+  await prisma.favouriteTasks.deleteMany({}).then((response) => {
+    console.log("Profiles truncated successfull ✅: ", response);
+    console.log("******************************");
+  });
+
   await prisma.application.deleteMany({}).then((response) => {
     console.log("Apps truncated successfull ✅: ", response);
     console.log("******************************");
