@@ -12,6 +12,7 @@ const profileRouter = require("./routes/profile");
 const search = require("./routes/search");
 const favouriteTasks = require("./routes/favourite");
 const serviceRouter = require("./routes/service");
+const chatRouter = require("./routes/chat");
 const upload = multer();
 
 // app & middlewares
@@ -29,6 +30,7 @@ app.use("/api/task", search);
 app.use("/api/profile", profileRouter);
 app.use("/api/task", favouriteTasks);
 app.use("/api/service", serviceRouter);
+app.use("/api/chat", chatRouter);
 
 // app listening/serving
 const PORT = process.env.PORT || 3000;
