@@ -13,7 +13,7 @@ const getUserConversations = async (req, res) => {
       },
       include: {
         participants: {
-          include: {
+          select: {
             user: {
               select: {
                 fullName: true,
@@ -53,12 +53,28 @@ const getConversation = async (req, res) => {
   try {
     // Todo: Verify that the user is part of the conversation first.
     const { id } = req.params;
+    const { userId } = req;
     console.log(Number(id));
     const conversation = await Conversation.findUnique({
       where: {
         id: Number(id),
       },
       include: {
+        participants: {
+          select: {
+            user: {
+              select: {
+                fullName: true,
+                avatar: true,
+              },
+            },
+          },
+          where: {
+            userId: {
+              not: userId,
+            },
+          },
+        },
         messages: {
           take: 5,
           orderBy: {
@@ -73,6 +89,11 @@ const getConversation = async (req, res) => {
         },
       },
     });
+
+    conversation.messages.forEach((message) => {
+      message.isMine = message.senderId == userId;
+    });
+
     res.send(conversation);
   } catch (error) {
     console.log(error);
@@ -80,7 +101,7 @@ const getConversation = async (req, res) => {
   }
 };
 
-//? Get All messages for conversation
+//? Post a message
 const postMessage = async (req, res) => {
   try {
     const { userId } = req;
