@@ -3,46 +3,32 @@ const prisma = require("../database/prisma.js");
 const createHiring = async (req, res) => {
   const { serviceId, price } = req.body;
   const clientId = req.userId;
-
+  // checking existence of service and status of service
   try {
-    // checking existence of client and service
-    const serviceExists = await prisma.service.findUnique({
+    const service = await prisma.service.findUnique({
       where: { id: serviceId },
     });
-    const clientExists = await prisma.user.findUnique({
-      where: { id: clientId },
-    });
-
-    if (!serviceExists || !clientExists) {
-      return res.status(404).json({ message: "Service or client not found." });
-    }
-
-    const existingHiring = await prisma.hiring.findFirst({
-      where: {
-        clientId: clientId,
-        serviceId: serviceId,
-        status: { notIn: ["Rejected"] },
-      },
-    });
-
-    if (existingHiring) {
+    if (!service || service.status === "hired") {
       return res
-        .status(409)
-        .json({
-          message: "An active hiring request already exists for this service.",
-        });
+        .status(404)
+        .json({ message: "Service not available or already hired." });
     }
 
     const hiring = await prisma.hiring.create({
       data: {
-        clientId: clientId,
-        serviceId: serviceId,
-        price: price,
+        clientId,
+        serviceId,
+        price,
         status: "Pending",
       },
     });
 
-    return res.status(201).json(hiring);
+    await prisma.service.update({
+      where: { id: serviceId },
+      data: { status: "hired" },
+    });
+
+    res.status(201).json(hiring);
   } catch (error) {
     console.error(error);
     res
