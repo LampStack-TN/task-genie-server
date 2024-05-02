@@ -31,13 +31,10 @@ model User {
   profile        Profile?
   favouriteTasks FavouriteTasks[]
   hirings        Hiring[]
-
-  client   Rating[]         @relation("client")
-  professional  Rating[]    @relation("professional")
-
-  Participant    Participant[]
-  Message        Message[]
-
+  client       Rating[] @relation("client")
+  professional Rating[] @relation("professional")
+  Participant Participant[]
+  Message     Message[]
 }
 
 enum Role {
@@ -139,15 +136,15 @@ model Hiring {
   client    User    @relation(fields: [clientId], references: [id])
 }
 
-
 model Rating {
-  id             Int     @id @default(autoincrement())
+  id             Int  @id @default(autoincrement())
   clientId       Int
   professionalId Int
-  client         User   @relation("client", fields: [clientId], references: [id])
-  professional   User    @relation("professional", fields: [professionalId], references: [id])
+  client         User @relation("client", fields: [clientId], references: [id])
+  professional   User @relation("professional", fields: [professionalId], references: [id])
   rate           Int
 }
+
 model Conversation {
   id           Int           @id @default(autoincrement())
   participants Participant[]
@@ -178,7 +175,6 @@ model Message {
 enum MessageType {
   text
   image
-
 }
 
 // enum Urgency {
