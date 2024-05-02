@@ -33,17 +33,17 @@ const CreateService = async (req, res) => {
 const getAll = async (req, res) => {
   try {
     const services = await Service.findMany({
-      where: { status: "available" },
-      include: { skills: true, professional: true , 
-        _count: {
-        select: { hirings: true },
-      }
-    },
+      include: {
+        skills: true,
+        professional: true,
+      },
     });
     res.json(services);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Unable to retrieve services at this time. Please try again later.");
+  } catch (err) {
+    res.status(500).send({
+      message:
+        "Unable to retrieve services at this time. Please try again later.",
+    });
   }
 };
 
