@@ -37,4 +37,38 @@ const createHiring = async (req, res) => {
   }
 };
 
-module.exports = { createHiring };
+const getMyHirings = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const hirings = await prisma.hiring.findMany({
+      where: {
+        service: {
+          professionalId: userId,
+        },
+      },
+      include: {
+        service: {
+          include: {
+            professional: true,
+            skills: true,
+          },
+        },
+        client: true,
+      },
+    });
+
+    if (hirings.length === 0) {
+      return res.status(404).json({ message: "No hirings found for you." });
+    }
+
+    res.status(200).json(hirings);
+  } catch (error) {
+    console.error("Error fetching hirings for user:", error);
+    res.status(500).json({
+      message:
+        "Unable to retrieve your hirings at this time. Please try again later.",
+    });
+  }
+};
+
+module.exports = { createHiring, getMyHirings };
