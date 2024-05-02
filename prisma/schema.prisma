@@ -31,8 +31,8 @@ model User {
   profile        Profile?
   favouriteTasks FavouriteTasks[]
   hirings        Hiring[]
-  client       Rating[] @relation("client")
-  professional Rating[] @relation("professional")
+  ClientRating       Rating[] @relation("ClientRating")
+  ProfessionalRating Rating[] @relation("ProfessionalRating")
   Participant Participant[]
   Message     Message[]
 }
@@ -140,8 +140,8 @@ model Rating {
   id             Int  @id @default(autoincrement())
   clientId       Int
   professionalId Int
-  client         User @relation("client", fields: [clientId], references: [id])
-  professional   User @relation("professional", fields: [professionalId], references: [id])
+  ClientRating         User @relation("ClientRating", fields: [clientId], references: [id])
+  ProfessionalRating   User @relation("ProfessionalRating", fields: [professionalId], references: [id])
   rate           Int
 }
 
