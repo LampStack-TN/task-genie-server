@@ -3,8 +3,8 @@ const express = require("express");
 var morgan = require("morgan");
 const multer = require("multer");
 var cors = require("cors");
-const http = require("http");
-const socketIo = require("socket.io");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 
 // importing local dependencies
 const authRouter = require("./routes/auth");
@@ -23,8 +23,9 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(upload.any());
-const server = http.createServer(app);
-const io = socketIo(server, {
+const server = createServer(app);
+
+const io = new Server(server, {
   cors: {
     origin: "http://localhost:8081",
   },
@@ -45,7 +46,7 @@ io.on("connection", (socket) => {
   console.log("A user connected");
 
   socket.on("sendMessage", (message) => {
-    console.log(message,'✏️✏️✏️');
+    console.log(message, "✏️✏️✏️");
     // Broadcast the received message to all connected clients
     io.emit("message", message);
   });
