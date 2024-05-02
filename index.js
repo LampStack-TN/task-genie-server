@@ -3,6 +3,8 @@ const express = require("express");
 var morgan = require("morgan");
 const multer = require("multer");
 var cors = require("cors");
+const http = require("http");
+const socketIo = require("socket.io");
 
 // importing local dependencies
 const authRouter = require("./routes/auth");
@@ -21,6 +23,12 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(upload.any());
+const server = http.createServer(app);
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:8081",
+  },
+});
 
 // defining routes
 app.use("/api/auth", authRouter);
@@ -33,8 +41,22 @@ app.use("/api/service", serviceRouter);
 app.use("/api/chat", chatRouter);
 
 // app listening/serving
+io.on("connection", (socket) => {
+  console.log("A user connected");
+
+  socket.on("sendMessage", (message) => {
+    console.log(message,'✏️✏️✏️');
+    // Broadcast the received message to all connected clients
+    io.emit("message", message);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("A user disconnected");
+  });
+});
+// app listening/serving
 const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => {
+server.listen(3000, () => {
   console.log(`Express is Serving ✅ on port ${PORT}`);
 });
