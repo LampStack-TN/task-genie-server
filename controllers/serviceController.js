@@ -47,6 +47,7 @@ const getAll = async (req, res) => {
   }
 };
 
+
 const getOneService = async (req, res) => {
   try {
     const { id } = req.params;
