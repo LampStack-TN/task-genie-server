@@ -73,6 +73,6 @@ io.on("connection", (socket) => {
 // app listening/serving
 const PORT = process.env.PORT || 3000;
 
-server.listen(3000, () => {
+server.listen(PORT, () => {
   console.log(`Express is Serving ✅ on port ${PORT}`);
 });
