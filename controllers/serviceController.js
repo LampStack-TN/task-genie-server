@@ -34,7 +34,11 @@ const getAll = async (req, res) => {
   try {
     const services = await Service.findMany({
       where: { status: "available" },
-      include: { skills: true, professional: true },
+      include: { skills: true, professional: true , 
+        _count: {
+        select: { hirings: true },
+      }
+    },
     });
     res.json(services);
   } catch (error) {
