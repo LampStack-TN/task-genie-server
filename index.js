@@ -12,6 +12,7 @@ const search = require("./routes/search")
 const favouriteTasks=require("./routes/favourite")
 const serviceRouter=require('./routes/service')
 const hiringRouter=require('./routes/hiring')
+const ratingRouter=require('./routes/rating')
 const upload = multer();
 // app & middlewares
 const app = express();
@@ -28,6 +29,7 @@ app.use("/api/profile",profileRouter)
 app.use("/api/task",favouriteTasks)
 app.use("/api/service",serviceRouter)
 app.use("/api/hiring",hiringRouter)
+app.use("/api/rating",ratingRouter)
 // app listening/serving
 app.listen(3000, () => {
   console.log("Express is Serving ✅ on port 3000");
