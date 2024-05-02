@@ -1,0 +1,142 @@
+[
+  {
+    "id": 10001,
+    "conversationId": 10001,
+    "senderId": 10001,
+    "content": "Hi there!",
+    "createdAt": "2024-04-30T12:00:00Z"
+  },
+  {
+    "id": 10002,
+    "conversationId": 10001,
+    "senderId": 10002,
+    "content": "Hello!",
+    "createdAt": "2024-04-30T12:05:00Z"
+  },
+  {
+    "id": 10009,
+    "conversationId": 10001,
+    "senderId": 10001,
+    "content": "How are you?",
+    "createdAt": "2024-04-30T12:10:00Z"
+  },
+  {
+    "id": 10001,
+    "conversationId": 10001,
+    "senderId": 10002,
+    "content": "I'm good, thank you!",
+    "createdAt": "2024-04-30T12:15:00Z"
+  },
+  {
+    "id": 10005,
+    "conversationId": 10001,
+    "senderId": 10001,
+    "content": "That's great to hear!",
+    "createdAt": "2024-04-30T12:20:00Z"
+  },
+  {
+    "id": 10006,
+    "conversationId": 10001,
+    "senderId": 10002,
+    "content": "How about you?",
+    "createdAt": "2024-04-30T12:25:00Z"
+  },
+  {
+    "id": 10007,
+    "conversationId": 10001,
+    "senderId": 10001,
+    "content": "I'm doing well too, thanks!",
+    "createdAt": "2024-04-30T12:30:00Z"
+  },
+  {
+    "id": 10008,
+    "conversationId": 10001,
+    "senderId": 10002,
+    "content": "That's good to hear!",
+    "createdAt": "2024-04-30T12:35:00Z"
+  },
+  {
+    "id": 10009,
+    "conversationId": 10001,
+    "senderId": 10001,
+    "content": "Shall we meet tomorrow?",
+    "createdAt": "2024-04-30T12:40:00Z"
+  },
+  {
+    "id": 10010,
+    "conversationId": 10001,
+    "senderId": 10002,
+    "content": "Sure, where shall we meet?",
+    "createdAt": "2024-04-30T12:45:00Z"
+  },
+  {
+    "id": 10011,
+    "conversationId": 10002,
+    "senderId": 10009,
+    "content": "Hey there! I'm currently looking for job opportunities in the software development field. Do you know of any openings?",
+    "createdAt": "2024-04-30T12:00:00Z"
+  },
+  {
+    "id": 10012,
+    "conversationId": 10002,
+    "senderId": 10001,
+    "content": "Hi! I'm not aware of any openings at the moment, but I can keep an eye out for you. What technologies are you experienced in?",
+    "createdAt": "2024-04-30T12:05:00Z"
+  },
+  {
+    "id": 10013,
+    "conversationId": 10002,
+    "senderId": 10009,
+    "content": "I have experience with JavaScript, React, Node.js, and MongoDB. I'm also proficient in HTML and CSS.",
+    "createdAt": "2024-04-30T12:10:00Z"
+  },
+  {
+    "id": 10014,
+    "conversationId": 10002,
+    "senderId": 10001,
+    "content": "Great! Those are valuable skills. I'll reach out to my network and let you know if I come across any relevant opportunities.",
+    "createdAt": "2024-04-30T12:15:00Z"
+  },
+  {
+    "id": 10015,
+    "conversationId": 10002,
+    "senderId": 10009,
+    "content": "Thank you! I really appreciate your help.",
+    "createdAt": "2024-04-30T12:20:00Z"
+  },
+  {
+    "id": 10016,
+    "conversationId": 10002,
+    "senderId": 10001,
+    "content": "No problem at all. Networking is key in finding job opportunities. Is there anything specific you're looking for in a job?",
+    "createdAt": "2024-04-30T12:25:00Z"
+  },
+  {
+    "id": 10017,
+    "conversationId": 10002,
+    "senderId": 10009,
+    "content": "Ideally, I'm looking for a position where I can continue to develop my skills and work on interesting projects. Remote work would be a plus!",
+    "createdAt": "2024-04-30T12:30:00Z"
+  },
+  {
+    "id": 10018,
+    "conversationId": 10002,
+    "senderId": 10001,
+    "content": "Understood. I'll keep that in mind as I search for opportunities. In the meantime, feel free to send me your resume, and I can pass it along to relevant contacts.",
+    "createdAt": "2024-04-30T12:35:00Z"
+  },
+  {
+    "id": 10019,
+    "conversationId": 10002,
+    "senderId": 10009,
+    "content": "That would be fantastic. I'll prepare my resume and send it over to you shortly.",
+    "createdAt": "2024-04-30T12:40:00Z"
+  },
+  {
+    "id": 10020,
+    "conversationId": 10002,
+    "senderId": 10001,
+    "content": "Sounds good. Looking forward to receiving it!",
+    "createdAt": "2024-04-30T12:45:00Z"
+  }
+]
