@@ -17,8 +17,8 @@ const register = async (req, res) => {
     const { password } = req.body;
     // copy req.body
     const data = { ...req.body };
-    
-    // data.avatar = imageUrl
+
+    data.avatar = imageUrl;
     // hash password
     data.password = bcrypt.hashSync(password, 8);
      data.avatar = imageUrl
@@ -86,7 +86,7 @@ const getAuthUser = async (req, res) => {
         id: userId,
       },
       select: {
-        id: false,
+        id: true,
         fullName: true,
         email: true,
         password: false,
