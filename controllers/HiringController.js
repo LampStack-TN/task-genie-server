@@ -5,15 +5,6 @@ const createHiring = async (req, res) => {
   const clientId = req.userId;
   // checking existence of service and status of service
   try {
-    const service = await prisma.service.findUnique({
-      where: { id: serviceId },
-    });
-    if (!service || service.status === "hired") {
-      return res
-        .status(404)
-        .json({ message: "Service not available or already hired." });
-    }
-
     const hiring = await prisma.hiring.create({
       data: {
         clientId,
@@ -39,12 +30,10 @@ const createHiring = async (req, res) => {
 
 const getMyHirings = async (req, res) => {
   try {
-    const userId = req.userId;
+    const clientId = req.userId;
     const hirings = await prisma.hiring.findMany({
       where: {
-        service: {
-          professionalId: userId,
-        },
+        clientId: clientId,
       },
       include: {
         service: {
@@ -60,10 +49,8 @@ const getMyHirings = async (req, res) => {
     if (hirings.length === 0) {
       return res.status(404).json({ message: "No hirings found for you." });
     }
-
     res.status(200).json(hirings);
   } catch (error) {
-    console.error("Error fetching hirings for user:", error);
     res.status(500).json({
       message:
         "Unable to retrieve your hirings at this time. Please try again later.",
