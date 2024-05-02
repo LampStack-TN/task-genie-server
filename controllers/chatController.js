@@ -107,8 +107,6 @@ const postMessage = async (req, res) => {
     const { userId } = req;
     const data = { ...req.body, senderId: userId };
 
-    console.log(data);
-
     const message = await Message.create({
       data,
     });
