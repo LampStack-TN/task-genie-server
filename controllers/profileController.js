@@ -9,7 +9,11 @@ const getUserProfile = async (req, res) => {
         id: userId,
       },
       include: {
-        profile: true,
+        profile: {
+          include: {
+            skills: true,
+          },
+        },
       },
     });
     if (user) {
@@ -87,7 +91,7 @@ const createProfileSkills = async (req, res) => {
 
 const getOneProfile = async (req, res) => {
   try {
-    const {userId} = req.params
+    const { userId } = req.params;
     const user = await User.findUnique({
       where: {
         id: parseInt(userId),
@@ -106,7 +110,8 @@ const getOneProfile = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "An unexpected error occurred while retrieving the profile. Please try again later.",
+      message:
+        "An unexpected error occurred while retrieving the profile. Please try again later.",
     });
   }
 };

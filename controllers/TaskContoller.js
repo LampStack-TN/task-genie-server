@@ -68,8 +68,6 @@ const getOne = async (req, res) => {
       include: {
         skills: true,
         client: true,
-      },
-      include: {
         _count: {
           select: { applications: true },
         },

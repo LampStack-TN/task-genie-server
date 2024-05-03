@@ -7,6 +7,11 @@ const prisma = require("../database/prisma.js");
     console.log("******************************");
   });
 
+  await prisma.hiring.deleteMany({}).then((response) => {
+    console.log("Selim truncated successfull ✅: ", response);
+    console.log("******************************");
+  });
+
   await prisma.participant.deleteMany({}).then((response) => {
     console.log("Participant truncated successfull ✅: ", response);
     console.log("******************************");
