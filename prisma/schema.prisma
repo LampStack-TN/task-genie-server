@@ -115,6 +115,7 @@ model Service {
   professionalId Int?
   skills         Skill[]  @relation("ServiceSkill")
   hirings        Hiring[]
+  status         String   @default("available")
 }
 
 model FavouriteTasks {
@@ -131,7 +132,7 @@ model Hiring {
   serviceId Int
   clientId  Int
   price     Int
-  status    Status
+  status    Status?
   service   Service @relation(fields: [serviceId], references: [id])
   client    User    @relation(fields: [clientId], references: [id])
 }
