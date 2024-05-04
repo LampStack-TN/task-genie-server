@@ -31,10 +31,12 @@ model User {
   profile        Profile?
   favouriteTasks FavouriteTasks[]
   hirings        Hiring[]
-  client       Rating[] @relation("client")
-  professional Rating[] @relation("professional")
-  Participant Participant[]
-  Message     Message[]
+  client         Rating[]         @relation("client")
+  professional   Rating[]         @relation("professional")
+  Participant    Participant[]
+  Message        Message[]
+  longitude      Float?
+  latitude       Float?
 }
 
 enum Role {
