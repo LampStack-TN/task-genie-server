@@ -48,11 +48,21 @@ const getAll = async (req, res) => {
       include: {
         skills: true,
         client: true,
+        applications: { where: { applicantId: userId } },
         _count: {
-          select: { favouriteTasks: { where: { userId } }, applications: true },
+          select: {
+            applications: { where: { applicantId: userId } },
+            favouriteTasks: { where: { userId } },
+          },
         },
       },
     });
+
+    tasks.forEach((task) => {
+      task.liked = task._count.favouriteTasks > 0;
+      task.applied = task._count.applications > 0;
+    });
+
     res.json(tasks);
   } catch (err) {
     res.status(500).send({

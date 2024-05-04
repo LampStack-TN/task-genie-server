@@ -1,9 +1,5 @@
 const prisma = require("../database/prisma.js");
 
-let TASKS = [];
-const RemoveFromTasks = (taskId) => {
-  TASKS = TASKS.filter((task) => task.id !== taskId);
-};
 
 const applyToTask = async (req, res) => {
   const { taskId } = req.body;
@@ -38,7 +34,6 @@ const applyToTask = async (req, res) => {
       },
     });
     //removed
-    RemoveFromTasks(taskId);
 
     return res.status(201).json({ application });
   } catch (error) {
