@@ -72,14 +72,22 @@ const getAll = async (req, res) => {
 };
 const getOne = async (req, res) => {
   try {
-    const { id } = req.params;
+    const {
+      userId,
+      params: { id },
+    } = req;
+
     const task = await Task.findUnique({
       where: { id: parseInt(id) },
-      include: {
+      [1 && "include"]: {
         skills: true,
         client: true,
+        applications: { where: { applicantId: userId } },
         _count: {
-          select: { applications: true },
+          select: {
+            applications: { where: { applicantId: userId } },
+            favouriteTasks: { where: { userId } },
+          },
         },
       },
     });
@@ -88,6 +96,8 @@ const getOne = async (req, res) => {
         .status(404)
         .send({ message: "Task not found. Verify and try again." });
     } else {
+      task.liked = task._count.favouriteTasks > 0;
+      task.applied = task._count.applications > 0;
       res.send(task);
     }
   } catch (err) {
