@@ -1,6 +1,5 @@
 const prisma = require("../database/prisma.js");
 
-
 const applyToTask = async (req, res) => {
   const { taskId } = req.body;
   const userId = req.userId;
@@ -35,14 +34,12 @@ const applyToTask = async (req, res) => {
     });
     //removed
 
-    return res.status(201).json({ application });
+    return res.status(201).json(application);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message:
-          "An error occurred while applying to the task. Please try again.",
-      });
+    res.status(500).json({
+      message:
+        "An error occurred while applying to the task. Please try again.",
+    });
   }
 };
 
@@ -77,12 +74,9 @@ const getUserApplications = async (req, res) => {
 
     return res.status(200).json(applications);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message:
-          "Failed to retrieve user applications. Please try again later.",
-      });
+    res.status(500).json({
+      message: "Failed to retrieve user applications. Please try again later.",
+    });
   }
 };
 
@@ -102,12 +96,9 @@ const getTaskApplications = async (req, res) => {
 
     return res.json(applications);
   } catch (err) {
-    res
-      .status(500)
-      .json({
-        message:
-          "Failed to retrieve task applications. Please try again later.",
-      });
+    res.status(500).json({
+      message: "Failed to retrieve task applications. Please try again later.",
+    });
   }
 };
 
@@ -131,20 +122,17 @@ const acceptOrRejectApplication = async (req, res) => {
       });
       res.status(200).json(updatedApplication);
     } else if (action === "reject") {
-      await prisma.application.delete({
+      await prisma.application.update({
         where: { id: parseInt(applicationId) },
+        data: { status: "Rejected" },
       });
-      res
-        .status(200)
-        .json({ message: "Application successfully rejected and removed." });
+      res.status(200).json({ message: "Application successfully rejected." });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message:
-          "An error occurred while processing the application. Please try again.",
-      });
+    res.status(500).json({
+      message:
+        "An error occurred while processing the application. Please try again.",
+    });
   }
 };
 
