@@ -61,6 +61,8 @@ model Task {
   applications   Application[]
   skills         Skill[]          @relation("TaskSkill")
   favouriteTasks FavouriteTasks[]
+  longitude      Float?
+  latitude       Float?
 }
 
 enum Urgency {
@@ -118,6 +120,8 @@ model Service {
   skills         Skill[]  @relation("ServiceSkill")
   hirings        Hiring[]
   status         String   @default("available")
+  longitude      Float?
+  latitude       Float?
 }
 
 model FavouriteTasks {
