@@ -48,6 +48,44 @@ const getUserConversations = async (req, res) => {
   }
 };
 
+//? Get All conversations for current user
+const fetchConversation = async (req, res) => {
+  try {
+    const {
+      userId,
+      params: { participantId },
+    } = req;
+    let conversation = await Conversation.findFirst({
+      where: {
+        participants: {
+          every: {
+            userId: {
+              in: [Number(participantId), Number(userId)],
+            },
+          },
+        },
+      },
+    });
+    if (!conversation) {
+      conversation = await Conversation.create({
+        data: {
+          participants: {
+            create: [
+              { userId: Number(participantId) },
+              { userId: Number(userId) },
+            ],
+          },
+        },
+      });
+      console.log("created");
+    }
+    res.send(conversation);
+  } catch (error) {
+    console.log(error);
+    res.status(404).send("Eroore");
+  }
+};
+
 //? Get All messages for conversation
 const getConversation = async (req, res) => {
   try {
@@ -121,4 +159,5 @@ module.exports = {
   getUserConversations,
   getConversation,
   postMessage,
+  fetchConversation,
 };

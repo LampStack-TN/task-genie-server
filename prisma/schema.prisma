@@ -14,27 +14,27 @@ datasource db {
 }
 
 model User {
-  id             Int              @id @default(autoincrement())
-  fullName       String
-  email          String           @unique
-  password       String
-  role           Role?
-  phone          String?
-  birthdate      String?
-  city           String
-  address        String
-  zipcode        String
-  avatar         String
-  tasks          Task[]
-  services       Service[]
-  applications   Application[]
-  profile        Profile?
-  favouriteTasks FavouriteTasks[]
-  hirings        Hiring[]
-  ClientRating       Rating[] @relation("ClientRating")
-  ProfessionalRating Rating[] @relation("ProfessionalRating")
-  Participant Participant[]
-  Message     Message[]
+  id                 Int              @id @default(autoincrement())
+  fullName           String
+  email              String           @unique
+  password           String
+  role               Role?
+  phone              String?
+  birthdate          String?
+  city               String
+  address            String
+  zipcode            String
+  avatar             String
+  tasks              Task[]
+  services           Service[]
+  applications       Application[]
+  profile            Profile?
+  favouriteTasks     FavouriteTasks[]
+  hirings            Hiring[]
+  ClientRating       Rating[]         @relation("ClientRating")
+  ProfessionalRating Rating[]         @relation("ProfessionalRating")
+  Participant        Participant[]
+  Message            Message[]
 }
 
 enum Role {
@@ -138,12 +138,12 @@ model Hiring {
 }
 
 model Rating {
-  id             Int  @id @default(autoincrement())
-  clientId       Int
-  professionalId Int
-  ClientRating         User @relation("ClientRating", fields: [clientId], references: [id])
-  ProfessionalRating   User @relation("ProfessionalRating", fields: [professionalId], references: [id])
-  rate           Int
+  id                 Int  @id @default(autoincrement())
+  clientId           Int
+  professionalId     Int
+  ClientRating       User @relation("ClientRating", fields: [clientId], references: [id])
+  ProfessionalRating User @relation("ProfessionalRating", fields: [professionalId], references: [id])
+  rate               Int
 }
 
 model Conversation {
