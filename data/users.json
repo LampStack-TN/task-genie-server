@@ -7,7 +7,9 @@
     "city": "New York",
     "address": "123 Main St",
     "zipcode": "10001",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 40.7128,
+    "longitude": -74.006
   },
   {
     "id": 10002,
@@ -17,7 +19,9 @@
     "city": "Los Angeles",
     "address": "456 Elm St",
     "zipcode": "90001",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 34.0522,
+    "longitude": -118.2437
   },
   {
     "id": 10003,
@@ -27,7 +31,9 @@
     "city": "Chicago",
     "address": "789 Oak St",
     "zipcode": "60601",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 41.8781,
+    "longitude": -87.6298
   },
   {
     "id": 10004,
@@ -38,7 +44,9 @@
     "city": "Houston",
     "address": "101 Pine St",
     "zipcode": "77002",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 29.7604,
+    "longitude": -95.3698
   },
   {
     "id": 10005,
@@ -49,7 +57,9 @@
     "city": "Phoenix",
     "address": "222 Maple St",
     "zipcode": "85001",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 33.4484,
+    "longitude": -112.074
   },
   {
     "id": 10006,
@@ -59,7 +69,9 @@
     "city": "San Francisco",
     "address": "333 Walnut St",
     "zipcode": "94102",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 37.7749,
+    "longitude": -122.4194
   },
   {
     "id": 10007,
@@ -69,7 +81,9 @@
     "city": "Seattle",
     "address": "444 Cedar St",
     "zipcode": "98101",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 47.6062,
+    "longitude": -122.3321
   },
   {
     "id": 10008,
@@ -79,7 +93,9 @@
     "city": "Miami",
     "address": "555 Oak St",
     "zipcode": "33101",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 25.7617,
+    "longitude": -80.1918
   },
   {
     "id": 10009,
@@ -89,7 +105,9 @@
     "city": "Dallas",
     "address": "666 Elm St",
     "zipcode": "75201",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 32.7767,
+    "longitude": -96.797
   },
   {
     "id": 10010,
@@ -100,7 +118,9 @@
     "city": "Boston",
     "address": "777 Pine St",
     "zipcode": "21010",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 42.3601,
+    "longitude": -71.0589
   },
   {
     "id": 10011,
@@ -111,7 +131,9 @@
     "city": "San Diego",
     "address": "888 Elm St",
     "zipcode": "92101",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 32.7157,
+    "longitude": -117.1611
   },
   {
     "id": 10012,
@@ -122,7 +144,9 @@
     "city": "Atlanta",
     "address": "999 Oak St",
     "zipcode": "30301",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 33.749,
+    "longitude": -84.388
   },
   {
     "id": 10013,
@@ -133,7 +157,9 @@
     "city": "Philadelphia",
     "address": "111 Maple St",
     "zipcode": "19101",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 39.9526,
+    "longitude": -75.1652
   },
   {
     "id": 10014,
@@ -144,7 +170,9 @@
     "city": "Denver",
     "address": "222 Walnut St",
     "zipcode": "80201",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 39.7392,
+    "longitude": -104.9903
   },
   {
     "id": 10015,
@@ -155,7 +183,9 @@
     "city": "Las Vegas",
     "address": "333 Pine St",
     "zipcode": "89101",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 36.1699,
+    "longitude": -115.1398
   },
   {
     "id": 10016,
@@ -166,7 +196,9 @@
     "city": "Portland",
     "address": "444 Cedar St",
     "zipcode": "97201",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 45.5051,
+    "longitude": -122.675
   },
   {
     "id": 10017,
@@ -177,7 +209,9 @@
     "city": "Austin",
     "address": "555 Oak St",
     "zipcode": "78701",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 30.2672,
+    "longitude": -97.7431
   },
   {
     "id": 10018,
@@ -188,7 +222,9 @@
     "city": "Nashville",
     "address": "666 Elm St",
     "zipcode": "37201",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 36.1627,
+    "longitude": -86.7816
   },
   {
     "id": 10019,
@@ -199,7 +235,9 @@
     "city": "Orlando",
     "address": "777 Maple St",
     "zipcode": "32801",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 28.5383,
+    "longitude": -81.3792
   },
   {
     "id": 10020,
@@ -210,6 +248,8 @@
     "city": "San Antonio",
     "address": "888 Pine St",
     "zipcode": "78201",
-    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+    "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
+    "latitude": 29.4241,
+    "longitude": -98.4936
   }
 ]
