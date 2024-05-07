@@ -34,4 +34,21 @@ const signin = async (req, res) => {
     console.log(error);
   }
 }
-module.exports = { signin };
+
+
+const getAllClients=async(req,res)=>{
+try{
+const result=await prisma.user.findMany({
+  where: {
+    role: 'client'
+  },
+})
+res.status(200).json(result)
+}
+catch(error){
+console.log(error);
+}
+}
+
+
+module.exports = { signin,getAllClients };
