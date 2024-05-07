@@ -44,9 +44,7 @@ app.use("/api/profile",profileRouter)
 app.use("/api/task",favouriteTasks)
 app.use("/api/service",serviceRouter)
 app.use("/api/hiring",hiringRouter)
-
 app.use("/api/rating",ratingRouter)
-
 app.use("/api/chat", chatRouter);
 
 // app listening/serving
