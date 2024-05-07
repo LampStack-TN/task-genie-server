@@ -51,4 +51,19 @@ console.log(error);
 }
 
 
-module.exports = { signin,getAllClients };
+const getAllProfessionals=async(req,res)=>{
+  try{
+    const result =await prisma.user.findMany({
+      where:{
+        role:'professional'
+      }
+    })
+    res.status(200).json(result)
+
+  }catch(error){
+console.log(error);
+  }
+}
+
+
+module.exports = { signin,getAllClients ,getAllProfessionals};
