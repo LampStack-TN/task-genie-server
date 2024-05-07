@@ -77,4 +77,19 @@ const countProfessionals = async (req, res) => {
     console.error(error);
   }
 }
-module.exports = { signin,getAllClients ,getAllProfessionals,countProfessionals};
+
+const countClients = async (req, res) => {
+  try {
+    const result = await prisma.user.count({
+      where: {
+        role: 'client'
+      }
+    });
+    res.status(200).json({ clientCount: result });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+module.exports = { signin,getAllClients ,getAllProfessionals,countProfessionals,countClients};
