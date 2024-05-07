@@ -1,11 +1,5 @@
 [
   {
-    "id": 400,
-    "userId": 10006,
-    "jobTitle": "Product Manager",
-    "bio": "Innovative product manager with a strong background in product development and strategy. Skilled in market research, product planning, and driving product launches from conception to market success."
-  },
-  {
     "id": 401,
     "userId": 10007,
     "jobTitle": "Architect",
