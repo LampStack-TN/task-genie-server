@@ -69,9 +69,9 @@ enum Urgency {
 
 model Application {
   id          Int      @id @default(autoincrement())
-  task        Task?    @relation(fields: [taskId], references: [id])
+  task        Task?    @relation(fields: [taskId], references: [id], onDelete: Cascade)
   taskId      Int
-  applicant   User?    @relation(fields: [applicantId], references: [id])
+  applicant   User?    @relation(fields: [applicantId], references: [id], onDelete: Cascade)
   applicantId Int
   price       Float?
   status      Status
@@ -91,7 +91,7 @@ model Skill {
   tasks    Task[]    @relation("TaskSkill")
   profiles Profile[] @relation("ProfileSkill")
   services Service[] @relation("ServiceSkill")
-}
+} 
 
 model Profile {
   id       Int     @id @default(autoincrement())

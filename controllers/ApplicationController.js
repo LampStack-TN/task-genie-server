@@ -119,6 +119,7 @@ const acceptOrRejectApplication = async (req, res) => {
       const updatedApplication = await prisma.application.update({
         where: { id: parseInt(applicationId) },
         data: { status: "Accepted" },
+        include: { applicant: { include: { profile: true } } },
       });
       res.status(200).json(updatedApplication);
     } else if (action === "reject") {
