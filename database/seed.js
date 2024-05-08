@@ -7,6 +7,7 @@ const tasks = require("../data/tasks.json");
 const skills = require("../data/skills.json");
 const profiles = require("../data/profiles.json");
 const services = require("../data/services.json");
+const applications = require("../data/applications.json");
 const conversations = require("../data/chat/conversations.json");
 const participants = require("../data/chat/participants.json");
 const messages = require("../data/chat/messages.json");
@@ -37,6 +38,13 @@ const messages = require("../data/chat/messages.json");
     .createMany({ data: profiles, skipDuplicates: true })
     .then((response) => {
       console.log("Profiles seeded successfull ✅: ", response);
+      console.log("******************************");
+    });
+
+  await prisma.application
+    .createMany({ data: applications, skipDuplicates: true })
+    .then((response) => {
+      console.log("Applications seeded successfull ✅: ", response);
       console.log("******************************");
     });
 

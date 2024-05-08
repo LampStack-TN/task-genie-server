@@ -121,7 +121,7 @@ const getOneClient = async (req, res) => {
         skills: true,
         client: true,
         applications: {
-          include: { applicant: true },
+          include: { applicant: { include: { profile: true } } },
         },
         _count: {
           select: {
@@ -139,9 +139,7 @@ const getOneClient = async (req, res) => {
       task.acceptedApplication = task.applications.reduce((prev, app) => {
         return app.status === "Accepted" ? app : prev;
       }, null);
-      task.applications = task.acceptedApplication
-        ? []
-        : task.applications;
+      task.applications = task.acceptedApplication ? [] : task.applications;
       res.send(task);
     }
   } catch (err) {
@@ -157,7 +155,7 @@ const deleteTask = async (req, res) => {
     const response = await Task.delete({
       where: { id: parseInt(id) },
     });
-    res.status(204).send();
+    res.status(204).send(response);
   } catch (err) {
     res.status(404).send({ message: "Unable to delete task. Task not found." });
   }

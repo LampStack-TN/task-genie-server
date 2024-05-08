@@ -1,14 +1,12 @@
 const router = require("express").Router();
 
-const {signin,getAllClients,getAllProfessionals,countProfessionals,countClients,getAllTasks}=require('../../controllers/AdminController')
+const {signin,getAllClients,getAllProfessionals,countProfessionals,countClients}=require('../../controllers/AdminController')
+const verifyToken = require("../../middlewares/verifyToken.js")
+router.post('/signin'/* ,verifyToken */,signin)
+router.get("/clients"/* ,verifyToken */,getAllClients)
+router.get('/professionals'/* ,verifyToken */,getAllProfessionals)
+router.get("/countProfessionals"/* ,verifyToken */,countProfessionals)
+router.get("/countClients"/* ,verifyToken */,countClients)
 
-router.post('/signin',signin)
-
-
-router.get("/clients",getAllClients)
-router.get('/professionals',getAllProfessionals)
-router.get("/countProfessionals",countProfessionals)
-router.get("/countClients",countClients)
-router.get('/AllTasks',getAllTasks)
 
 module.exports = router;
