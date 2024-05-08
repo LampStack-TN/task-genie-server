@@ -98,12 +98,16 @@ model Skill {
 }
 
 model Profile {
-  id       Int     @id @default(autoincrement())
-  jobTitle String
-  bio      String
-  user     User    @relation(fields: [userId], references: [id])
-  userId   Int     @unique
-  skills   Skill[] @relation("ProfileSkill")
+  id              Int     @id @default(autoincrement())
+  jobTitle        String
+  bio             String
+  isVerified      Boolean @default(false)
+  officalDocument String
+  cinRecto        String
+  cinVerso        String
+  user            User    @relation(fields: [userId], references: [id])
+  userId          Int     @unique
+  skills          Skill[] @relation("ProfileSkill")
 }
 
 model Service {
