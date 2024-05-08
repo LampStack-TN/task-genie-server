@@ -5,31 +5,42 @@ const jwt = require("jsonwebtoken");
 
 const signin = async (req, res) => {
   const { email, password } = req.body;
+
   try {
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
+    }
+
     const admin = await prisma.user.findUnique({
       where: {
         email: email,
       },
     });
-    if (!admin) return res.status(410).json({ error: "Email doesn't exist" });
+
+    if (!admin) {
+      return res.status(410).json({ error: "Email doesn't exist" });
+    }
+
     const likePassword = await bcrypt.compare(password, admin.password);
-    if (!likePassword)
-      return res.status(411).json({ error: "unvalid password" });
+    if (!likePassword) {
+      return res.status(411).json({ error: "Invalid password" });
+    }
 
     if (admin.role !== "admin") {
-      res.status(403).json({ message: "Invalid user role" });
-    } else {
-      const token = jwt.sign(
-        { id: admin.id, role: admin.role },
-        process.env.JWT_SECRET,
-        { expiresIn: "1d" }
-      );
-
-      return res.status(201).json({ message: "logged in", token: token });
+      return res.status(403).json({ message: "Invalid user role" });
     }
+    const token = jwt.sign(
+      { id: admin.id, role: admin.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    return res
+      .status(201)
+      .json({ message: "Logged in successfully", token: token });
   } catch (error) {
+    console.error("Error in signin function:", error);
     res.status(500).send(error);
-    console.log(error);
   }
 };
 
