@@ -194,7 +194,7 @@
     "id": 10019,
     "email": "pro9@example.com",
     "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
-    "role": "professional",
+    "role": "admin",
     "fullName": "Ashley Adams",
     "city": "Orlando",
     "address": "777 Maple St",
