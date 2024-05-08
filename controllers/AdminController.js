@@ -25,71 +25,96 @@ const signin = async (req, res) => {
         { expiresIn: "1d" }
       );
 
-      return res
-        .status(201)
-        .json({ message: "logged in", token: token });
+      return res.status(201).json({ message: "logged in", token: token });
     }
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
   }
-}
+};
 
-
-const getAllClients=async(req,res)=>{
-try{
-const result=await prisma.user.findMany({
-  where: {
-    role: 'client'
-  },
-})
-res.status(200).json(result)
-}
-catch(error){
-console.log(error);
-}
-}
-
-
-const getAllProfessionals=async(req,res)=>{
-  try{
-    const result =await prisma.user.findMany({
-      where:{
-        role:'professional'
-      }
-    })
-    res.status(200).json(result)
-
-  }catch(error){
-console.log(error);
+const getAllClients = async (req, res) => {
+  try {
+    const result = await prisma.user.findMany({
+      where: {
+        role: "client",
+      },
+    });
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
   }
-}
+};
+
+const getAllProfessionals = async (req, res) => {
+  try {
+    const result = await prisma.user.findMany({
+      where: {
+        role: "professional",
+      },
+    });
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const countProfessionals = async (req, res) => {
   try {
     const result = await prisma.user.count({
       where: {
-        role: 'professional'
-      }
+        role: "professional",
+      },
     });
     res.status(200).json({ professionalCount: result });
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 const countClients = async (req, res) => {
   try {
     const result = await prisma.user.count({
       where: {
-        role: 'client'
-      }
+        role: "client",
+      },
     });
     res.status(200).json({ clientCount: result });
   } catch (error) {
     console.error(error);
   }
-}
+};
 
+const getAllTasks = async (req, res) => {
+  try {
+    const tasks = await prisma.task.findMany({
+      include: {
+        client: {
+          select: {
+            fullName: true,
+          },
+        },
+        applications: true,
+        favouriteTasks: true,
+      },
+    });
+    const formatedTasks = tasks.map((task) => ({
+      ...task,
+      clientName: task.client ? task.client.fullName : null,
+      applicantCount: task.applications.length,
+      favouriteCount: task.favouriteTasks.length,
+    }));
+    res.status(200).json(formatedTasks);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-module.exports = { signin,getAllClients ,getAllProfessionals,countProfessionals,countClients};
+module.exports = {
+  signin,
+  getAllClients,
+  getAllProfessionals,
+  countProfessionals,
+  countClients,
+  getAllTasks,
+};
