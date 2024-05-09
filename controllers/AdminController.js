@@ -1,8 +1,8 @@
-const {User,Task} = require("../database/prisma.js");
+const { User, Task, service } = require("../database/prisma.js");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const {upload} = require("../helper/helperFunction.js")
+const { upload } = require("../helper/helperFunction.js");
 const signin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -69,8 +69,6 @@ const getAllProfessionals = async (req, res) => {
     console.log(error);
   }
 };
-
-
 
 const countProfessionals = async (req, res) => {
   try {
@@ -143,7 +141,7 @@ const getAdmin = async (req, res) => {
 const updateAdmin = async (req, res) => {
   const { id } = req.params;
   const { body } = req;
-  const { file } = req;
+  
 
   if (body.password) {
     // hash the password
@@ -151,15 +149,17 @@ const updateAdmin = async (req, res) => {
     body.password = hashedPassword;
   }
 
+
   if (file) {
     try {
       const cloudinaryResult = await upload(file.buffer);
-      body.avatar = cloudinaryResult
+      body.avatar = cloudinaryResult;
     } catch (error) {
       console.error(" uploading avatar failds:", error);
       return res.status(500).json({ error: "Failed to upload avatar" });
     }
   }
+
 
   try {
     const updatedAdmin = await User.update({
@@ -174,6 +174,33 @@ const updateAdmin = async (req, res) => {
   }
 };
 
+const getAllServices = async (req, res) => {
+  try {
+    const services = await service.findMany({
+      include: {
+        professional: true,
+        skills: true,
+        hirings: {
+          include: {
+            client: true,
+          },
+        },
+      },
+    });
+    const enhancedServices = services.map((service) => ({
+      ...service,
+      hiringCount: service.hirings.length,
+      hirings: service.hirings.map((hiring) => ({
+        ...hiring,
+        clientName: hiring.client ? hiring.client.fullName : "",
+      })),
+    }));
+
+    res.status(200).json(enhancedServices);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = {
   signin,
@@ -183,5 +210,6 @@ module.exports = {
   countClients,
   getAllTasks,
   getAdmin,
-  updateAdmin
+  updateAdmin,
+  getAllServices,
 };
