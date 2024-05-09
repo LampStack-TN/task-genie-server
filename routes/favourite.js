@@ -7,4 +7,5 @@ const {
 const verifyToken = require("../middlewares/verifyToken");
 router.post("/likeTask", verifyToken, toggleLikeTask);
 router.get("/favoriteTasks", verifyToken, getFavoriteTasks);
+
 module.exports = router;

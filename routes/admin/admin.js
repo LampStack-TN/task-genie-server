@@ -21,4 +21,5 @@ router.get("/AllTasks" ,verifyToken , getAllTasks);
 router.get("/getAdmin" /*,verifyToken */, getAdmin);
 router.put("/update/:id" /*,verifyToken */, updateAdmin);
 router.get("/services", verifyToken,getAllServices);
+
 module.exports = router;

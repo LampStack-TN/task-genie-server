@@ -141,13 +141,14 @@ const getAdmin = async (req, res) => {
 const updateAdmin = async (req, res) => {
   const { id } = req.params;
   const { body } = req;
-  const { file } = req;
+  
 
   if (body.password) {
     // hash the password
     const hashedPassword = await bcrypt.hash(body.password, 10);
     body.password = hashedPassword;
   }
+
 
   if (file) {
     try {
@@ -158,6 +159,7 @@ const updateAdmin = async (req, res) => {
       return res.status(500).json({ error: "Failed to upload avatar" });
     }
   }
+
 
   try {
     const updatedAdmin = await User.update({

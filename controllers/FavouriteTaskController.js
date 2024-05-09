@@ -65,7 +65,6 @@ const getFavoriteTasks = async (req, res) => {
     });
     res.json(tasks);
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       message: "Error retrieving favorite tasks.Please try again later.",
     });
