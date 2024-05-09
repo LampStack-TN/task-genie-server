@@ -1,4 +1,4 @@
-const prisma = require("../database/prisma.js");
+const {User,Task} = require("../database/prisma.js");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const signin = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const admin = await prisma.user.findUnique({
+    const admin = await User.findUnique({
       where: {
         email: email,
       },
@@ -35,7 +35,7 @@ const signin = async (req, res) => {
 
 const getAllClients = async (req, res) => {
   try {
-    const result = await prisma.user.findMany({
+    const result = await User.findMany({
       where: {
         role: "client",
       },
@@ -48,7 +48,7 @@ const getAllClients = async (req, res) => {
 
 const getAllProfessionals = async (req, res) => {
   try {
-    const result = await prisma.user.findMany({
+    const result = await User.findMany({
       where: {
         role: "professional",
       },
@@ -61,7 +61,7 @@ const getAllProfessionals = async (req, res) => {
 
 const countProfessionals = async (req, res) => {
   try {
-    const result = await prisma.user.count({
+    const result = await User.count({
       where: {
         role: "professional",
       },
@@ -74,7 +74,7 @@ const countProfessionals = async (req, res) => {
 
 const countClients = async (req, res) => {
   try {
-    const result = await prisma.user.count({
+    const result = await User.count({
       where: {
         role: "client",
       },
@@ -87,7 +87,7 @@ const countClients = async (req, res) => {
 
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await prisma.task.findMany({
+    const tasks = await Task.findMany({
       include: {
         client: {
           select: {
