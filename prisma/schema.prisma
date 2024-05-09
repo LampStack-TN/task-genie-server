@@ -83,6 +83,7 @@ enum Status {
   Pending
   Accepted
   Rejected
+  Complete
 }
 
 model Skill {
@@ -91,7 +92,7 @@ model Skill {
   tasks    Task[]    @relation("TaskSkill")
   profiles Profile[] @relation("ProfileSkill")
   services Service[] @relation("ServiceSkill")
-} 
+}
 
 model Profile {
   id       Int     @id @default(autoincrement())
