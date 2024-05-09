@@ -2,7 +2,7 @@ const {User,Task} = require("../database/prisma.js");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const {upload} = require("../helper/helperFunction.js")
 const signin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -70,6 +70,8 @@ const getAllProfessionals = async (req, res) => {
   }
 };
 
+
+
 const countProfessionals = async (req, res) => {
   try {
     const result = await User.count({
@@ -121,6 +123,58 @@ const getAllTasks = async (req, res) => {
   }
 };
 
+const getAdmin = async (req, res) => {
+  try {
+    const admin = await User.findFirst({
+      where: {
+        role: "admin",
+      },
+    });
+    if (!admin) {
+      return res.status(404).json({ error: "Admin not found" });
+    }
+    return res.status(200).json(admin);
+  } catch (error) {
+    console.error("getAdmin failds:", error);
+    res.status(500).send(error);
+  }
+};
+
+const updateAdmin = async (req, res) => {
+  const { id } = req.params;
+  const { body } = req;
+  const { file } = req;
+
+  if (body.password) {
+    // hash the password
+    const hashedPassword = await bcrypt.hash(body.password, 10);
+    body.password = hashedPassword;
+  }
+
+  if (file) {
+    try {
+      const cloudinaryResult = await upload(file.buffer);
+      body.avatar = cloudinaryResult
+    } catch (error) {
+      console.error(" uploading avatar failds:", error);
+      return res.status(500).json({ error: "Failed to upload avatar" });
+    }
+  }
+
+  try {
+    const updatedAdmin = await User.update({
+      where: { id: parseInt(id) },
+      data: body,
+    });
+
+    return res.status(200).json(updatedAdmin);
+  } catch (error) {
+    console.error("updateAdmin failds:", error);
+    res.status(500).send(error);
+  }
+};
+
+
 module.exports = {
   signin,
   getAllClients,
@@ -128,4 +182,6 @@ module.exports = {
   countProfessionals,
   countClients,
   getAllTasks,
+  getAdmin,
+  updateAdmin
 };
