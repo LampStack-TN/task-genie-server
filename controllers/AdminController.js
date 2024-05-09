@@ -141,14 +141,12 @@ const getAdmin = async (req, res) => {
 const updateAdmin = async (req, res) => {
   const { id } = req.params;
   const { body } = req;
-  
 
   if (body.password) {
     // hash the password
     const hashedPassword = await bcrypt.hash(body.password, 10);
     body.password = hashedPassword;
   }
-
 
   if (file) {
     try {
@@ -159,7 +157,6 @@ const updateAdmin = async (req, res) => {
       return res.status(500).json({ error: "Failed to upload avatar" });
     }
   }
-
 
   try {
     const updatedAdmin = await User.update({
@@ -202,8 +199,6 @@ const getAllServices = async (req, res) => {
   }
 };
 
-
-
 const getTaskById = async (req, res) => {
   const { id } = req.params;
   try {
@@ -211,17 +206,17 @@ const getTaskById = async (req, res) => {
       where: { id: parseInt(id) },
       include: {
         client: {
-          select: { fullName: true }
+          select: { fullName: true },
         },
         applications: {
           include: {
             applicant: {
-              select: { fullName: true } 
-            }
-          }
+              select: { fullName: true },
+            },
+          },
         },
-        favouriteTasks: true
-      }
+        favouriteTasks: true,
+      },
     });
     if (!task) {
       return res.status(404).json({ message: "Task not found" });
@@ -229,10 +224,10 @@ const getTaskById = async (req, res) => {
 
     const formattedTask = {
       ...task,
-      applications: task.applications.map(app => ({
+      applications: task.applications.map((app) => ({
         ...app,
-        applicantName: app.applicant.fullName 
-      }))
+        applicantName: app.applicant.fullName,
+      })),
     };
 
     res.status(200).json(formattedTask);
@@ -242,6 +237,39 @@ const getTaskById = async (req, res) => {
   }
 };
 
+const getServiceById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const services = await service.findUnique({
+      where: { id: parseInt(id) },
+      include: {
+        professional: true,
+        skills: true,
+        hirings: {
+          include: {
+            client: true,
+          },
+        },
+      },
+    });
+    if (!services) {
+      return res.status(404).json({ message: "Service not found" });
+    }
+    const enhancedService = {
+      ...services,
+      hiringCount: services.hirings.length,
+      hirings: services.hirings.map((hiring) => ({
+        ...hiring,
+        clientName: hiring.client ? hiring.client.fullName : "",
+      })),
+    };
+
+    res.status(200).json(enhancedService);
+  } catch (error) {
+    console.error("Error retrieving service:", error);
+    res.status(500).send({ error: "Failed to retrieve service details" });
+  }
+};
 
 module.exports = {
   signin,
@@ -252,5 +280,7 @@ module.exports = {
   getAllTasks,
   getAdmin,
   updateAdmin,
-  getAllServices,getTaskById
+  getAllServices,
+  getTaskById,
+  getServiceById,
 };
