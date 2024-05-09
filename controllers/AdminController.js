@@ -37,7 +37,7 @@ const signin = async (req, res) => {
 
     return res
       .status(201)
-      .json({ message: "Logged in successfully", token: token });
+      .json({ message: "Logged in successfully as an admin", token: token });
   } catch (error) {
     console.error("Error in signin function:", error);
     res.status(500).send(error);

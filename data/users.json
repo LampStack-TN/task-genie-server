@@ -217,9 +217,9 @@
     "email": "admin@example.com",
     "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
     "role": "admin",
-    "fullName": "Matthew Nelson",
-    "city": "San Antonio",
+    "city": "adminName",
     "address": "888 Pine St",
+    "fullName": "Mr.Admin",
     "zipcode": "78201",
     "avatar": "https://st2.depositphotos.com/4024659/10734/v/450/depositphotos_107348366-stock-illustration-woman-icon-female-web-sign.jpg"
   }
