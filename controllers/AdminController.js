@@ -202,6 +202,47 @@ const getAllServices = async (req, res) => {
   }
 };
 
+
+
+const getTaskById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const task = await Task.findUnique({
+      where: { id: parseInt(id) },
+      include: {
+        client: {
+          select: { fullName: true }
+        },
+        applications: {
+          include: {
+            applicant: {
+              select: { fullName: true } 
+            }
+          }
+        },
+        favouriteTasks: true
+      }
+    });
+    if (!task) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+
+    const formattedTask = {
+      ...task,
+      applications: task.applications.map(app => ({
+        ...app,
+        applicantName: app.applicant.fullName 
+      }))
+    };
+
+    res.status(200).json(formattedTask);
+  } catch (error) {
+    console.error("Error retrieving task:", error);
+    res.status(500).send({ error: "Failed to retrieve task details" });
+  }
+};
+
+
 module.exports = {
   signin,
   getAllClients,
@@ -211,5 +252,5 @@ module.exports = {
   getAllTasks,
   getAdmin,
   updateAdmin,
-  getAllServices,
+  getAllServices,getTaskById
 };
