@@ -36,12 +36,12 @@ const io = new Server(server, {
 });
 
 // defining routes
+app.use("/api/favrourite-task",favouriteTasks)
 app.use("/api/auth", authRouter);
 app.use("/api/task", taskRouter);
 app.use("/api/task",applicationRouter)
 app.use("/api/task",search)
 app.use("/api/profile",profileRouter)
-app.use("/api/task",favouriteTasks)
 app.use("/api/service",serviceRouter)
 app.use("/api/hiring",hiringRouter)
 app.use("/api/rating",ratingRouter)
