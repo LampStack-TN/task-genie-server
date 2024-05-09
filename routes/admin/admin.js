@@ -7,6 +7,7 @@ const {
   countProfessionals,
   countClients,
   getAllTasks,
+  getTaskById,
   getAdmin,
   updateAdmin,
   getAllServices,
@@ -21,5 +22,6 @@ router.get("/AllTasks" ,verifyToken , getAllTasks);
 router.get("/getAdmin" /*,verifyToken */, getAdmin);
 router.put("/update/:id" /*,verifyToken */, updateAdmin);
 router.get("/services", verifyToken,getAllServices);
+router.get("/tasks/:id",verifyToken,getTaskById)
 
 module.exports = router;
