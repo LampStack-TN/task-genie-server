@@ -1,6 +1,3 @@
--- AlterTable
-ALTER TABLE "Service" ADD COLUMN     "status" TEXT NOT NULL DEFAULT 'available';
-
 -- CreateTable
 CREATE TABLE "Rating" (
     "id" SERIAL NOT NULL,

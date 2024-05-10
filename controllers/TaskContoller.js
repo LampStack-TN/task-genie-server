@@ -48,11 +48,21 @@ const getAll = async (req, res) => {
       include: {
         skills: true,
         client: true,
+        applications: { where: { applicantId: userId } },
         _count: {
-          select: { favouriteTasks: { where: { userId } }, applications: true },
+          select: {
+            applications: { where: { applicantId: userId } },
+            favouriteTasks: { where: { userId } },
+          },
         },
       },
     });
+
+    tasks.forEach((task) => {
+      task.liked = task._count.favouriteTasks > 0;
+      task.applied = task._count.applications > 0;
+    });
+
     res.json(tasks);
   } catch (err) {
     res.status(500).send({
@@ -60,16 +70,25 @@ const getAll = async (req, res) => {
     });
   }
 };
+
 const getOne = async (req, res) => {
   try {
-    const { id } = req.params;
+    const {
+      userId,
+      params: { id },
+    } = req;
+
     const task = await Task.findUnique({
       where: { id: parseInt(id) },
-      include: {
+      [1 && "include"]: {
         skills: true,
         client: true,
+        applications: { where: { applicantId: userId } },
         _count: {
-          select: { applications: true },
+          select: {
+            applications: { where: { applicantId: userId } },
+            favouriteTasks: { where: { userId } },
+          },
         },
       },
     });
@@ -78,6 +97,49 @@ const getOne = async (req, res) => {
         .status(404)
         .send({ message: "Task not found. Verify and try again." });
     } else {
+      task.liked = task._count.favouriteTasks > 0;
+      task.applied = task._count.applications > 0;
+      res.send(task);
+    }
+  } catch (err) {
+    res.status(500).send({
+      message: "Error retrieving task details. Please try again later.",
+    });
+  }
+};
+
+const getOneClient = async (req, res) => {
+  try {
+    const {
+      userId,
+      params: { id },
+    } = req;
+
+    const task = await Task.findUnique({
+      where: { id: Number(id) },
+      include: {
+        skills: true,
+        client: true,
+        applications: {
+          include: { applicant: { include: { profile: true } } },
+        },
+        _count: {
+          select: {
+            applications: true,
+          },
+        },
+      },
+    });
+    if (!task) {
+      res
+        .status(404)
+        .send({ message: "Task not found. Verify and try again." });
+    } else {
+      // check if
+      task.acceptedApplication = task.applications.reduce((prev, app) => {
+        return app.status === "Accepted" ? app : prev;
+      }, null);
+      task.applications = task.acceptedApplication ? [] : task.applications;
       res.send(task);
     }
   } catch (err) {
@@ -93,7 +155,7 @@ const deleteTask = async (req, res) => {
     const response = await Task.delete({
       where: { id: parseInt(id) },
     });
-    res.status(204).send();
+    res.status(204).send(response);
   } catch (err) {
     res.status(404).send({ message: "Unable to delete task. Task not found." });
   }
@@ -130,6 +192,7 @@ const getMyTasks = async (req, res) => {
 
     res.status(200).json(tasks);
   } catch (error) {
+    console.log(error);
     res.status(500).send({
       message:
         "Unable to retrieve your tasks at this time. Please try again later.",
@@ -144,4 +207,5 @@ module.exports = {
   deleteTask,
   updateTask,
   getMyTasks,
+  getOneClient,
 };

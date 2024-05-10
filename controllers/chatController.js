@@ -7,7 +7,7 @@ const Message = require("../database/prisma").message;
 const getUserConversations = async (req, res) => {
   try {
     const { userId } = req;
-    const conversations = await Conversation.findMany({
+    let conversations = await Conversation.findMany({
       where: {
         participants: { some: { userId } },
       },
@@ -41,7 +41,62 @@ const getUserConversations = async (req, res) => {
         },
       },
     });
+
+    conversations.forEach((item) => {
+      if (item.messages[0]) {
+        item.messages = item.messages[0];
+      } else {
+        item.messages = null;
+      }
+    });
+
+    conversations = conversations.filter((item) => item.messages);
+
+    conversations.sort((a, b) => {
+      if (a.messages.createdAt > b.messages.createdAt) return -1;
+      if (a.messages.createdAt < b.messages.createdAt) return 1;
+      return 0;
+    });
+
     res.send(conversations);
+  } catch (error) {
+    console.log(error);
+    res.status(404).send("Eroore");
+  }
+};
+
+//? Get All conversations for current user
+const fetchConversation = async (req, res) => {
+  try {
+    const {
+      userId,
+      params: { participantId },
+    } = req;
+    let conversation = await Conversation.findFirst({
+      where: {
+        participants: {
+          every: {
+            userId: {
+              in: [Number(participantId), Number(userId)],
+            },
+          },
+        },
+      },
+    });
+    if (!conversation) {
+      conversation = await Conversation.create({
+        data: {
+          participants: {
+            create: [
+              { userId: Number(participantId) },
+              { userId: Number(userId) },
+            ],
+          },
+        },
+      });
+      console.log("created");
+    }
+    res.send(conversation);
   } catch (error) {
     console.log(error);
     res.status(404).send("Eroore");
@@ -121,4 +176,5 @@ module.exports = {
   getUserConversations,
   getConversation,
   postMessage,
+  fetchConversation,
 };

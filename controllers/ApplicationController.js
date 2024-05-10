@@ -1,10 +1,5 @@
 const prisma = require("../database/prisma.js");
 
-let TASKS = [];
-const RemoveFromTasks = (taskId) => {
-  TASKS = TASKS.filter((task) => task.id !== taskId);
-};
-
 const applyToTask = async (req, res) => {
   const { taskId } = req.body;
   const userId = req.userId;
@@ -38,16 +33,13 @@ const applyToTask = async (req, res) => {
       },
     });
     //removed
-    RemoveFromTasks(taskId);
 
-    return res.status(201).json({ application });
+    return res.status(201).json(application);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message:
-          "An error occurred while applying to the task. Please try again.",
-      });
+    res.status(500).json({
+      message:
+        "An error occurred while applying to the task. Please try again.",
+    });
   }
 };
 
@@ -82,12 +74,9 @@ const getUserApplications = async (req, res) => {
 
     return res.status(200).json(applications);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message:
-          "Failed to retrieve user applications. Please try again later.",
-      });
+    res.status(500).json({
+      message: "Failed to retrieve user applications. Please try again later.",
+    });
   }
 };
 
@@ -107,17 +96,14 @@ const getTaskApplications = async (req, res) => {
 
     return res.json(applications);
   } catch (err) {
-    res
-      .status(500)
-      .json({
-        message:
-          "Failed to retrieve task applications. Please try again later.",
-      });
+    res.status(500).json({
+      message: "Failed to retrieve task applications. Please try again later.",
+    });
   }
 };
 
-const acceptOrRejectApplication = async (req, res) => {
-  const { applicationId, action } = req.body;
+const changeApplicationStatus = async (req, res) => {
+  const { applicationId, status } = req.body;
 
   try {
     // check if the application exists and that the user has permission
@@ -129,27 +115,17 @@ const acceptOrRejectApplication = async (req, res) => {
       return res.status(404).json({ message: "Application not found." });
     }
 
-    if (action === "accept") {
-      const updatedApplication = await prisma.application.update({
-        where: { id: parseInt(applicationId) },
-        data: { status: "Accepted" },
-      });
-      res.status(200).json(updatedApplication);
-    } else if (action === "reject") {
-      await prisma.application.delete({
-        where: { id: parseInt(applicationId) },
-      });
-      res
-        .status(200)
-        .json({ message: "Application successfully rejected and removed." });
-    }
+    const updatedApplication = await prisma.application.update({
+      where: { id: parseInt(applicationId) },
+      data: { status },
+      include: { applicant: { include: { profile: true } } },
+    });
+    res.status(200).json(updatedApplication);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message:
-          "An error occurred while processing the application. Please try again.",
-      });
+    res.status(500).json({
+      message:
+        "An error occurred while processing the application. Please try again.",
+    });
   }
 };
 
@@ -158,5 +134,5 @@ module.exports = {
   getAllApp,
   getUserApplications,
   getTaskApplications,
-  acceptOrRejectApplication,
+  changeApplicationStatus,
 };

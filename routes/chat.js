@@ -8,6 +8,9 @@ router.get("/conversation", verifyToken, chatController.getUserConversations);
 //? Endpoint to get conversation messages
 router.get("/conversation/:id", verifyToken, chatController.getConversation);
 
+//? Endpoint to get/create conversation with another user
+router.get("/fecth-conversation/:participantId", verifyToken, chatController.fetchConversation);
+
 //? Endpoint to send a "Text" message
 router.post("/message", verifyToken, chatController.postMessage);
 

@@ -1,15 +1,16 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { upload } = require("../helper/helperFunction.js");
+const { profile } = require("../database/prisma");
 // import User prisma Model
 const User = require("../database/prisma").user;
 
 //? Register Handler
 const register = async (req, res) => {
   try {
-    //make sure that i'm gonna send a file (done ✅)  
-    //req avatar from body 
-    const {avatar} = req.body
+    //make sure that i'm gonna send a file (done ✅)
+    //req avatar from body
+    const { avatar } = req.body;
     //
     const imageUrl = await upload(avatar);
 
@@ -21,7 +22,7 @@ const register = async (req, res) => {
     data.avatar = imageUrl;
     // hash password
     data.password = bcrypt.hashSync(password, 8);
-     data.avatar = imageUrl
+    data.avatar = imageUrl;
     // execute query
     const response = await User.create({ data });
 
@@ -97,6 +98,7 @@ const getAuthUser = async (req, res) => {
         address: true,
         zipcode: true,
         avatar: true,
+        profile: true,
       },
     });
 
