@@ -19,8 +19,8 @@ router.get("/professionals" ,verifyToken, getAllProfessionals);
 router.get("/countProfessionals"  ,verifyToken, countProfessionals);
 router.get("/countClients" ,verifyToken , countClients);
 router.get("/AllTasks" ,verifyToken , getAllTasks);
-router.get("/getAdmin" /*,verifyToken */, getAdmin);
-router.put("/update/:id" /*,verifyToken */, updateAdmin);
+router.get("/getAdmin" ,verifyToken , getAdmin);
+router.put("/update/:id" ,verifyToken , updateAdmin);
 router.get("/services", verifyToken,getAllServices);
 router.get("/tasks/:id",verifyToken,getTaskById)
 router.get("/services/:id",verifyToken,getServiceById)

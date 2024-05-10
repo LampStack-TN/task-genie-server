@@ -159,14 +159,49 @@ const updateAdmin = async (req, res) => {
   }
 
   try {
-    const updatedAdmin = await User.update({
-      where: { id: parseInt(id) },
-      data: body,
+    const { id } = req.params;
+    const { currentPassword, newPassword, newEmail } = req.body;
+
+    const user = await User.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+      select: {
+        password: true,
+      },
     });
 
-    return res.status(200).json(updatedAdmin);
+    if (currentPassword && newPassword) {
+      const passwordMatch = await bcrypt.compare(
+        currentPassword,
+        user.password
+      );
+      if (!passwordMatch) {
+        return res.status(401).send("Incorrect password");
+      }
+
+      const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedNewPassword;
+    }
+
+    if (newEmail) {
+     
+      user.email = newEmail;
+    }
+
+    await User.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: {
+        password: user.password,
+        email: user.email,
+      },
+    });
+
+    res.status(201).send("Password and email updated successfully");
   } catch (error) {
-    console.error("updateAdmin failds:", error);
+    console.error(error);
     res.status(500).send(error);
   }
 };
