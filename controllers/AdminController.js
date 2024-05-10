@@ -140,28 +140,92 @@ const getAdmin = async (req, res) => {
   }
 };
 
-const updateAdmin = async (req, res) => {
-  const { id } = req.params;
-  const { body } = req;
-  
-
-  if (body.password) {
-    // hash the password
-    const hashedPassword = await bcrypt.hash(body.password, 10);
-    body.password = hashedPassword;
-  }
+const updateUserPasswordAndEmail = async (req, res) => {
   try {
-    const updatedAdmin = await User.update({
-      where: { id: parseInt(id) },
-      data: body,
+    const { id } = req.params;
+    const { currentPassword, newPassword, newEmail } = req.body;
+
+    const user = await User.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+      select: {
+        password: true,
+      },
     });
 
-    return res.status(200).json(updatedAdmin);
+    if (currentPassword && newPassword) {
+      const passwordMatch = await bcrypt.compare(
+        currentPassword,
+        user.password
+      );
+      if (!passwordMatch) {
+        return res.status(401).send("Incorrect password");
+      }
+
+      const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedNewPassword;
+    }
+
+    if (newEmail) {
+     
+      user.email = newEmail;
+    }
+
+    await User.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: {
+        password: user.password,
+        email: user.email,
+      },
+    });
+
+    res.status(201).send("Password and email updated successfully");
   } catch (error) {
-    console.error("updateAdmin failds:", error);
+    console.error(error);
     res.status(500).send(error);
   }
 };
+
+ 
+
+const updateAdminAvatar = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+   
+    const {avatar} = req.body
+console.log(avatar)
+
+    // Perform the upload process
+    const avatarUrl = await upload(avatar);
+
+ const data = {...req.body}
+ data.avatar = avatarUrl
+    // Update user with the new avatar URL
+    await User.update({
+      where: {
+        id: parseInt(id),
+      },
+      
+      data
+     
+     
+    });
+
+    res.status(201).send("Avatar updated successfully");
+  } catch (error) {
+    console.error("Error updating avatar:", error);
+    res.status(500).send(error.message || "Internal server error");
+  }
+};
+
+
+
+
+
 
 
 module.exports = {
@@ -172,5 +236,6 @@ module.exports = {
   countClients,
   getAllTasks,
   getAdmin,
-  updateAdmin
+  updateUserPasswordAndEmail,
+  updateAdminAvatar
 };
