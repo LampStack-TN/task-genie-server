@@ -31,13 +31,8 @@ model User {
   profile        Profile?
   favouriteTasks FavouriteTasks[]
   hirings        Hiring[]
-  client         Rating[]         @relation("client")
-  professional   Rating[]         @relation("professional")
   Participant    Participant[]
-  Message        Message[]
-  Rating         Rating[]
-
-
+  Messages       Message[]
 }
 
 enum Role {
@@ -104,7 +99,7 @@ model Profile {
   jobTitle        String
   bio             String
   isVerified      Boolean @default(false)
-  officalDocument String
+  officalDocument String?
   cinRecto        String
   cinVerso        String
   user            User    @relation(fields: [userId], references: [id])
@@ -149,18 +144,18 @@ model Hiring {
   client    User    @relation(fields: [clientId], references: [id])
 }
 
-model Rating {
-  id                 Int   @id @default(autoincrement())
-  clientId           Int
-  professionalId     Int
-  ClientRating       User  @relation("ClientRating", fields: [clientId], references: [id])
-  ProfessionalRating User  @relation("ProfessionalRating", fields: [professionalId], references: [id])
-  rate               Int
-  User               User? @relation(fields: [userId], references: [id])
-  userId             Int?
-  User               User? @relation(fields: [userId], references: [id])
-  User               User? @relation(fields: [userId], references: [id])
-}
+// model Rating {
+//   id                 Int   @id @default(autoincrement())
+//   clientId           Int
+//   professionalId     Int
+//   ClientRating       User  @relation("ClientRating", fields: [clientId], references: [id])
+//   ProfessionalRating User  @relation("ProfessionalRating", fields: [professionalId], references: [id])
+//   rate               Int
+//   User               User? @relation(fields: [userId], references: [id])
+//   userId             Int?
+//   User               User? @relation(fields: [userId], references: [id])
+//   User               User? @relation(fields: [userId], references: [id])
+// }
 
 model Conversation {
   id           Int           @id @default(autoincrement())
