@@ -1,6 +1,6 @@
 const Task = require("../database/prisma").task;
-
 const CreateTask = async (req, res) => {
+  console.log("tested");
   try {
     const { userId } = req;
     const {
@@ -33,6 +33,7 @@ const CreateTask = async (req, res) => {
     });
     res.status(201).send(response);
   } catch (error) {
+    console.log(error);
     res.status(500).send({
       message:
         "Unable to create the task. Please verify your data and try again.",
@@ -143,6 +144,7 @@ const getOneClient = async (req, res) => {
       res.send(task);
     }
   } catch (err) {
+    console.log(err);
     res.status(500).send({
       message: "Error retrieving task details. Please try again later.",
     });
