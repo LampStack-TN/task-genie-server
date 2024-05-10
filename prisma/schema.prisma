@@ -25,6 +25,8 @@ model User {
   address        String
   zipcode        String
   avatar         String
+  longitude      Float?
+  latitude       Float?
   tasks          Task[]
   services       Service[]
   applications   Application[]
