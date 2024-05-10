@@ -137,6 +137,7 @@ const setUserRole = async (req, res) => {
         address: true,
         zipcode: true,
         avatar: true,
+        profile: true,
       },
     });
 
