@@ -10,7 +10,10 @@ const {
   getTaskById,
   getAdmin,
   updateAdmin,
-  getAllServices,getServiceById
+  getAllServices,
+  getServiceById,
+  updateUserPasswordAndEmail,
+  updateAdminAvatar
 } = require("../../controllers/AdminController");
 const verifyToken = require("../../middlewares/verifyToken.js");
 router.post("/signin", signin);
@@ -24,5 +27,7 @@ router.put("/update/:id" ,verifyToken , updateAdmin);
 router.get("/services", verifyToken,getAllServices);
 router.get("/tasks/:id",verifyToken,getTaskById)
 router.get("/services/:id",verifyToken,getServiceById)
+router.put("/update/:id",verifyToken ,updateUserPasswordAndEmail)
+router.put("/updateAvatar/:id",verifyToken ,updateAdminAvatar)
 
 module.exports = router;

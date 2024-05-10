@@ -306,6 +306,88 @@ const getServiceById = async (req, res) => {
   }
 };
 
+const updateUserPasswordAndEmail = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { currentPassword, newPassword, newEmail } = req.body;
+
+    const user = await User.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+      select: {
+        password: true,
+      },
+    });
+
+    if (currentPassword && newPassword) {
+      const passwordMatch = await bcrypt.compare(
+        currentPassword,
+        user.password
+      );
+      if (!passwordMatch) {
+        return res.status(401).send("Incorrect password");
+      }
+
+      const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedNewPassword;
+    }
+
+    if (newEmail) {
+     
+      user.email = newEmail;
+    }
+
+    await User.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: {
+        password: user.password,
+        email: user.email,
+      },
+    });
+
+    res.status(201).send("Password and email updated successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+};
+
+ 
+
+const updateAdminAvatar = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+   
+    const {avatar} = req.body
+console.log(avatar)
+
+    // perform the upload process
+    const avatarUrl = await upload(avatar);
+
+ const data = {...req.body}
+ data.avatar = avatarUrl
+    // Update user with the new avatar URL
+    await User.update({
+      where: {
+        id: parseInt(id),
+      },
+      
+      data
+     
+     
+    });
+
+    res.status(201).send("Avatar updated successfully");
+  } catch (error) {
+    console.error("Error updating avatar:", error);
+    res.status(500).send(error.message || "Internal server error");
+  }
+};
+
 module.exports = {
   signin,
   getAllClients,
@@ -318,4 +400,7 @@ module.exports = {
   getAllServices,
   getTaskById,
   getServiceById,
+  updateAdminAvatar,
+  updateUserPasswordAndEmail
+
 };
