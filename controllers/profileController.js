@@ -47,20 +47,20 @@ const createProfile = async (req, res) => {
       return;
     }
 
-    const { jobTitle, bio, officalDocument, cinRecto, cinVerso } = req.body;
-console.log(req.body);
-    // Upload documents
-    const image = await upload(officalDocument);
-    const image2 = await upload(cinRecto);
-    const image3 = await upload(cinVerso);
+    const { jobTitle, bio, officialDoc, cinRecto, cinVerso } = req.body;
+    const image = await upload(cinRecto);
+    const image2 = await upload(cinVerso);
+    const image3 = await upload(officialDoc);
 
+    const data = { ...req.body };
+    data.officalDocument = image3;
+
+    data.cinRecto = image;
+    data.cinVerso = image2;
     const profile = await Profile.create({
       data: {
         jobTitle,
         bio,
-        officalDocument: image,
-        cinRecto: image2,
-        cinVerso: image3,
         user: {
           connect: {
             id: userId,
@@ -70,7 +70,7 @@ console.log(req.body);
     });
 
     res.status(201).send(profile);
-    console.log(profile);
+    // console.log(profile);
   } catch (error) {
     console.error(error);
     res.status(500).send({
