@@ -47,20 +47,27 @@ const createProfile = async (req, res) => {
       return;
     }
 
-    const { jobTitle, bio, officialDoc, cinRecto, cinVerso } = req.body;
-    const image = await upload(cinRecto);
-    const image2 = await upload(cinVerso);
-    const image3 = await upload(officialDoc);
+    let {
+      officialDoc: officalDocument,
+      cinRecto,
+      cinVerso,
+      bio,
+      jobTitle,
+    } = req.body;
+    cinRecto = await upload(cinRecto);
+    // console.log("image: cinRecto");
+    cinVerso = await upload(cinVerso);
+    // console.log("image: cinVerso");
+    officalDocument = await upload(officalDocument);
+    // console.log("image: officalDocument");
 
-    const data = { ...req.body };
-    data.officalDocument = image3;
-
-    data.cinRecto = image;
-    data.cinVerso = image2;
     const profile = await Profile.create({
       data: {
-        jobTitle,
+        officalDocument,
+        cinRecto,
+        cinVerso,
         bio,
+        jobTitle,
         user: {
           connect: {
             id: userId,
