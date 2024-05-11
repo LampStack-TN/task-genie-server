@@ -14,27 +14,27 @@ datasource db {
 }
 
 model User {
-  id                 Int              @id @default(autoincrement())
-  fullName           String
-  email              String           @unique
-  password           String
-  role               Role?
-  phone              String?
-  birthdate          String?
-  city               String
-  address            String
-  zipcode            String
-  avatar             String
-  tasks              Task[]
-  services           Service[]
-  applications       Application[]
-  profile            Profile?
-  favouriteTasks     FavouriteTasks[]
-  hirings            Hiring[]
-  ClientRating       Rating[]         @relation("ClientRating")
-  ProfessionalRating Rating[]         @relation("ProfessionalRating")
-  Participant        Participant[]
-  Message            Message[]
+  id             Int              @id @default(autoincrement())
+  fullName       String
+  email          String           @unique
+  password       String
+  role           Role?
+  phone          String?
+  birthdate      String?
+  city           String
+  address        String
+  zipcode        String?
+  avatar         String           @default("https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg")
+  longitude      Float?
+  latitude       Float?
+  tasks          Task[]
+  services       Service[]
+  applications   Application[]
+  profile        Profile?
+  favouriteTasks FavouriteTasks[]
+  hirings        Hiring[]
+  Participant    Participant[]
+  Messages       Message[]
 }
 
 enum Role {
@@ -59,6 +59,8 @@ model Task {
   applications   Application[]
   skills         Skill[]          @relation("TaskSkill")
   favouriteTasks FavouriteTasks[]
+  longitude      Float?
+  latitude       Float?
 }
 
 enum Urgency {
@@ -95,12 +97,16 @@ model Skill {
 }
 
 model Profile {
-  id       Int     @id @default(autoincrement())
-  jobTitle String
-  bio      String
-  user     User    @relation(fields: [userId], references: [id])
-  userId   Int     @unique
-  skills   Skill[] @relation("ProfileSkill")
+  id              Int     @id @default(autoincrement())
+  jobTitle        String
+  bio             String
+  isVerified      Boolean @default(false)
+  officalDocument String?
+  cinRecto        String
+  cinVerso        String
+  user            User    @relation(fields: [userId], references: [id])
+  userId          Int     @unique
+  skills          Skill[] @relation("ProfileSkill")
 }
 
 model Service {
@@ -117,6 +123,8 @@ model Service {
   skills         Skill[]  @relation("ServiceSkill")
   hirings        Hiring[]
   status         String   @default("available")
+  longitude      Float?
+  latitude       Float?
 }
 
 model FavouriteTasks {
@@ -138,14 +146,18 @@ model Hiring {
   client    User    @relation(fields: [clientId], references: [id])
 }
 
-model Rating {
-  id                 Int  @id @default(autoincrement())
-  clientId           Int
-  professionalId     Int
-  ClientRating       User @relation("ClientRating", fields: [clientId], references: [id])
-  ProfessionalRating User @relation("ProfessionalRating", fields: [professionalId], references: [id])
-  rate               Int
-}
+// model Rating {
+//   id                 Int   @id @default(autoincrement())
+//   clientId           Int
+//   professionalId     Int
+//   ClientRating       User  @relation("ClientRating", fields: [clientId], references: [id])
+//   ProfessionalRating User  @relation("ProfessionalRating", fields: [professionalId], references: [id])
+//   rate               Int
+//   User               User? @relation(fields: [userId], references: [id])
+//   userId             Int?
+//   User               User? @relation(fields: [userId], references: [id])
+//   User               User? @relation(fields: [userId], references: [id])
+// }
 
 model Conversation {
   id           Int           @id @default(autoincrement())

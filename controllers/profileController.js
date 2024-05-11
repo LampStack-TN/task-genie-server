@@ -1,5 +1,6 @@
 const User = require("../database/prisma").user;
 const Profile = require("../database/prisma").profile;
+const { upload } = require("../helper/helperFunction.js");
 
 const getUserProfile = async (req, res) => {
   try {
@@ -45,7 +46,17 @@ const createProfile = async (req, res) => {
         .send({ message: "User not found. Unable to create profile." });
       return;
     }
-    const { jobTitle, bio } = req.body;
+
+    const { jobTitle, bio, officialDoc, cinRecto, cinVerso } = req.body;
+    const image = await upload(cinRecto);
+    const image2 = await upload(cinVerso);
+    const image3 = await upload(officialDoc);
+
+    const data = { ...req.body };
+    data.officalDocument = image3;
+
+    data.cinRecto = image;
+    data.cinVerso = image2;
     const profile = await Profile.create({
       data: {
         jobTitle,
@@ -59,7 +70,9 @@ const createProfile = async (req, res) => {
     });
 
     res.status(201).send(profile);
+    // console.log(profile);
   } catch (error) {
+    console.error(error);
     res.status(500).send({
       message:
         "Failed to create profile due to a server error. Please check your data and try again.",
