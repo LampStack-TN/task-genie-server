@@ -123,6 +123,7 @@ const getOneClient = async (req, res) => {
         client: true,
         applications: {
           include: { applicant: { include: { profile: true } } },
+          orderBy: { createdAt: "desc" },
         },
         _count: {
           select: {
