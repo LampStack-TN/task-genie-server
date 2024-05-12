@@ -139,7 +139,9 @@ const getOneClient = async (req, res) => {
     } else {
       // check if
       task.acceptedApplication = task.applications.reduce((prev, app) => {
-        return app.status === "Accepted" ? app : prev;
+        return app.status === "Accepted" || app.status === "Complete"
+          ? app
+          : prev;
       }, null);
       task.applications = task.acceptedApplication ? [] : task.applications;
       res.send(task);
