@@ -129,10 +129,29 @@ const changeApplicationStatus = async (req, res) => {
   }
 };
 
+const cancelApplication = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // check if the application exists and that the user has permission
+    const response = await prisma.application.delete({
+      where: { id: parseInt(id) },
+    });
+
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({
+      message:
+        "An error occurred while processing the application. Please try again.",
+    });
+  }
+};
+
 module.exports = {
   applyToTask,
   getAllApp,
   getUserApplications,
   getTaskApplications,
   changeApplicationStatus,
+  cancelApplication,
 };

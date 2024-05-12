@@ -220,7 +220,7 @@
     "taskId": 10016,
     "applicantId": 10009,
     "price": 130.0,
-    "status": "Pending",
+    "status": "Complete",
     "createdAt": "2024-04-20T12:40:00Z",
     "updatedAt": "2024-04-20T12:40:00Z"
   },
