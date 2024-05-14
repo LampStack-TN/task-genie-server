@@ -427,6 +427,22 @@ const verifyUser = async (req, res) => {
   }
 };
 
+const rejectUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const updatedUser = await User.update({
+      where: { id: parseInt(id) },
+      data: { profile: { update: { isVerified: false } } },
+    });
+    res
+      .status(200)
+      .json({ message: "User has been marked as not verified.", updatedUser });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   signin,
   getAllClients,
@@ -443,4 +459,5 @@ module.exports = {
   updateUserPasswordAndEmail,
   getProfessionalById,
   verifyUser,
+  rejectUser,
 };
