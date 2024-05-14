@@ -61,35 +61,33 @@ const getAllProfessionals = async (req, res) => {
   try {
     const result = await user.findMany({
       where: {
-        role: 'professional'  
+        role: "professional",
       },
       include: {
-        profile: true, 
-        services: true, 
-      }
+        profile: true,
+        services: true,
+      },
     });
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
-
   }
 };
 
-
 const getProfessionalById = async (req, res) => {
-  const { id } = req.params; 
+  const { id } = req.params;
 
   try {
     const professional = await user.findUnique({
       where: {
-        id: parseInt(id),  
-        role: 'professional' 
+        id: parseInt(id),
+        role: "professional",
       },
       include: {
-        profile: true, 
-        services: true,  
-        tasks: true, 
-      }
+        profile: true,
+        services: true,
+        tasks: true,
+      },
     });
 
     if (professional) {
@@ -102,8 +100,6 @@ const getProfessionalById = async (req, res) => {
     res.status(500).send("An error occurred while fetching the professional.");
   }
 };
-
-
 
 const countProfessionals = async (req, res) => {
   try {
@@ -220,7 +216,6 @@ const updateAdmin = async (req, res) => {
     }
 
     if (newEmail) {
-     
       user.email = newEmail;
     }
 
@@ -369,7 +364,6 @@ const updateUserPasswordAndEmail = async (req, res) => {
     }
 
     if (newEmail) {
-     
       user.email = newEmail;
     }
 
@@ -390,36 +384,46 @@ const updateUserPasswordAndEmail = async (req, res) => {
   }
 };
 
- 
-
 const updateAdminAvatar = async (req, res) => {
   try {
     const { id } = req.params;
 
-   
-    const {avatar} = req.body
-console.log(avatar)
+    const { avatar } = req.body;
+    console.log(avatar);
 
     // perform the upload process
     const avatarUrl = await upload(avatar);
 
- const data = {...req.body}
- data.avatar = avatarUrl
+    const data = { ...req.body };
+    data.avatar = avatarUrl;
     // Update user with the new avatar URL
     await User.update({
       where: {
         id: parseInt(id),
       },
-      
-      data
-     
-     
+
+      data,
     });
 
     res.status(201).send("Avatar updated successfully");
   } catch (error) {
     console.error("Error updating avatar:", error);
     res.status(500).send(error.message || "Internal server error");
+  }
+};
+
+const verifyUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedUser = await User.update({
+      where: { id: parseInt(id) },
+      data: { profile: { update: { isVerified: true } } },
+    });
+    res
+      .status(200)
+      .json({ message: "User has been verified successfully.", updatedUser });
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -436,6 +440,7 @@ module.exports = {
   getTaskById,
   getServiceById,
   updateAdminAvatar,
-  updateUserPasswordAndEmail,getProfessionalById
-
+  updateUserPasswordAndEmail,
+  getProfessionalById,
+  verifyUser,
 };
