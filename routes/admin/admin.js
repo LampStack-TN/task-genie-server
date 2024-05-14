@@ -13,7 +13,7 @@ const {
   getAllServices,
   getServiceById,
   updateUserPasswordAndEmail,
-  updateAdminAvatar,getProfessionalById
+  updateAdminAvatar,getProfessionalById,verifyUser
 } = require("../../controllers/AdminController");
 const verifyToken = require("../../middlewares/verifyToken.js");
 router.post("/signin", signin);
@@ -30,5 +30,6 @@ router.get("/services/:id",verifyToken,getServiceById)
 router.put("/update/:id",verifyToken ,updateUserPasswordAndEmail)
 router.put("/updateAvatar/:id",verifyToken ,updateAdminAvatar)
 router.get('/professionals/:id',verifyToken,getProfessionalById)
+router.put('/users/:id/verify', verifyToken,verifyUser);
 
 module.exports = router;
