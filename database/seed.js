@@ -11,6 +11,7 @@ const applications = require("../data/applications.json");
 const conversations = require("../data/chat/conversations.json");
 const participants = require("../data/chat/participants.json");
 const messages = require("../data/chat/messages.json");
+const notifications = require("../data/notifications.json");
 
 (async () => {
   await prisma.user
@@ -71,6 +72,13 @@ const messages = require("../data/chat/messages.json");
 
   await prisma.message
     .createMany({ data: messages, skipDuplicates: true })
+    .then((response) => {
+      console.log("messages seeded successfull ✅: ", response);
+      console.log("******************************");
+    });
+
+  await prisma.notification
+    .createMany({ data: notifications, skipDuplicates: true })
     .then((response) => {
       console.log("messages seeded successfull ✅: ", response);
       console.log("******************************");
