@@ -1,4 +1,4 @@
-const { User, Task, service } = require("../database/prisma.js");
+const { User, Task, service, user } = require("../database/prisma.js");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -59,16 +59,51 @@ const getAllClients = async (req, res) => {
 
 const getAllProfessionals = async (req, res) => {
   try {
-    const result = await User.findMany({
+    const result = await user.findMany({
       where: {
-        role: "professional",
+        role: 'professional'  
       },
+      include: {
+        profile: true, 
+        services: true, 
+      }
     });
     res.status(200).json(result);
   } catch (error) {
-    console.log(error);
+    console.error(error);
+
   }
 };
+
+
+const getProfessionalById = async (req, res) => {
+  const { id } = req.params; 
+
+  try {
+    const professional = await user.findUnique({
+      where: {
+        id: parseInt(id),  
+        role: 'professional' 
+      },
+      include: {
+        profile: true, 
+        services: true,  
+        tasks: true, 
+      }
+    });
+
+    if (professional) {
+      res.status(200).json(professional);
+    } else {
+      res.status(404).send("Professional not found");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred while fetching the professional.");
+  }
+};
+
+
 
 const countProfessionals = async (req, res) => {
   try {
@@ -401,6 +436,6 @@ module.exports = {
   getTaskById,
   getServiceById,
   updateAdminAvatar,
-  updateUserPasswordAndEmail
+  updateUserPasswordAndEmail,getProfessionalById
 
 };
