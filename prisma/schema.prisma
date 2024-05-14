@@ -198,7 +198,6 @@ model Notification {
   message        String
   type           NotificationType
   targetEntityId Int
-  content        String?
   user           User             @relation("notifications", fields: [userId], references: [id])
   userId         Int
   notifier       User?            @relation("sentNotifications", fields: [notifierId], references: [id])
