@@ -1,4 +1,4 @@
-const { User, Task, service } = require("../database/prisma.js");
+const { User, Task, service, user } = require("../database/prisma.js");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -59,14 +59,19 @@ const getAllClients = async (req, res) => {
 
 const getAllProfessionals = async (req, res) => {
   try {
-    const result = await User.findMany({
+    const result = await user.findMany({
       where: {
-        role: "professional",
+        role: 'professional'  
       },
+      include: {
+        profile: true, 
+        services: true, 
+      }
     });
     res.status(200).json(result);
   } catch (error) {
-    console.log(error);
+    console.error(error);
+
   }
 };
 
