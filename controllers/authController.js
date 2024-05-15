@@ -98,9 +98,21 @@ const getAuthUser = async (req, res) => {
         address: true,
         zipcode: true,
         avatar: true,
+        notifications: {
+          include: {
+            notifier: {
+              select: {
+                id: true,
+                fullName: true,
+                avatar: true,
+              },
+            },
+          },
+        },
         profile: true,
         longitude: true,
         latitude: true,
+        _count: { select: { notifications: { where: { isRead: false } } } },
       },
     });
 
@@ -109,7 +121,7 @@ const getAuthUser = async (req, res) => {
   } catch (error) {
     // Handle errors
     console.log(error);
-    res.status(400).send("Unvalid Token");
+    res.status(400).send("Error Verifying token.");
   }
 };
 

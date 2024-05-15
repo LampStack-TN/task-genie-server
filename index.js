@@ -20,6 +20,7 @@ const ratingRouter = require("./routes/rating");
 
 const chatRouter = require("./routes/chat");
 const adminRouter = require("./routes/admin/admin");
+const notificationRouter = require("./routes/notification");
 // app & middlewares
 const upload = multer();
 const app = express();
@@ -47,6 +48,9 @@ app.use("/api/hiring", hiringRouter);
 app.use("/api/rating", ratingRouter);
 app.use("/api/chat", chatRouter);
 app.use("/api/admin", adminRouter);
+app.use("/api/notification", notificationRouter);
+
+
 // app listening/serving
 io.on("connection", (socket) => {
   console.log("A user connected");
