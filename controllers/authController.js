@@ -98,6 +98,8 @@ const getAuthUser = async (req, res) => {
         address: true,
         zipcode: true,
         avatar: true,
+        longitude: true,
+        latitude: true,
         notifications: {
           include: {
             notifier: {
@@ -150,6 +152,8 @@ const setUserRole = async (req, res) => {
         zipcode: true,
         avatar: true,
         profile: true,
+        longitude: true,
+        latitude: true,
       },
     });
 
