@@ -99,6 +99,8 @@ const getAuthUser = async (req, res) => {
         zipcode: true,
         avatar: true,
         profile: true,
+        longitude: true,
+        latitude: true,
       },
     });
 
