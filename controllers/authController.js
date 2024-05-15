@@ -101,6 +101,7 @@ const getAuthUser = async (req, res) => {
         longitude: true,
         latitude: true,
         notifications: {
+          orderBy: [{ createdAt: "desc" }, { id: "desc" }],
           include: {
             notifier: {
               select: {
