@@ -41,7 +41,7 @@ app.use("/api/favrourite-task", favouriteTasks);
 app.use("/api/task-application", applicationRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/task", taskRouter);
-app.use("/api/task", search);
+app.use("/api/searchList", search);
 app.use("/api/profile", profileRouter);
 app.use("/api/service", serviceRouter);
 app.use("/api/hiring", hiringRouter);
