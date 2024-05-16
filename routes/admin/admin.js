@@ -16,7 +16,7 @@ const {
   updateAdminAvatar,
   getProfessionalById,
   verifyUser,
-  rejectUser,
+  rejectUser,getAllVerifiedProfessionals
 } = require("../../controllers/AdminController");
 const verifyToken = require("../../middlewares/verifyToken.js");
 router.post("/signin", signin);
@@ -35,5 +35,6 @@ router.put("/updateAvatar/:id", verifyToken, updateAdminAvatar);
 router.get("/professionals/:id", verifyToken, getProfessionalById);
 router.put("/users/:id/verify", verifyToken, verifyUser);
 router.put("/users/:id/reject", verifyToken, rejectUser);
+router.get("/verified", verifyToken, getAllVerifiedProfessionals)
 
 module.exports = router;
