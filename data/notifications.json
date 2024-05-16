@@ -1,0 +1,62 @@
+[
+  {
+    "id": 10001,
+    "message": "Applied to your task",
+    "content": "Fix leaky roof",
+    "type": "Application",
+    "targetEntityId": 10011,
+    "userId": 10001,
+    "notifierId": 10006,
+    "isRead": false
+  },
+  {
+    "id": 10002,
+    "message": "Applied to your task",
+    "content": "Fix leaking faucet",
+    "type": "Application",
+    "targetEntityId": 10001,
+    "userId": 10001,
+    "notifierId": 10006,
+    "isRead": false
+  },
+  {
+    "id": 10003,
+    "message": "Applied to your task",
+    "content": "Fix leaky roof",
+    "type": "Application",
+    "targetEntityId": 10011,
+    "userId": 10001,
+    "notifierId": 10009,
+    "isRead": true
+  },
+  {
+    "id": 10004,
+    "message": "Applied to your task",
+    "content": "Fix leaking faucet",
+    "type": "Application",
+    "targetEntityId": 10001,
+    "userId": 10001,
+    "notifierId": 10009,
+    "isRead": false
+  },
+  {
+    "id": 10005,
+    "message": "Sent You a message",
+    "content": "Sure, where shall we meet?!",
+    "type": "Message",
+    "targetEntityId": 10001,
+    "userId": 10001,
+    "notifierId": 10009,
+    "isRead": false
+  },
+  {
+    "id": 10006,
+    "message": "Sent You a message",
+    "content": "That would be fantastic. I'll prepare my resume and send it over to you shortly.",
+    "type": "Message",
+    "targetEntityId": 10002,
+    "userId": 10001,
+    "notifierId": 10006,
+    "isRead": true
+  }
+]

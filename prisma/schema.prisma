@@ -14,27 +14,29 @@ datasource db {
 }
 
 model User {
-  id             Int              @id @default(autoincrement())
-  fullName       String
-  email          String           @unique
-  password       String
-  role           Role?
-  phone          String?
-  birthdate      String?
-  city           String
-  address        String
-  zipcode        String?
-  avatar         String           @default("https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg")
-  longitude      Float?
-  latitude       Float?
-  tasks          Task[]
-  services       Service[]
-  applications   Application[]
-  profile        Profile?
-  favouriteTasks FavouriteTasks[]
-  hirings        Hiring[]
-  Participant    Participant[]
-  Messages       Message[]
+  id                Int              @id @default(autoincrement())
+  fullName          String
+  email             String           @unique
+  password          String
+  role              Role?
+  phone             String?
+  birthdate         String?
+  city              String
+  address           String
+  zipcode           String?
+  avatar            String           @default("https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg")
+  longitude         Float?
+  latitude          Float?
+  tasks             Task[]
+  services          Service[]
+  applications      Application[]
+  profile           Profile?
+  favouriteTasks    FavouriteTasks[]
+  hirings           Hiring[]
+  Participant       Participant[]
+  messages          Message[]
+  notifications     Notification[]   @relation("notifications")
+  sentNotifications Notification[]   @relation("sentNotifications")
 }
 
 enum Role {
@@ -193,10 +195,24 @@ enum MessageType {
   image
 }
 
-// enum Urgency {
-//   Critical
-//   Urgent
-//   Priority
-//   Soon
-//   Anytime
-// }
+model Notification {
+  id             Int              @id @default(autoincrement())
+  message        String
+  content        String?
+  type           NotificationType
+  targetEntityId Int
+  user           User             @relation("notifications", fields: [userId], references: [id])
+  userId         Int
+  notifier       User?            @relation("sentNotifications", fields: [notifierId], references: [id])
+  notifierId     Int?
+  isRead         Boolean          @default(false)
+  createdAt      DateTime         @default(now())
+}
+
+enum NotificationType {
+  Application
+  Message
+  Acceptance
+  Completion
+  Hiring
+}

@@ -2,6 +2,11 @@
 const prisma = require("../database/prisma.js");
 
 (async () => {
+  await prisma.notification.deleteMany({}).then((response) => {
+    console.log("Notifications truncated successfull ✅: ", response);
+    console.log("******************************");
+  });
+
   await prisma.message.deleteMany({}).then((response) => {
     console.log("Messages truncated successfull ✅: ", response);
     console.log("******************************");

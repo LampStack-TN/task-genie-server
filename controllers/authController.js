@@ -98,7 +98,22 @@ const getAuthUser = async (req, res) => {
         address: true,
         zipcode: true,
         avatar: true,
+        longitude: true,
+        latitude: true,
+        notifications: {
+          orderBy: [{ createdAt: "desc" }, { id: "desc" }],
+          include: {
+            notifier: {
+              select: {
+                id: true,
+                fullName: true,
+                avatar: true,
+              },
+            },
+          },
+        },
         profile: true,
+        _count: { select: { notifications: { where: { isRead: false } } } },
       },
     });
 
@@ -107,7 +122,7 @@ const getAuthUser = async (req, res) => {
   } catch (error) {
     // Handle errors
     console.log(error);
-    res.status(400).send("Unvalid Token");
+    res.status(400).send("Error Verifying token.");
   }
 };
 
@@ -138,6 +153,8 @@ const setUserRole = async (req, res) => {
         zipcode: true,
         avatar: true,
         profile: true,
+        longitude: true,
+        latitude: true,
       },
     });
 
