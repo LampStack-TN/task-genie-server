@@ -43,12 +43,26 @@ const applyToTask = async (req, res) => {
         userId: application.task.clientId,
         notifierId: userId,
       },
+      include: { user: true },
     });
 
-    //removed
+    console.log(notification.user.pushToken);
+
+    await fetch("https://exp.host/--/api/v2/push/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to: notification.user.pushToken,
+        title: "Fraize Applied to your task",
+        body: "A success occurred while applying to the task. Good Job Linda Man ✅✅✅✅✅.",
+      }),
+    });
 
     return res.status(201).json(application);
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       message:
         "An error occurred while applying to the task. Please try again.",
