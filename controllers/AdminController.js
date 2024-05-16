@@ -59,9 +59,15 @@ const getAllClients = async (req, res) => {
 
 const getAllProfessionals = async (req, res) => {
   try {
-    const result = await user.findMany({
+    const result = await User.findMany({
       where: {
         role: "professional",
+        profile: {
+          is: {
+            isVerified: false,
+            rejected: false,
+          },
+        },
       },
       include: {
         profile: true,
@@ -417,7 +423,13 @@ const verifyUser = async (req, res) => {
   try {
     const updatedUser = await User.update({
       where: { id: parseInt(id) },
-      data: { profile: { update: { isVerified: true } } },
+      data: {
+        profile: {
+          update: {
+            isVerified: true,
+          },
+        },
+      },
     });
     res
       .status(200)
@@ -429,15 +441,20 @@ const verifyUser = async (req, res) => {
 
 const rejectUser = async (req, res) => {
   const { id } = req.params;
-
   try {
     const updatedUser = await User.update({
       where: { id: parseInt(id) },
-      data: { profile: { update: { isVerified: false } } },
+      data: {
+        profile: {
+          update: {
+            rejected: true,
+          },
+        },
+      },
     });
     res
       .status(200)
-      .json({ message: "User has been marked as not verified.", updatedUser });
+      .json({ message: "User has been rejected successfully.", updatedUser });
   } catch (error) {
     console.error(error);
   }
