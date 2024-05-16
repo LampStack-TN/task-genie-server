@@ -113,6 +113,8 @@ const getAuthUser = async (req, res) => {
           },
         },
         profile: true,
+        longitude: true,
+        latitude: true,
         _count: { select: { notifications: { where: { isRead: false } } } },
       },
     });
