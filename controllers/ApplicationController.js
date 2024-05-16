@@ -31,7 +31,7 @@ const applyToTask = async (req, res) => {
         },
         status: "Pending",
       },
-      include: { task: true },
+      include: { task: true, applicant: true },
     });
 
     const notification = await prisma.notification.create({
@@ -46,8 +46,6 @@ const applyToTask = async (req, res) => {
       include: { user: true },
     });
 
-    console.log(notification.user.pushToken);
-
     await fetch("https://exp.host/--/api/v2/push/send", {
       method: "POST",
       headers: {
@@ -55,8 +53,8 @@ const applyToTask = async (req, res) => {
       },
       body: JSON.stringify({
         to: notification.user.pushToken,
-        title: "Fraize Applied to your task",
-        body: "A success occurred while applying to the task. Good Job Linda Man ✅✅✅✅✅.",
+        title: `New Application!`,
+        body: `${application.applicant.fullName} Applied to your task ${application.task.title}`,
       }),
     });
 
@@ -161,10 +159,26 @@ const changeApplicationStatus = async (req, res) => {
     const updatedApplication = await prisma.application.update({
       where: { id: parseInt(applicationId) },
       data: { status },
-      include: { applicant: { include: { profile: true } } },
+      include: { task: true, applicant: { include: { profile: true } } },
     });
+
+    if (status === "Accepted") {
+      await fetch("https://exp.host/--/api/v2/push/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: updatedApplication.applicant.pushToken,
+          title: `Application Accepted!`,
+          body: `Tour application To ${updatedApplication.task.title} has been accepted`,
+        }),
+      });
+    }
+
     res.status(200).json(updatedApplication);
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       message:
         "An error occurred while processing the application. Please try again.",
