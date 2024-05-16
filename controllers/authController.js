@@ -98,7 +98,10 @@ const getAuthUser = async (req, res) => {
         address: true,
         zipcode: true,
         avatar: true,
+        longitude: true,
+        latitude: true,
         notifications: {
+          orderBy: [{ createdAt: "desc" }, { id: "desc" }],
           include: {
             notifier: {
               select: {
@@ -152,6 +155,8 @@ const setUserRole = async (req, res) => {
         zipcode: true,
         avatar: true,
         profile: true,
+        longitude: true,
+        latitude: true,
       },
     });
 

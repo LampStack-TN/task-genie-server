@@ -197,6 +197,7 @@ enum MessageType {
 model Notification {
   id             Int              @id @default(autoincrement())
   message        String
+  content        String?
   type           NotificationType
   targetEntityId Int
   user           User             @relation("notifications", fields: [userId], references: [id])

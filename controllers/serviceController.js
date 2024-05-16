@@ -75,7 +75,6 @@ const getOneService = async (req, res) => {
 const getMyServices = async (req, res) => {
   try {
     const { userId } = req;
-    console.log(userId);
     const services = await Service.findMany({
       where: {
         professionalId: userId,
