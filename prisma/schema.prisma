@@ -101,6 +101,8 @@ model Profile {
   jobTitle        String
   bio             String
   isVerified      Boolean @default(false)
+    rejected        Boolean @default(false) // Add this line
+
   officalDocument String?
   cinRecto        String
   cinVerso        String
