@@ -164,7 +164,45 @@ const postMessage = async (req, res) => {
 
     const message = await Message.create({
       data,
+      include: {
+        sender: true,
+        conversation: {
+          include: {
+            participants: {
+              where: {
+                userId: { not: userId },
+              },
+              include: { user: true },
+            },
+          },
+        },
+      },
     });
+
+    const {
+      conversation: {
+        participants: [
+          {
+            user: { pushToken },
+          },
+        ],
+      },
+    } = message;
+
+    console.log(pushToken);
+
+    await fetch("https://exp.host/--/api/v2/push/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to: pushToken,
+        title: `${message.sender.fullName} sent you a message!`,
+        body: message.content,
+      }),
+    });
+
     res.send(message);
   } catch (error) {
     console.log(error);
