@@ -460,6 +460,27 @@ const rejectUser = async (req, res) => {
   }
 };
 
+const getAllVerifiedProfessionals = async (req, res) => {
+  try {
+    const result = await User.findMany({
+      where: {
+        role: "professional",
+        profile: {
+          is: {
+            isVerified: true,
+          },
+        },
+      },
+      include: {
+        profile: true,
+      },
+    });
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   signin,
   getAllClients,
@@ -477,4 +498,5 @@ module.exports = {
   getProfessionalById,
   verifyUser,
   rejectUser,
+  getAllVerifiedProfessionals,
 };
