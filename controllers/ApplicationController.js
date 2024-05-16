@@ -74,7 +74,19 @@ const getUserApplications = async (req, res) => {
         applicantId: userId,
       },
       include: {
-        task: true,
+        task: {
+          include: {
+            skills: true,
+            client: true,
+            applications: { where: { applicantId: userId } },
+            _count: {
+              select: {
+                applications: { where: { applicantId: userId } },
+                favouriteTasks: { where: { userId } },
+              },
+            },
+          },
+        },
         applicant: true,
       },
     });
@@ -85,6 +97,10 @@ const getUserApplications = async (req, res) => {
         .json({ message: "No applications found for this user." });
     }
 
+    applications.forEach(({ task }) => {
+      task.liked = task._count.favouriteTasks > 0;
+      task.applied = task._count.applications > 0;
+    });
     return res.status(200).json(applications);
   } catch (error) {
     res.status(500).json({
