@@ -27,6 +27,7 @@ model User {
   avatar            String           @default("https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg")
   longitude         Float?
   latitude          Float?
+  pushToken         String?
   tasks             Task[]
   services          Service[]
   applications      Application[]
