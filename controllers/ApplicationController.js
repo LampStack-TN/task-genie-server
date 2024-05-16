@@ -31,7 +31,20 @@ const applyToTask = async (req, res) => {
         },
         status: "Pending",
       },
+      include: { task: true },
     });
+
+    const notification = await prisma.notification.create({
+      data: {
+        message: "Applied to your task",
+        content: application.task.title,
+        type: "Application",
+        targetEntityId: taskId,
+        userId: application.task.clientId,
+        notifierId: userId,
+      },
+    });
+
     //removed
 
     return res.status(201).json(application);
