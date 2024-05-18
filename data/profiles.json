@@ -74,6 +74,7 @@
     "id": 500,
     "userId": 10021,
     "jobTitle": "Worker",
+    "isVerified": true,
     "bio": "Dedicated worker with extensive experience in construction and manual labor. Skilled in operating various machinery and tools, committed to quality and safety.",
     "cinRecto": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Carte_d%27identit%C3%A9_tunisienne_recto2.jpg/800px-Carte_d%27identit%C3%A9_tunisienne_recto2.jpg",
     "cinVerso": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Carte_d%27identit%C3%A9_tunisienne_verso.jpg"

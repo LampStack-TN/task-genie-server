@@ -264,5 +264,18 @@
     "avatar": "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg",
     "latitude": 29.4141,
     "longitude": 12.4836
+  },
+  {
+    "id": 10022,
+    "email": "Linda@gmail.com",
+    "password": "$2b$08$CWWB5YPE95SJ8N7yvbYkNOeD9TQKc1jYHrS0le9/Q2N6bg4vXd6WW",
+    "role": "client",
+    "fullName": "Linda Mnasri ",
+    "city": "Sousse",
+    "address": "18 Rue El Riadh",
+    "zipcode": "5502",
+    "avatar": "https://res.cloudinary.com/dh2qloyy9/image/upload/v1715941753/pu4qnrrlvvycxyu1ywau.png",
+    "latitude": 29.4141,
+    "longitude": 12.4836
   }
 ]
